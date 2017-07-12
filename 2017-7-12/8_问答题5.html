@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:300px;
+	height: 300px;
+	border: 1px solid #000;
+	
+}
+#box2{
+	width:100px;
+	height: 100px;
+	border: 1px solid #000;
+	background: red;
+}
+
+</style>
+</head>
+<body>
+	<div id="box">
+		<div id="box2"></div>
+	</div>
+<script type="text/javascript">
+	
+	var box = document.getElementById('box');
+	
+	var box2 = document.getElementById('box2');
+	
+	
+	document.addEventListener('click',fn,true);
+	
+	window.addEventListener('click',fnw,true);
+	
+	box2.addEventListener('click',fn2,true);
+	
+	box.addEventListener('click',fn3,false);
+	box.addEventListener('click',fn1,true);
+	
+	box2.addEventListener('click',fn2,true);
+	
+	box2.addEventListener('click',function(){
+		alert('box223333');
+	},false);
+	
+	box2.addEventListener('click',function(){
+		alert('box22');
+	},true);
+	
+	
+	/*
+		如果事件函数是有名字的，那么后面的会覆盖前面的
+		如果事件函数是匿名的，是会执行的，当***目标元素***有多个同样的事件
+		但是不同状态（捕获||冒泡）时，执行的顺序，走先绑先执行。（执行的顺序没有捕获||冒泡这一说）
+	*/
+	
+	
+	function fnw(){
+		alert('window');
+	}
+	function fn(){
+		alert('document');
+	}
+	function fn1(){
+		alert('box');
+	}
+	function fn2(){
+		alert('box2');
+	}
+	
+	function fn3(){
+		alert('box111111');
+	}
+
+	
+</script>
+</body>
+</html>

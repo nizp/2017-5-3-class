@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+body{
+	background: #2f2a78;
+	overflow: hidden;
+}	
+.warp{
+	width:101px;
+	height: 387px;
+	background: #fff;
+	margin: 200px auto;
+}
+#box{
+	width:88px;
+	height: 387px;
+	float:left;
+	overflow: hidden;
+	position: relative;
+}
+#div1{
+	width:13px;
+	height: 387px;
+	float: right;
+	position:relative;
+	background: #ccc;
+}
+#div3{
+	width:9px;
+	height:72px;
+	background:url(bg.png) 0px -12px no-repeat;
+	position: absolute;
+	top:0;
+	left: 2px;
+}
+#div2{
+	width:13px;
+	height: 367px;
+	margin-top: 10px;
+	position: relative;
+}
+#top{
+	width:11px;
+	height: 10px;
+	background:url(bg.png) 0 0 no-repeat;
+	position: absolute;
+	top:0;
+	left:1px;
+}
+#bottom{
+	width:11px;
+	height: 10px;
+	background:url(bg.png) -12px 0 no-repeat;
+	position: absolute;
+	bottom:0;
+	left:1px;
+}
+#ul{
+	list-style: none;
+	width:88px;
+	position: absolute;
+	top:0;
+}
+li{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<section class="warp">
+		<div id="box">
+			<ul id="ul">
+				<!--<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>-->
+			</ul>
+		</div>
+		<div id="div1">
+			<div id="top"></div>
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+			<div id="bottom"></div>
+		</div>
+	</section>
+
+</body>
+</html>
+<script src="data.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+   
+   var ul = document.getElementById('ul');
+   var div2 = document.getElementById('div2');
+   var div3 = document.getElementById('div3');
+   var warp = document.querySelectorAll('.warp')[0];
+   var box = document.getElementById('box');
+   
+   var html = '';
+   /*
+   	渲染数据 
+   */
+  
+  arrCity.forEach(function(ele,i){
+  	if(ele.name != '请选择'){
+  		html += `<li>${ele.name}</li>`;
+  	}
+  });
+  ul.innerHTML = html;
+  
+  /*
+   	拖拽
+   * */
+  
+  div3.addEventListener('mousedown',function(ev){
+  	var disY = ev.clientY - this.offsetTop;
+  	
+  	document.addEventListener('mousemove',Move);
+  	document.addEventListener('mouseup',Up);
+  	
+  	function Move(ev){
+  		var t = ev.clientY - disY;
+  		moveFn(t);
+  	}
+  	function Up(){
+  		document.removeEventListener('mousemove',Move);
+  		document.removeEventListener('mouseup',Up);
+  	}
+  	
+  	ev.preventDefault();
+  });
+  
+  
+  	//滚轮
+	addWhell(warp,function(o){
+		var t = div3.offsetTop;
+		if(o){
+			
+			t -= 5;
+			moveFn(t)
+			
+		}else{
+			
+			t += 5;
+			moveFn(t)
+			
+		}
+	});
+	
+	
+	//点击
+	var timer = null;
+	div1.addEventListener('mousedown',function(ev){
+		var t = div3.offsetTop;
+		timer = setInterval(function(){
+			if(ev.target.id === 'top'){
+				t -= 5;
+				moveFn(t);
+			}else if(ev.target.id === 'bottom'){
+				t += 5;
+				moveFn(t);
+			}else{
+				//点空白处
+				
+				if(ev.clientY > div3.getBoundingClientRect().bottom){
+					t += 5;
+					moveFn(t);
+					
+				}else if(ev.clientY < div3.getBoundingClientRect().top){
+					t -= 5;
+					moveFn(t);
+					
+				}else{
+
+					//到目标点了
+					clearInterval(timer);
+				}
+			}
+		},20);
+	});
+  	
+  	div1.addEventListener('mouseup',function(ev){
+  		
+  		clearInterval(timer);
+  		
+  	});
+  
+  
+  
+  
+  function moveFn(t){
+  	if(t < 0){
+  			t = 0;
+  		}else if(t > div2.offsetHeight - div3.offsetHeight){
+  			t = div2.offsetHeight - div3.offsetHeight;
+  		}
+  		
+  		var secale = t/(div2.offsetHeight - div3.offsetHeight);
+  		ul.style.top = secale * (box.offsetHeight - ul.scrollHeight) + 'px';
+  		
+  		div3.style.top = t + 'px';
+  }
+  
+  function addWhell(obj,fn){
+		
+		obj.addEventListener('mousewheel',fn1);
+		obj.addEventListener('DOMMouseScroll',fn1);
+		
+		
+	function fn1(ev){
+			var down = true;
+			down = ev.wheelDelta?(ev.wheelDelta > 0?true:false) :(ev.detail < 0?true:false);
+			
+			typeof fn === 'function' && fn(down);
+		}
+	}
+	
+	
+  
+  
+  
+  
+   
+   
+   
+   
+</script>

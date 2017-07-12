@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:300px;
+	height: 300px;
+	border: 1px solid #000;
+}
+#box2{
+	width:100px;
+	height: 100px;
+	border: 1px solid #000;
+	background: red;
+	top:400px;
+	position: absolute;
+}
+
+</style>
+</head>
+<body>
+	<div id="box">
+		<div id="box2"></div>
+	</div>
+<script type="text/javascript">
+	
+	/*
+		onmouseenter/onmouseleave 是不冒泡的，为什么呢？
+		 在创造它的时候就定义了（文档就那么写的规范）
+		 
+	*/
+	
+	var box = document.getElementById('box');
+	var box2 = document.getElementById('box2');
+	
+	box.onmouseenter = function(ev){
+		alert(1);
+	}
+	box2.onmouseenter = function(ev){
+		alert(2);
+	}
+
+	
+</script>
+</body>
+</html>

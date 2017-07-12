@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var a = 1;
+	
+	/*
+		
+		alert(a++ == ++a); //false
+		
+		左边的值为1右边的值为3，为什么呢？
+		
+		在对比的时候是比较变量，左边一上来就找到了这个变量，而这个变量为后自增
+		所以值还是为1，不过==是从左至右的运算符，会把左边的值运算完成，那么到了
+		右边之后再找变量a，因为右值运算完成之后为2，而++a为前自增，所以a的值为3
+		
+		
+	*/
+	
+//	alert(++a == a++);
+
+//	alert(a++ == ++a);//1   3
+	
+//	console.log(a); //3
+
+	alert(a++ == a++);//1   2
+	
+	
+</script>
+</body>
+</html>

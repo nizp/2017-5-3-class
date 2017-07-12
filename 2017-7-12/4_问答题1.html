@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head class="li1">
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li class="li1"></li>
+		<li></li>
+		<li></li>
+		<li class="li1 list listxxxx"></li>
+	</ul>
+<script type="text/javascript">
+	
+	var ul = document.getElementById('ul');
+	//console.log(ul.getElementsByClassName('li1'))
+	
+	function $(){//'#ul'
+		var title = arguments[0].charAt();
+		var aEle = document.getElementsByTagName('*');
+		var arr = []; //存储符合条件的元素。
+		//console.log(aEle);
+		
+		if(title === '#'){
+			
+			return document.getElementById(arguments[0].substring(1));
+			
+		}else if(title === '.'){//说明为class
+			
+			var sClass = arguments[0].substring(1);
+			
+			//['li list','list','li1']
+			for(var i=0;i<aEle.length;i++){
+				
+				var arr2 = aEle[i].className.split(' ');
+				
+				for(var j=0;j<arr2.length;j++){
+					if(arr2[j] === sClass){
+						arr.push(aEle[i]);
+					}
+				}
+				
+				//console.log(arr2);
+//				if(aEle[i].className === sClass){
+//					arr.push(aEle[i]);
+//				}
+			}
+			
+			
+			
+//			for(var i=0;i<aEle.length;i++){
+//				
+//				if(aEle[i].className === sClass){
+//					arr.push(aEle[i]);
+//				}
+//			}
+
+			
+			
+//			for(var i of aEle){
+//				if(i.className === sClass){
+//					arr.push(i);
+//				}
+////				console.log(i);
+//			}
+			
+			return arr;
+			
+		}else{
+			return document.getElementsByTagName(arguments[0]);
+		}
+		
+		console.log(title)
+		
+		
+		
+	};
+	
+//	console.log($('#ul'));
+	
+	
+	for(var i=0;i<$('.li1').length;i++){
+		$('.li1')[i].style.background = 'red';	
+	}
+	
+	console.log($('li'));
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:300px;
+	height: 300px;
+	border: 1px solid #000;
+}
+#box2{
+	width:100px;
+	height: 100px;
+	border: 1px solid #000;
+	background: red;
+	top:400px;
+	position: absolute;
+}
+
+</style>
+</head>
+<body>
+	<div id="box">
+	</div>
+<script type="text/javascript">
+	
+	var box = document.getElementById('box');
+	
+	function addWhell(obj,fn){
+		
+		obj.addEventListener('mousewheel',fn1);
+		obj.addEventListener('DOMMouseScroll',fn1);
+		
+		
+		function fn1(ev){
+			var down = true;
+//			if(ev.wheelDelta){
+//				if(ev.wheelDelta > 0){
+//					down = true;
+//				}else{
+//					down = false;
+//				}
+//			}else{
+//				if(ev.detail < 0){
+//					down = true;
+//				}else{
+//					down = false;
+//				}
+//			}
+
+			down = ev.wheelDelta?(ev.wheelDelta > 0?true:false) :(ev.detail < 0?true:false);
+			
+			typeof fn === 'function' && fn(down);
+			
+		}
+		
+		
+	}
+	
+	
+	addWhell(box,function(o){
+		if(o){
+			alert('向上');
+		}else{
+			alert('向下');
+		}
+	});
+	
+	
+	
+
+	
+</script>
+</body>
+</html>

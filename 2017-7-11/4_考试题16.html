@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		var b = ...
+		fn1 = function fn1(){
+				var a = b = 20;
+				b++;
+			}
+			
+			
+			b = 10;
+			
+		
+	*/
+	
+	
+	var b = 10;
+	function fn1(){
+		var a = b = 20; //var a = 20; window.b = 20;
+		b++; //21
+	}
+	fn1();  //b = 21 
+	
+	fn1();  // b = 21
+	alert(b);  //21
+	alert(a); //报错
+	
+</script>
+</body>
+</html>

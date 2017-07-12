@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:300px;
+	height: 300px;
+	border: 1px solid #000;
+	
+}
+#box2{
+	width:100px;
+	height: 100px;
+	border: 1px solid #000;
+	background: red;
+}
+
+</style>
+</head>
+<body>
+	<div id="box">
+		<p>123456</p>
+	</div>
+<script type="text/javascript">
+	
+	var box = document.getElementById('box');
+	
+	document.onclick = function(ev){
+		
+		if(parent(ev.target)){
+			parent(ev.target).style.backgroundColor = 'red';
+		}else{
+			document.documentElement.style.backgroundColor = 'blue';
+		}
+	}
+	
+	function parent(target){
+		if(!target.parentNode)return null;
+		if(target.id === 'box'){
+			return target;
+		}else{
+			return parent(target.parentNode);
+		}
+	}
+	
+	
+	
+</script>
+</body>
+</html>

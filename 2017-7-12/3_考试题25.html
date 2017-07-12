@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function fn1(){
+		var a = 0;
+		function fn2(){
+			++a;
+			alert(a);
+		}
+		return fn2;
+	}
+	
+	fn1()();//1
+	
+	//console.log(fn1() == fn1()); //false
+	
+	var newFn = fn1();//父类的变量或者参数就不会被浏览器回收。
+	
+	console.dir(newFn);
+	newFn();//1
+	newFn();//2
+	
+</script>
+</body>
+</html>

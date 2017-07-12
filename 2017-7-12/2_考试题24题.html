@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		
+		xxx.onclick = function(){
+			alert(this);
+		}
+		
+		function fn(){
+			alert(this);
+		}
+		
+		fn();
+		
+		setTimeout(function(){alert(this)},30);
+	
+	*/
+	
+	
+	var a = 10; //window.a
+	
+	function test(){
+		//var a...
+		a = 100;
+		alert(a);//100
+		alert(this.a); //10
+		var a;
+		alert(a);//100
+	}
+	
+	test();
+	
+</script>
+</body>
+</html>

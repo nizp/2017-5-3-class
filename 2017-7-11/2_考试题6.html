@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	var ul = document.getElementById('ul');
+	var lis = ul.getElementsByTagName('li');
+	
+	/*
+		在循环中，如果使用了innerHTML += 元素字符串，又再元素字符串中加入事件
+		那么前面的事件会被后面的事件覆盖。
+		
+		***不要在使用innerHTML的时候，绑定事件。
+	*/
+	
+	for(var i=0;i<6;i++){
+		//ul.innerHTML += '<li>'+(i)+'</li>';
+		
+		var li = document.createElement('li');
+		li.innerHTML = i;
+		
+		ul.appendChild(li);
+		
+		lis[i].onclick = function(){
+			alert(this.innerHTML);
+		}
+		
+	}
+	
+	
+	
+	
+	/*
+		ul.innerHTML = ul.innerHTML+'<li>'+(i)+'</li>';
+		
+		
+		ul.innerHTML = '<li onclick="">0</li>';
+		
+		
+		ul.innerHTML = '<li>0</li>' + <li onclick="">1</li>';
+		
+	*/
+</script>
+</body>
+</html>

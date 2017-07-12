@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/git">
+	
+	git 与  github
+	
+	git : 工具
+	
+		版本控制工具.
+			SVN:集成式版本控制工具
+			git:分布式的版本控制工具
+			
+		SVN要联网并且依靠中央服务器进行版本控制.
+		
+		git在本地就可以进行版本控制.
+			
+		
+	github : 最大的程序员交友(基友)网站
+	
+		1.可以去参与别人开源的项目
+		2.学习的途径
+		3.自己的私人博客(自己免费的网站)|远程仓库
+		4.项目分发.
+		
+	1.安装git
+	
+	2.创建github账号 (邮箱确认)
+	
+	3.捆绑(git与github)
+		(1)	获取秘钥
+			ssh-keygen -t rsa -C "注册邮箱"
+			
+		(2) 将秘钥添加到github上
+			github -> settings -> SSH and GPG keys -> new ssh key
+		
+		(3) 设置作者信息
+			git config --global user.name "你的账户名"
+			
+			git config --global user.email "你的邮箱"
+			
+		查看:
+			git config --global user.name
+			git config --global user.email
+			
+			能看到设置的作者信息
+			
+		(4) 查看测试有没有绑定成功,Hi!xxx
+			ssh -T git@github.com  
+			
+		
+		命令:
+			进入目录:
+				cd c:
+				
+			查看目录:
+				ll || ls
+				
+			tab
+				补全命令
+			
+			方向键:
+				↑上:回到前一次输入命名
+				↓下:回到后一次输入命名
+			
+			退回:
+				cd ..
+			
+			清屏:
+				clear
+				
+			
+	创建项目:
+		
+    	1.点击New repository创建项目
+    	
+    	2.填写项目名称,项目的描述,public,勾选README
+    	
+    需要把项目放到本地
+    	打开控制台,进入要存放项目的目录
+    	
+    	github上复制克隆地址
+    	
+    	通过git clone 项目地址 回车
+    	
+        删除项目：
+        	进入项目 -> settings -> Delete this repository(按钮) -> 输入删除的项目名称 -> 确定
+        	
+        	
+        	
+        	
+    	
+    	
+  
+
+	
+		
+		
+	
+	
+	
+		
+	
+</script>
+</body>
+</html>

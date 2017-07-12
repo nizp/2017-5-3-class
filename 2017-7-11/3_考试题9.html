@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		var a = ...
+		fn = function fn(){...};
+		
+		
+		a = 10;
+		
+		c = 20;
+		
+	*/
+	
+	var a = 10;
+	
+	function fn(){
+		//b为fn域下的变量
+		/*
+			var b=20,c=20; => var b = 20; var c = 20;
+			
+			var b = c = 20; => var b = 20; window.c = 20;
+		*/
+		var b = c = 20;
+	}
+	
+	fn();
+	
+	/*
+		window.abc = 20; //可以删除。如果直接给window下添加属性（包括没有使用var去申明的变量且赋值的），那么是可以被delete清掉。
+		
+		*** var abc = 20;  //window.abc  不可以被删除的。
+		如果使用var去声明变量的时候，会在window下创建一个同名属性，这个属性
+		不允许被delete清掉。
+		
+		
+	*/
+	delete this.a;
+	alert(this.a); //10
+	
+	/*
+		只要在对象身上查找不到属性，只会是undefined，不可能报错。 
+		
+		如果没有通过var去声明某个变量并且这个变量没有赋值或者没有挂在某个对象上，去查找这个变量的时候，就报错。
+	*/
+	
+	alert(this.b);//window.b  undefined
+	alert(this.c);//20
+	
+</script>
+</body>
+</html>
