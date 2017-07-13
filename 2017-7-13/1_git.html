@@ -122,7 +122,80 @@
 			
 		如果回滚的次数很多，有些时候会发现git log中没有想恢复的版本信息，那这个时候就可以使用git reflog 来查找操作信息。
 		
+	
+	
+	设置多人开发的权限：
 		
+		1.进入项目
+		
+		2.点击settings
+		
+		3.在最左边第二个列表，collaboration，可以添加协同开发人员
+		
+		4.输入用户名即可
+		
+		被邀请的人要确认才能合作开发这个项目。
+		
+	
+	在修改完项目之后要push到远程仓库，如果传不上去，出现了
+	error...git pull等字样，说明当前版本与远程仓库的代码有冲突
+	需要把冲突解决完才能成功push。
+	
+	解决：
+		1.需要把远程仓库的代码拉取到本地，然后进行对比。
+			git fetch 
+			
+		2.查看冲突
+			git diff master origin/master
+			
+		3.合并冲突
+			git merge origin/master
+			
+		4.手动修改冲突
+		
+		5.再提交一次
+		
+		6.push
+		
+	小技巧：
+		在于远程仓库合并代码的时候，先把本地的代码拷贝一份，避免合并之后本地的代码直接被远程仓库的代码给覆盖。
+		
+		
+	当没有权限还想参与别人的项目时
+	
+	1.先找到想参与的项目，fork
+	
+	2.把fork的项目克隆到本地
+	
+	3.去修改项目文件
+	
+	4.提交
+	
+	5.点击 Pull requests
+	
+	6.点击new Pull request
+	
+	7.点击create Pull request
+	
+	8.在留言板下点击create Pull request
+	
+	9.等待别人的回复
+	
+	
+	
+	当你收到了修改通知的时候
+	
+	1.进入项目
+	
+	2.点击files changed 查看修改的记录
+	
+	3.如果同意点击 merge Pull request
+	
+	4.点击Confirm  merge
+		
+		
+	
+	
 	
 		
 			
