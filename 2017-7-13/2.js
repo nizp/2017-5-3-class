@@ -1,3 +1,3 @@
-function fn2(){
-	return 1234567;
+function fn(){
+	
 }
