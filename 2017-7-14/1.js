@@ -13,7 +13,7 @@ div.addEventListener('mousedown',function(ev){
 		div.style.left = ev.clientX - disX + 'px';
 		div.style.top = ev.clientY - disY + 'px';
 	}
-	
+	ev.preventDefault();
 });
 
 
