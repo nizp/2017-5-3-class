@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		正则表达式：
+			用来表单验证的,匹配字符串,符号,火星文
+			
+			专门用来操作（检索）字符串（擅长模糊范围）的一种规则。
+			
+		学习方法：
+			
+			因为没有逻辑，所以只要背得规则、语法就能学会。
+			
+			^\w+@[a-z0-9]+(\.[a-z]+){1,3}$
+			[a-zA-z]+://[^\s]*
+			
+		正则的威力：
+		
+	*/
+	
+	//找到下面字符串中所有的数字并且放到数组中。charAt();
+	var str = 'hj32xkfjskh8e321dsm1sds7aye217e120jd9';
+	//[32,8,321,1,7,217,120]
+	var arr = [];
+//	for(var i=0;i<str.length;i++){
+//		if(!isNaN(parseInt(str.charAt(i)))){//true NaN
+//			arr.push(str.charAt(i));
+//		}
+//	}
+//	
+//	console.log(arr);
+	
+	//找到下面字符串中所有的数字（包括连续的）并且放到数组中。
+	/*
+		创建一个变量，来存放是数字的情况，当循环字符串的时候，如果发现
+		当前i为数字，那么就 +=这个变量，如果不是，就将拼好的变量push到
+		数组中，并且清空这个变量以便下次使用。
+	*/
+	//hj32xkfjskh8e321dsm1sds7aye217e120jd9
+	//[32]  temp = 3 => temp+=2 => 32 => temp = ''
+	
+	var temp = '';
+	
+	for(var i=0;i<str.length;i++){
+		if(!isNaN(parseInt(str.charAt(i)))){//true NaN
+			temp += str.charAt(i);
+		}else{
+			if(temp){
+				arr.push(temp);
+				temp = '';
+			}
+		}
+	}
+	if(temp){
+		arr.push(temp);
+		temp = '';
+	}
+	
+//	console.log(arr,temp);
+
+	console.log(str.match(/\d+/g));
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

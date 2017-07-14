@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		Sting.match(正则):
+			将匹配到的字符串提取出来放到数组中。
+			返回的是数组，如果没匹配到，返回null
+			
+		注意：
+			如果只找到一个，那么length为1，但是视觉上有好几个
+			
+			视觉上有好几个:{
+				第一项:为匹配到的字符,
+				第二项:为匹配到的字符索引,
+				第三项:整个字符串
+			}
+			
+			
+			
+		
+		/d+/g
+		
+		\d:*一个*数字
+		
+		
+		
+		量词：(放在要检索的规则之后)
+			+:最少匹配一个，最多不限。
+		
+		贪婪:
+			会一直检索，直到整个字符串完成。
+		
+		懒惰:你让它找一个，它一定不会多找。
+		
+		修饰符：
+			i -> 忽略大小写。
+			g: global (全局,就算有匹配项也会一直查找整个字符串)
+			
+		如果有多个修饰符，那么顺序可以颠倒的。	
+	*/
+	var str = 'aaaaaab345435cdsk44dsa1ada4444sdd2s33a43da34A6s3ds455adsa1';
+	
+//	console.log(str.match(/4+/g));
+	
+	console.log(str.match(/a+/gi));
+	
+</script>
+</body>
+</html>
