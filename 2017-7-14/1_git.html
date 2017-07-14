@@ -37,9 +37,30 @@
 		
 		删除分支（已合并的）
 		
-		git branch -d 分支名
+			git branch -d 分支名
 		
+		强行删除分支（未合并的）
+			
+			git branch -D 分支名
+			
+		查看未合并的分支：
+			git branch --no-merged
+			
 		
+		查看已分支：
+			git branch --merged
+			
+		合并分支：
+			git merge 分支名
+			
+	注意：
+		在合并的时候，有可能会发生冲突，那么需要解决冲突：
+			1.将主干和分支都提交到版本库；
+			2.合并（git merge 分支名）；
+			3.git status (查看冲突)；
+			4.手动解决；
+			5.如果需要，可以把合并之后的分支删除
+
 		
 			
 		
