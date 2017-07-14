@@ -1,1 +1,2 @@
-function fn(){}
+var div = document.getElementById('div');
+
