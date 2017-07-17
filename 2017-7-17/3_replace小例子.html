@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt"/>
+	<input type="button" value="提交" id="btn"/>
+	
+	<ul id="ul">
+		
+	</ul>
+	
+<script type="text/javascript">
+	/*
+		你妹 -> %$~
+		
+		我靠 -> &%$
+		
+	*/
+	
+	var btn = document.getElementById('btn');
+	var txt = document.getElementById('txt');
+	var ul = document.getElementById('ul');
+	
+	var arr = ['你妹','我靠','艹'];
+	
+	var str = arr.join('|');
+	
+//	console.log(str,arr);
+	
+	var re = new RegExp(str,'g');
+	
+	btn.onclick = function(){
+		var val = txt.value;
+
+		var v = val.replace(re,function($0){
+			switch($0){
+				case '你妹':
+					return '%$~';
+				break;
+				case '我靠':
+					return '&%$';
+				break;
+				case '艹':
+					return '&%$~~%~';
+				break;
+				
+			}
+		});
+		
+		var li = document.createElement('li');
+		li.innerHTML = v;
+		ul.appendChild(li);
+		
+		txt.value = '';
+	}
+	
+
+
+	
+</script>
+</body>
+</html>

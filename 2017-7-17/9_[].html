@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		提权：()
+		
+		(1+2)*3
+		
+		[123] -> [1|2|3]  123中任意一个字符
+		
+		数字范围：
+			[0-9]
+		小写字母范围
+			[a-z]
+		所有字母范围
+			[A-Za-z]
+			
+		16-101
+		
+		
+	*/
+	
+	var str = 'a1ca2cadca3ca4cabca123ca9ca7ca0c'; //123
+	var str = 'aacabcacca4cabca123ca9cadca7ca0caAcaGca^c'; //123
+	
+//	console.log(str.match(/a(1|2|3)c/g));
+
+//	console.log(str.match(/a[12397]c/g));
+
+//	console.log(str.match(/a[0-9]c/g)); //   \d
+	
+//	console.log(str.match(/a[a-z]c/ig));
+
+//	console.log(str.match(/a[A-z]c/g));
+
+	console.log(str.match(/a[A-Za-z]c/g));
+	
+	
+//	console.log(str.match(/a\dc/g))
+	
+	
+</script>
+</body>
+</html>

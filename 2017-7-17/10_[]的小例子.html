@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt"/>
+	<input type="button" value="提交" id="btn"/>
+<script type="text/javascript">
+
+	//16-101
+	
+	//11-108
+	
+	var btn = document.getElementById('btn');
+	var txt = document.getElementById('txt');
+	
+	/*
+		 
+		16-19  1[6-9] 
+		
+		20-29
+		30-39
+		40-49
+		50-59
+		90-99
+		[2-9][0-9]
+		
+		100 - 101
+		10[01]
+		
+		注意：	
+			比如能匹配到100，写个1000000，因为10000中包含100，所以
+			test为true，这个时候我们不能只看一段，我们要把整个字符串
+			全部匹配一遍之后才能得到结果。
+		
+		|1000000||1000000|
+		
+		^:开头
+		
+		$:结尾
+		
+		加了开头和结尾之后的意思是，整段字符串的每个字符都必须符合匹配规则，并不是只有一段匹配就返回。
+		
+	*/
+	btn.onclick = function(){
+		
+		var val = txt.value;
+		
+		if(/^(1[6-9])$|^([2-9][0-9])$|^(10[01])$/.test(val)){
+			alert('提交成功!');
+		}else{
+			alert('提交失败!');
+		}
+
+	}
+	
+
+
+/*****************为什么要开头结尾********************************/
+
+var str = 'abcde';
+//console.log(str.match(/abc/)); //abcde中有没有包含abc
+
+//console.log(str.match(/^abc$/)); //整个str的字符串是不是abc
+
+	
+</script>
+</body>
+</html>

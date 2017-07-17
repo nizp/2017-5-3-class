@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		 2017年7月17日
+		 
+		 一堆数字 + 一堆非数字 + 一堆数字 + 一堆非数字 + 一堆数字 + 可能有非数字
+		 
+		\d+
+		
+		转义符：
+			\D（非数字）
+			
+		量词：
+			?
+			最小可以没有，最多有1个
+	*/
+//	var str = '2017-7-17';
+//	var str = '2017/7/17';
+//	var str = '2017年7月17日';
+//	var str = '2017.7.17';
+	var str = '2017--7---/-/-/17';
+
+//	var str = '2017-7-17';
+	
+//	console.log(str.match(/\D/g));
+
+	var a = str.replace(/(\d+)\D+(\d+)\D+(\d+)\D?/g,function($0,$1,$2,$3){
+//		console.log($1);
+		return $1 + '年' + $2 + '月' + $3 + '日'; 
+	});
+	
+	
+	console.log(a);
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

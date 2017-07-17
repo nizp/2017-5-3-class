@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		字符串的替换：
+			
+		String.replace('要被替换的字符串'||正则,'替换成什么'||回调函数);
+		返回值：
+			处理之后的结果。
+			
+		所有的方法：
+			var a = obj.push();
+			
+		function push(){
+			var a = 1;
+			1+2....
+			return a;
+		}
+		
+		var p = push(); //1
+		
+		alert(p);//a -> 1
+		
+	*/
+	
+	
+//	var str = 'dmsakdjsakj213210543sdmsadsa2';
+	
+	//把第一个2换成二
+//	console.log(str.replace('2','二'));
+
+//	console.log(str.replace(/2/g,'(er)'));
+
+	
+	//或者 |
+	
+	//过滤敏感词
+	var str = '中国共产党总书记习近平说:法轮功是邪教!';
+	
+	//console.log(str.replace(/中国共产党|习近平|法轮功/g,'*'));
+	
+	/*
+		每当匹配到合格的字符串后，回调函数就会执行一次
+			
+		
+		回调函数中必须要有返回值。不然匹配的字符串会替换成undefined
+		
+		$0:本次匹配到的字符串（结果）
+			
+		
+	*/
+	
+	console.log(str.replace(/中国共产党|习近平|法轮功/g,function($0){
+		var str = '';
+		for(var i=0;i<$0.length;i++){
+			str += '*';
+		}
+		
+		//console.log($0);
+		return str;
+	}));
+	
+	
+	
+	
+	
+	
+
+</script>
+</body>
+</html>

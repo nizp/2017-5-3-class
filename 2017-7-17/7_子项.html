@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		 子项：
+		 	只要在正则中有了()，那么回调函数的第二个参数之后就是子项
+		 	
+		 	有几个子项对应的参数就有几个。
+		 	
+		 	
+		 	已下面例子为例：
+			 	
+			 	$1-$3为子项（有3个）
+			 	$4-$6为（索引、整个字符串、undefined）
+			 	
+			没子项函数中的第二个参数为索引，如果有第二个参数为子项，当没有子项的时候依次为（索引、整个字符串、undefined）。
+		 	
+		 	找子项可以从左往右找。
+		 	
+		 	
+		 a(1)c
+		 a(2)c
+		 a(3)c
+		 
+	*/
+	
+	var str = 'a1ca2ca3cabca555c'; //1,2,3
+	
+	str.replace(/a(((\d))+)c/g,function($0,$1,$2,$3,$4,$5,$6){
+		console.log($1);
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		计算下面字符串的字节长度，比如英文1个字节，中文为2个字节 
+		
+		中文的区间范围
+			[\u4e00-\u9fa5]
+	*/
+	
+	var num = 0;
+	var str = 'hello,摩托!'; //11
+	
+	for(var i=0;i<str.length;i++){
+		if(/[\u4e00-\u9fa5]/.test(str[i])){
+			num += 2;
+		}else{
+			num ++;
+		}
+	}
+	console.log(num);
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+	 	填空输出：
+	 		我的名字叫:小管管!我芳龄18
+	 	
+	*/
+	
+	var str = '我的名字叫:{name}!我芳龄{age}';
+	
+	var json = {
+		name:'小管管',
+		age:18
+	}
+	//low方式
+	var v = str.replace(/{name}|{age}/g,function($0){
+		
+		if($0 == '{name}'){
+			return json.name;
+		}else if($0 == '{age}'){
+			return json.age;
+		}
+		
+//		console.log($0);
+	});
+//	console.log(v);
+
+	/*
+		\w ->  一个 字母、数字、下划线 
+		
+			a|5|_
+			
+		
+		():子项
+			
+			只要在正则中有了()，那么回调函数的第二个参数就是子项。
+	*/
+
+	//优雅
+	var v = str.replace(/{(\w+)}/g,function($0,$2){
+		//console.log($0,$2);
+		return json[$2];
+	});
+	console.log(v);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

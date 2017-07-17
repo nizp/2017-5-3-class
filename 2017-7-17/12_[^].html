@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		^:开头
+		[^]:排除
+	*/
+	
+	var str = 'a1ca2ca3ca4cabc';
+	
+	/*
+		只要是a排除234c的字符都被匹配上。 
+	*/
+	console.log(str.match(/a[^234]c/g));
+	
+	
+</script>
+</body>
+</html>

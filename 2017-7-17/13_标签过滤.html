@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<textarea name="" rows="20" cols="40" id="t1"></textarea>
+	<input type="button" value="过滤" id="btn"/>
+	<textarea name="" rows="20" cols="40" id="t2"></textarea>
+	
+<script type="text/javascript">
+	
+	var t1 = document.getElementById('t1');
+	var t2 = document.getElementById('t2');
+	var btn = document.getElementById('btn');
+	/*
+		<div class="" id="">
+		   你好
+		   <p>吗？</p>
+		</div>
+		
+		<div class="" id="" >
+		</p>
+		</div>
+		
+		
+		匹配字符为，<加上不包含>符号的多个字符再加上>字符的字符串。
+		<[^>]+>
+		
+		转义符：
+			\s 一个空格
+	*/
+	
+	btn.onclick = function(){
+		var t1Val = t1.value;
+		
+//		var str = '</p>';
+		
+		//console.log(str.match(/<[^>]+>/g));//<div class="" id=""
+		
+		t2.value = t1Val.replace(/<[^>]+>|\s+/g,'');
+	}
+	
+</script>
+</body>
+</html>

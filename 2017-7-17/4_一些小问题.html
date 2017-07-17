@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		加了g和不加g的区别 
+	*/
+	
+	var str = 'sds1ad3213jstr232s1a1';
+	
+	var str2 = 'j';
+	
+//	console.log(str.match(/\d+/g));
+
+	//简写的正则中只能放字符串，不允许放变量，如果放了变量，意思就是去找整个字符串中有没有这个变量名的字符。
+//	console.log(/j/.test(str));
+//	console.log(/str2/.test(str)); //找到的是字符串中有没有str2
+	
+	//如果要放变量，那么不能使用简写的方式，要使用标准方式。
+	
+//	var re = new RegExp(str2,'gi');
+	
+//	var re = new RegExp(/j/,'gi'); //ES6中支持RegExp第一个参数为正则。（以前只能为字符串）
+	
+	/*
+		在使用 new RegExp的时候，如果字符串中有转义符，那这个时候需要把转义符用\转义，比如:'\d' -> '\\d'
+	*/
+	
+	var re = new RegExp('\\d+','gi');
+	
+	console.log(re);
+	console.log(str.match(re));
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+autoprefixer.github.io CSS3兼容自己补全
+www.loading.io 进度条动画制作网站
+
+
+
+	//uninitialized  还未载入
+        //loading  载入中
+        //interactive 已经加载
+        //complete  加载完成

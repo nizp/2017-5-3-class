@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		字符串的替换：
+			
+		String.replace('要被替换的字符串'||正则,'替换成什么'||回调函数);
+		返回值：
+			处理之后的结果。
+			
+			
+		当第二个参数使用了回调函数之后：默认参数意义
+			
+			函数的第一个参数：
+				本次匹配到的字符串
+				
+			函数的第二个参数：
+			
+				本次匹配到的字符串下标
+				
+			函数的第三个参数：
+			
+				整个字符串
+				
+			函数的第三个参数之后：
+			
+				undefined
+	*/
+	
+	
+	var str = 'ds1an987dl132a56s13';
+	
+	str.replace(/1/g,function($0,$1,$2,$3,$4){
+		console.log($0,$1,$2,$3,$4);
+	});
+	
+	
+	
+	
+	
+	
+
+</script>
+</body>
+</html>
