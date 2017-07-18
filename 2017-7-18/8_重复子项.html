@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		ac中间为至少2个重复的数字 
+		
+		a333c
+		a(3)\1c  重复一次第一个子项
+		
+		a((3))\2c  重复一次第二个子项
+		
+		a33c
+		
+		重复子项是当正则中有子项的时候，\num等同于第num个子项
+		
+		(\d\1)
+		
+	*/
+//	var str = 'a22ca333ca1ca6666666ca3456ca343c';
+	
+//	var str = 'a343ca545ca646c';
+
+	var str = 'a11c';
+	
+	
+	str.replace(/a((\d)\2)c/g,function($0,$1,$2){
+		console.log($2);
+	});
+	
+	
+//	str.replace(/a(\d)4\1c/g,function($0,$1){
+//		console.log($1)
+//	});
+	//console.log(str.match(/a(\d)4\1+c/g));
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		找出重复次数最多的字符是谁？重复了几次？ 
+	*/
+	var str = 'dnsadhsadahsa7a21aa3auo21ueaaiodshaaaie89wq0e21dlsanacsa0jia0dasd';
+	
+	var obj = {};
+	
+	
+	/*
+		{
+			d:2
+		}
+	*/
+	
+	for(var i=0;i<str.length;i++){
+		if(!obj[str[i]]){
+			obj[str[i]] = 1;
+		}else{
+			obj[str[i]] ++;
+		}
+	}
+	
+	var min = -Infinity;
+	var s = '';
+	
+	for(var attr in obj){
+		if(obj[attr] > min){
+			min = obj[attr];
+			s = attr;
+		}
+	}
+	console.log(obj);
+	
+	console.log('重复最多的是'+s+'一共出现了'+min+'次');
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt"/>
+	<input type="button" value="提交" id="btn"/>
+	
+<script type="text/javascript">
+	
+	/*
+		1.不能以0开头 
+		2.必须要为数字
+		3.5-14位
+		
+		
+		1000
+		100
+		
+	*/
+	var btn = document.getElementById('btn');
+	var txt = document.getElementById('txt');
+	btn.onclick = function(){
+		var val = txt.value;
+		if(/^[1-9]\d{4,13}$/.test(val)){
+			alert('是qq');
+		}else{
+			alert('不是qq');
+		}
+	}	
+</script>
+</body>
+</html>

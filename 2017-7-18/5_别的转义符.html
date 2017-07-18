@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		\d 一个数字
+		
+		\D 一个非数字
+		
+		\w 数字、字母、下划线
+		
+		\W 非数字、字母、下划线
+		
+		\s 空格
+		
+		\S 非空格
+		
+		\b 边界符
+		
+		\1 重复项
+		
+			'|dsadsada|' 
+			
+			注意：
+				符号、中文两边是有边界符的(不过如果2个符号或者中文在一起，那么算一个边界符)
+		
+	*/
+	
+//	var str = 'a1cabca_ca&ca#ca c';
+
+	var str = 'my name is x_x';
+	
+	console.log(str.replace(/\b/g,'|'))
+	
+//	console.log(str.match(/a\sc/g))
+	
+//	console.log(str.match(/a\Wc/g))
+	
+</script>
+</body>
+</html>

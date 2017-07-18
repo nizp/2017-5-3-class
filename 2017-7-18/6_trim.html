@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		 trim不支持IE9以下浏览器
+	*/
+	var str = '   a1cabca_ca&ca#c   ';
+//	console.log(str);
+//	console.log(str.trim());
+	
+	/*
+		以开头 + 空格的 或者 空格 + 结尾的 = 首尾的空格 
+	*/
+	console.log(str.replace(/^\s+|\s+$/g,''));
+	
+	
+</script>
+</body>
+</html>

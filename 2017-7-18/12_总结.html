@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		正则：
+			匹配检索（擅长模糊范围）字符串的规则。
+			
+		//.test(str) -> boolean
+		
+		
+		str.search(//) -> index||-1
+		
+		str.match(//) -> [] || null
+		
+		str.replace(str||re,str||function) -> 替换之后的结果
+		
+		function($0,$1,$2,$3)
+			$0:当前匹配到的字符
+			$1:
+				没有子项：index
+				有子项：子项
+			
+			$2:
+				没有子项：整个字符串
+				
+				有第二个子项：第二个子项
+			
+			$3:
+				undefined
+			
+		
+		():
+			子项
+				\1重复第一个子项
+				
+			提权
+			
+		[]:
+			
+			[A-Za-z][0-9][\u4e00-\u9fa5]
+			
+			[^] 排除
+		
+		{}:
+			{n,m}
+			
+			{n,} 最小n个，最大无限
+			
+			+
+			?
+			*
+		
+		修饰符：
+			i 忽略大小写
+			g 全局
+		
+		.
+			任意符。
+			
+		转义符：
+			\w
+			\W
+			\s
+			\S
+			\d
+			\D
+			\b
+			\B
+		
+		^ $
+
+		下列正则表达式中，可以匹配首位是小写字母或数字，其它位数是小写字母的最少两位的字符串：
+		
+		/^[a-z0-9][a-z]{2,}$/
+		
+		14.下列选项中可以正确的匹配一个正整数的是
+		
+		[1-9]\d*
+		
+		
+		
+	*/
+	
+	var str2 = '0abcd';
+	
+	
+	
+	var str = 'abcacca123ca5g';
+	
+	console.log(str.match(/a.+c/));
+	
+	
+</script>
+</body>
+</html>

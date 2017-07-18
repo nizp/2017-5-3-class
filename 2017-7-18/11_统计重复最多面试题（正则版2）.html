@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		找出重复次数最多的字符是谁？重复了几次？ 
+		
+		aaaaaaaaabbbbbb333333  
+	*/
+	var min = -Infinity;
+	var s = '';
+	var str = 'dnsadhszzzzzzzzzzzzzzzzzzadahsa7a21aa3auo21ueaaiodshaaaie89wq0e21dlsanacsa0jia0dasd';
+	
+	str = str.split('').sort().join('');
+	
+	var obj = {};
+	var arr2 = [];
+	
+	str.replace(/(\w)\1+/g,function($0,$1){
+		obj[$1] = $0.length;
+		if(min < $0.length){
+			min = $0.length;
+			s = $1;
+		}
+	});
+	
+	for(var attr in obj){
+//		if(obj[attr] == min){
+//			arr2.push(attr);
+//		}
+		if(obj[attr] != min){
+			delete obj[attr];
+		}
+	}
+	
+	
+	console.log(obj);
+
+	//console.log(arr2.join(','),min);
+	
+	//console.log('重复最多的是'+s+'一共出现了'+min+'次');
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+</script>
+</body>
+</html>

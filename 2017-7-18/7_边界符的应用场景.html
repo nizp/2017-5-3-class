@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li class="li li1"></li>
+		<li class="li li_2"></li>
+		<li class="li li_2"></li>
+		<li class="li1"></li>
+	</ul>
+<script type="text/javascript">
+	
+	var ul = document.getElementById('ul');
+	
+	
+	/*
+		className = 'li li1';
+		className = 'li1 li';
+		
+		(^|\s) + li + (\s|$)
+		
+					|li|
+		
+		边界符 + li + 边界符  
+	*/
+	
+	
+	function getByClass(sClass){
+		var arr = [];
+		var aEle = document.getElementsByTagName('*');
+		
+//		var re = /\bli\b/;
+		
+		//var re = new RegExp('\\b'+sClass+'\\b');
+		
+		var re = new RegExp('(^|\\s)' + sClass + '(\\s|$)');
+		
+		for(var i=0;i<aEle.length;i++){
+			if(re.test(aEle[i].className)){
+				arr.push(aEle[i]);
+			}
+		}
+		return arr;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	function getByClass(sClass){
+//		var arr = [];
+//		var aEle = document.getElementsByTagName('*');
+//		
+//		for(var i=0;i<aEle.length;i++){
+//			
+//			var s = aEle[i].className.split(' ');
+//			
+//			for(var j=0;j<s.length;j++){
+//				if(s[j] === sClass){
+//					arr.push(aEle[i]);	
+//				}
+//			}
+//			
+////			if(aEle[i].className === sClass){
+////				arr.push(aEle[i]);	
+////			}
+//		}
+//		return arr;
+//	}
+	
+	var lis = getByClass('li_2');
+	
+	for(var i=0;i<lis.length;i++){
+		lis[i].style.background = 'red';
+	}
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt"/>
+	<input type="button" value="提交" id="btn"/>
+	
+<script type="text/javascript">
+	
+	/*
+		
+		dsda@163.com
+		
+		miaov_xxx@miaov.com
+		
+		miaov-xxx@sina.com
+		
+		n3231321@yeah.net
+		
+		dsdah8323@gmail.com
+		
+		Dsdas.dsds@VIP.163.com
+		
+		
+		/^[A-Za-z][A-Za-z0-9_\-\.]{5,19}@([0-9A-Za-z]{3,5}\.){1,2}(com|net)/
+		
+		^\w+@[a-z0-9]+(\.[a-z]+){1,3}$
+		
+	*/
+	var btn = document.getElementById('btn');
+	var txt = document.getElementById('txt');
+	btn.onclick = function(){
+		var val = txt.value;
+		if(/^[A-Za-z][\w\-\.]{5,19}@([0-9A-Za-z]{3,5}\.){1,3}[a-z]{1,3}$/.test(val)){
+			alert('是邮箱');
+		}else{
+			alert('不是邮箱');
+		}
+	}	
+</script>
+</body>
+</html>

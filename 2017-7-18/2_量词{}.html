@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		量词:
+			{n,m}
+			
+			{1,}  +
+				最小一个最多不限
+			
+			{0,}  *
+				最少可以没有，最多不限
+			
+			{0,1} ?
+				最少可以没有，最多1个
+				
+				
+	*/	
+	
+	var str = 'a9ca111ca222ca3333ca4444444cac';
+	
+	console.log(str.match(/a\d*c/g));
+	
+	
+//	console.log(str.match(/a\d{1,3}c/g));
+	
+	
+</script>
+</body>
+</html>

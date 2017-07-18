@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		String.replace(正则|'字符串','字符串'|回调函数);
+		
+		12-88;
+		
+		^1[2-9]$|^[2-7]\d$|^8[0-8]$
+		
+		
+		[^]
+		
+		[\u4e00-\u9fa5]
+		
+		
+			
+		
+	*/
+	
+	var str = '123';
+	
+	var v = str.replace(/(2)/,function($0,$1,$2,$3){
+		console.log($0,$1,$2,$3);
+		return '二';
+	});
+	
+//	console.log(v);
+
+	//console.log(/^1[2-9]$|^[2-7]\d$|^8[0-8]$/.test('55'));
+	
+	var str = 'aacabca7caccadcaeca5ca8c';
+	
+	console.log(str.match(/a[^\d]c/g));
+	
+	
+</script>
+</body>
+</html>
