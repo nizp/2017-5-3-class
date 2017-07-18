@@ -1,0 +1,20 @@
+1.React
+view
+MVC
+
+2. ES6
+(1)let const
+(2)模板字符串${}
+(3)箭头函数 =>
+(4) reset参数 ... 数组 对象
+(5) class extends
+
+3. webpack/grunt/glup/yarn
+creat-react-app
+
+4. npm package.json
+
+5. Redux/Mobx
+
+ant-design
+jiliangmason
