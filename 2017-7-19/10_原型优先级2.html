@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	
+	/*
+		实例化对象上就有方法  > 构造函数原型下的方法 > Object.prototype
+		
+		
+		对象找链 -> 构造函数的原型 -> 构造函数原型下的链 -> 构造函数的原型
+		
+		
+		构造函数的原型永远都是给实例化对象使用的。
+		
+		
+		
+		function既是Function的实例化对象,也是f1的构造函数。
+		
+		
+		
+		
+	*/
+	
+	
+//	Object.prototype.say = function(){
+//		alert('obj');
+//	}
+//	
+//	Function.prototype.say = function(){
+//		alert('Function');
+//	}
+	
+	function Fn(name){
+		this.name = name;
+	};
+	
+//	Fn.say = function(){
+//		alert('我是fn的say');
+//	}
+	
+	Fn.prototype.say = function(){
+		alert(this.name);
+	}
+	var f1 = new Fn('小管管');
+	Fn.say();
+	//f1.say();
+	
+	
+	
+	/*
+		f1.say ->  f1.__proto__ -> Fn.prototype.say 
+		
+		f1.say ->  f1.__proto__ -> Fn.prototype.say ->
+		
+		Fn.prototype.__proto__ -> Object.prototype.say
+		
+		Fn.say -> Fn.__proto__ -> Function.prototype ->
+		
+		Function.prototype.__proto__ -> Object.protype.say
+		
+	*/
+	
+	
+	console.dir(Fn);
+	
+</script>
+</body>
+</html>

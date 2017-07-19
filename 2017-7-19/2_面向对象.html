@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		面向对象： 
+		
+			面向对象是一种***对现实世界理解和抽象***的方法，是计算机编程技术发展到一定阶段后的产物。
+		
+		
+		警察：
+			维护世界和平、保护人民财产安全、维护社会的秩序
+			
+			穿制服、形态端庄、带警徽
+			
+			长得帅、感觉很有力量、配带枪
+		
+		把一些具有特征的形态归为一类就叫抽象。
+		
+		
+		人类 + 警察特征 = 警察
+		人类 + 医生特征 = 医生
+			
+		
+		人类
+		
+		昆虫类：
+			触角、爬在地上的、多脚....
+		
+		
+		抽象-可以把它理解为封装函数。
+		
+			
+		核心：
+			抽象
+				抽离
+				长的像
+			
+			把功能类似或者相同的代码抽离出来，归为一类。
+			
+		
+		面向对象编程：
+			
+			把功能类似或者相同的代码抽离出来，归为一类，把一些描述性的特征挂在这个类的原型上的一种编程思想。
+		
+		
+		ES6:
+			在ES6中使用{}
+			原来必须使用key value方式去写
+			
+			{
+				name:name,
+				age:age
+			}
+			
+			可以进化成
+			{
+				name,
+				age
+			}
+		
+		////////////////////////////////////
+			
+			{
+				fn:function(){},
+				age:age
+			}
+
+//			可以进化成
+
+			{
+				fn(){
+					
+				},
+				age
+			}
+			
+			
+		class="active"  类	
+			
+		class="active"
+		
+		class="active"
+			
+		
+	*/
+	
+//	var obj = {
+//		fn(){
+//			alert(123);
+//		}
+//	}
+//	
+//	obj.fn();
+	
+	/*
+		arr.push();
+		
+		arr.shift();
+		
+		str.charAt();
+		
+		str.match();
+		
+		面向对象是js基础，不是高级。
+		
+		以前写的面向过程
+	*/
+	
+	
+//	var name1 = '陈斌';
+//	var age1 = 80;
+//	
+//	
+//	var name2 = '真胖';
+//	var age2 = 18;
+//	
+//	var name3 = '丽斯';
+//	var age3 = 16;
+
+	
+	function teacher(name,age){//类
+		var name = name;
+		var age = age;
+		
+		return {name,age}
+	}
+	
+	
+	var t1 = teacher('陈斌',80);
+	
+	console.log(t1);
+	 
+	 
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

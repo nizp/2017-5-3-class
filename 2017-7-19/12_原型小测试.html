@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function Person(){}
+	Person.name1 = 'hehe';
+	Object.prototype.name = '莉莉';
+	Object.name = '脏莉';
+	Function.prototype.name = '脏脏';　
+	　
+	Person.prototype.name = function(){
+　　　　　alert(this.name); 
+　　}; 
+　　var person1 = new Person(); 
+　　
+	person1.name(); //15行的代码块
+	
+	/*
+		 
+		person1.name下没有直接写name
+		
+		person1.__proto__ -> Person.prototype.name
+		
+		function(){
+	　　　　　alert(this.name); //alert(person1.name) 
+	　　};
+	
+		找person1.name
+	
+		function (){
+			alert(this.name);
+		}
+		
+		
+		/*
+			函数下有个name属性，在函数声明的时候就会有，这个name不允许被改变
+			
+			第二个弹Person
+			
+		*/
+
+		alert(person1.name)
+		 
+	*/
+	
+	console.log(Person.name1);//Person
+	
+	
+	new new function(){return function(){
+		var p = new Person();
+		console.log(p.name);//15行的代码块
+	}}
+	
+	/*
+		
+		如果new之后是个对象，那么就报错。
+		
+		var f = new function(){
+			return function(){
+				var p = new Person();
+				console.log(p.name);//15行的代码块
+			}
+		}
+		
+		f = function(){
+			var p = new Person();
+			console.log(p.name);//15行的代码块
+		}
+		
+		new f
+		
+		var p = new Person();
+		console.log(p.name);//15行的代码块
+		
+	*/
+	
+	console.dir(Person)
+	
+	
+</script>
+</body>
+</html>

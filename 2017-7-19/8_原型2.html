@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		属性放在类里面
+		
+		方法挂在原型上
+	*/
+	
+	
+	//fn里的say和直接fn.say都是在这个对象上直接添加了一个方法
+	//所以fn.say != fn2.say
+//	var fn = {
+//		say(){
+//			
+//		}
+//	}
+//	
+//	var fn2 = {
+//		say(){
+//			
+//		}
+//	}
+	
+	
+//	fn.say = function(){
+//		
+//	}
+	
+	
+	
+	
+	function Fn(name){
+		this.name = name;
+	};
+
+	Fn.prototype.say = function(){
+		alert(this.name);
+	}
+	
+	var f1 = new Fn('小管管');
+	
+	var f2 = new Fn('小脏脏');
+//	
+//	Array.prototype.push = function(){
+//		alert('呵呵!我把你改了');
+//	}
+
+//	var arr = [];
+//	
+//	var arr2 = new Array();
+	
+//	arr.push(5);
+	
+//	console.log(arr2);
+//	console.dir(arr.__proto__ == Array.prototype);
+	
+	
+	
+</script>
+</body>
+</html>

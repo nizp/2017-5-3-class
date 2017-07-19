@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	var Fn = {
+//		name:'hehe'
+//	}
+	
+	function Fn(name){
+		this.name = name;
+	};
+	
+	Fn.say = function(){
+		alert(123);
+	}
+	
+	
+	/*
+		如果直接使用Object那么会找到Function
+		
+		如果不直接使用，那么到Object就终止。
+		
+	*/
+	
+//	Function.prototype.say = function(){
+//		alert('1111111');
+//	}
+	
+	Object.prototype.say = function(){
+		alert('1111111');
+	}
+	
+	console.dir(Function);
+	
+	Function.say();
+	
+	
+	
+//	var f1 = new Fn;
+//	
+//	f1.say();
+
+	
+	//Object.say();
+	
+	//console.log()
+	
+	
+	
+//	var f1 = new Fn;
+//	
+//	
+//	f1.say();
+//	
+//	
+//	console.dir(Fn);
+	
+//	console.log(Fn)
+	
+</script>
+</body>
+</html>

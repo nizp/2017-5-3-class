@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		
+		面向对象编程：
+			
+			把功能类似或者相同的代码抽离出来，归为一类，把一些描述性的特性挂在这个类的原型上的一种编程思想。
+			
+		
+		new：
+			没有new的时候默认返回值：
+				undefined
+				this指向window
+			
+			
+			new之后的返回值:
+				这个对象
+				this指向这个对象
+			
+			return 简单类型 -> 这个对象
+			return 复合类型 -> 复合类型
+			
+			
+		把this搞清楚，面向对象基本就会写了。
+		
+	*/
+	
+	function Person(name,age){ //构造函数、类、工厂函数
+		this.name = name;
+		this.age = age;
+		this.say = function(){
+			alert(this.name);
+		}
+	}
+	
+	var t = new Person('陈斌',80);
+	var t2 = new Person('丽斯',16);
+	
+	
+	//console.log({} == {})
+	
+	/*
+		t.say和t2的say是不相等的，因为每new一次的时候都创建了一个say
+		这样会浪费内存空间。
+	*/
+	console.log(t.say == t2.say);
+	
+	t.say();
+	t2.say();
+	
+	
+	
+	
+	var arr = [];
+	var arr2 = [];
+	
+	console.log(arr.push == arr2.push);
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

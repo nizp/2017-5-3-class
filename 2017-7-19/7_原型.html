@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		原型(prototype):
+			函数的一个属性，*****值为对象****。
+			
+			添加类样式
+			
+		之前写的：
+			行间样式
+			
+		原型是专门处理性能问题的。
+		
+		
+		
+		__proto__:原型链
+			
+			对象身上没有原型但是有原型链。
+			函数既有原型也有原型链。
+		
+		f1.say -> f1.__proto__ -> Fn.prototype
+		
+		
+		实例化对象的原型链 == 构造函数的原型
+		
+		原型链就是实例化对象与构造函数之间的桥梁。
+		
+		
+		
+
+	*/
+	function Fn(name){
+		this.name = name;
+	};
+
+	Fn.prototype.say = function(){
+		alert(this.name);
+	}
+	
+	var f1 = new Fn('小管管');
+	
+	var f2 = new Fn('小脏脏');
+	
+//	f1.say = function(){
+//		alert(123);
+//	}
+	
+	
+	f1.say();
+	
+	f2.say();
+	
+	//console.log(f1.say == f2.say);
+	
+	console.log(f1.__proto__ === Fn.prototype);
+	
+	console.dir(f1);
+	
+	
+</script>
+</body>
+</html>

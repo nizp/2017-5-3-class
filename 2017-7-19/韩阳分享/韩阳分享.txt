@@ -1,0 +1,52 @@
+1.console.clear();清空控制台
+
+输出信息语义化
+2.console.info ('提示性信息')
+ 
+3.console.error ('错误信息')
+ 
+4.console.warn ('警示信息')
+
+5.console.log ('普通信息')
+
+6.分模块显示
+console.group("app.bundle");
+console.warn("来自bundle模块的警告信息1");console.warn("来自bundle模块的警告信息2");
+console.groupEnd();
+ 
+console.group("app.bundle");
+console.log("来自bundle模块的信息1");console.log("来自bundle模块的信息2");
+console.groupEnd();
+
+7.表格形式显示
+var data = {code:200,content:[{'品名': '苹果', '数量': 4}, {'品名': '葡萄', '数量': 3}]};
+console.table(data.content)
+
+8.预览效果，%c
+console.log('%chello world', 'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:5em;');
+
+
+9.想统计某段代码执行了多少次
+function fn(){console.count('fn执行的次数')}；
+fn();
+fn();
+fn();
+
+10.性能检测，代码执行耗时
+console.time("Array耗时");
+var array= new Array(10000000);
+for (var i = array.length - 1; i >= 0; i--) {
+    array[i] = new Object();
+};
+console.timeEnd("Array耗时");
+
+11.$0,$1,$2,$3,$4代表了最近5个你选择过的DOM节点,通过在控制台输入他们可以找到对应的最近五次选择过的DOM节点，最多可以查到最近的五次，
+
+
+12.利用$(selecter)选择对应DOM节点
+$$(selector)返回的是所有满足选择条件的元素的一个集合
+
+13.$x(path)将所匹配的节点放在一个数组里返回
+$x("//p")匹配所有的p节点，$x("//p[a]");匹配所有子节点包含a的p节点
+
+

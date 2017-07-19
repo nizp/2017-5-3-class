@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	
+	/*
+		实例化对象上就有方法  > 构造函数原型下的方法 > Object.prototype
+		
+		
+		对象找链 -> 构造函数的原型 -> 构造函数原型下的链 -> 构造函数的原型
+		
+	*/
+	
+	
+	Object.prototype.say = function(){
+		alert('这是obj下的say');
+	}
+	
+	function Fn(name){
+		this.name = name;
+	};
+
+//	Fn.prototype.say = function(){
+//		alert(this.name);
+//	}
+	
+	var f1 = new Fn('小管管');
+	
+	var f2 = new Fn('小脏脏');
+	
+	
+//	f1.say = function(){
+//		alert('呵呵');
+//	}
+	
+//	f1.say();
+	
+	console.dir(f1);
+	
+</script>
+</body>
+</html>

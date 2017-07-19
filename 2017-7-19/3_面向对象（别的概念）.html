@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		属性：
+		
+			div.id
+			div.index
+			div.innerHTML
+			div.style...
+			
+			属性前面是有主的。
+			
+			对象（obj，arr，function）下才能有属性
+			
+		变量:
+			var arr
+			前面是没有对象的（没有主的）
+		
+		方法：
+		
+			obj.fn = function(){
+				alert(this);
+			}
+			
+			方法前面有主，默认this指向主
+		函数：
+			
+			function fn(){}
+			函数前没有主，默认this指向window
+			
+			
+		var obj = {
+			name:'hehe'
+		}
+		
+		obj['name']	
+		
+		div.style.height = '200px';
+		
+		var val = txt1.value;
+		
+		div.style[val] = '200px';
+	*/
+	
+	
+	var num = 10;
+	
+	num++;
+	
+	var arr = [1,2,3,4];
+	
+	arr.num = 10;
+	arr.num ++;
+	
+	var str = '';
+	
+	str.num = 10;
+	
+	
+//	var fn = function(){
+//		alert(this);
+//	}
+//	
+//	fn();
+	
+	arr.fn = function(){
+		alert(this);
+	}
+	//arr.fn();
+	
+	
+	//console.log(str.num);
+	
+	//alert(arr.num)
+	
+	
+	
+	
+	
+	
+//	function teacher(name,age){
+////		var obj = {
+////			name:name,
+////			age:age,
+////			say:say
+////		};
+//
+//		var obj = {
+//			name,
+//			age,
+//			say(){
+//				alert('我的名字叫'+this.name);
+//			}
+//		};
+//		
+//		return obj;	
+//	}
+	
+	
+	/*
+		已经是一个面向对象了
+		
+		构造对象的函数 -> 构造函数
+		
+	*/
+	function teacher(name,age){//teacher类（构造函数、工厂函数）
+		var obj = {};//原材料
+	
+		//加工
+		obj.name = name;
+		obj.age = age;
+		obj.say = function(){
+			alert('我的名字叫'+this[name]);
+		}
+		
+		//出厂
+		return obj;	
+	}
+	var t1 = teacher('陈斌',80);
+//	console.log(t1);
+	t1.say();
+
+	
+	
+	
+</script>
+</body>
+</html>
