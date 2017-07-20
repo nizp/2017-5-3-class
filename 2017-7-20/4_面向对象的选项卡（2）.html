@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+#box div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+<script type="text/javascript">
+	
+	
+	function Tab(box){
+		this.btns = box.getElementsByTagName('input');
+		this.divs = box.getElementsByTagName('div');
+		this.btn = this.btns[0];
+	}
+	
+	Tab.prototype.Event = function(){		
+		
+		var _this = this;
+		
+		for(var i=0;i<this.btns.length;i++){
+			this.btns[i].index = i;
+			this.btns[i].onclick = function(){
+				_this.change(this);
+			}
+		}
+		
+	}
+	
+	Tab.prototype.change = function(that){
+		
+		this.btn.className = this.divs[this.btn.index].className = '';
+		
+		that.className = 'active';
+		this.divs[that.index].className = 'show';
+		
+		this.btn = that;
+		
+	}
+
+	var box = document.getElementById('box');
+	var t = new Tab(box);
+	t.Event();
+	
+	
+</script>
+</body>
+</html>

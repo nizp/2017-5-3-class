@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--用来存图表的容器-->
+		<div id = "box" style="width:800px;height: 600px;"></div>
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		<script type="text/javascript">
+			
+			var myChart = echarts.init(document.getElementById('box'));
+			 var data = [
+        	{
+        		name:'衬衫',
+        		num:5
+        	},
+        	{
+        		name:'羊毛衫',
+        		num:20
+        	},
+        	{
+        		name:'雪纺衫',
+        		num:36
+        	},
+        	{
+        		name:'裤子',
+        		num:10
+        	},
+        	{
+        		name:'高跟鞋',
+        		num:10
+        	},
+        	{
+        		name:'袜子',
+        		num:20
+        	}
+        ];
+        var arrName = [];
+        for(var i =0;i<data.length;i++){
+        	arrName.push(data[i].name)
+        }
+        var arrNum = [];
+        for(var i = 0;i<data.length;i++){
+        	arrNum.push(data[i].num)
+        }
+			var option = {
+				title:{
+					text:'产品销量'
+				},
+				xAxis:{
+					data:arrName
+				},
+				legend: {
+               		 data:['销量']
+           		 },
+				yAxis:{},
+				tooltip: {},
+				toolbox: {
+		            show : true,
+		            feature : {
+		                mark : {show: false},
+		                dataView : {show: true, readOnly: false},
+		                magicType: {show: true, type: ['line', 'bar']},
+		                restore : {show: true},
+		                saveAsImage : {show: true}
+		            }
+		        },
+		        dataZoom: [
+		        {
+		            type: 'slider',
+		            show: true,
+		            xAxisIndex: [0],
+		            start: 1,
+		            end: 99
+		        },
+		        {
+		            type: 'slider',
+		            show: true,
+		            yAxisIndex: [0],
+		            left: '93%',
+		            start: 1,
+		            end: 60
+		        },
+		        {
+		            type: 'inside',
+		            xAxisIndex: [0],
+		            start: 1,
+		            end: 100
+		        },
+		        {
+		            type: 'inside',
+		            yAxisIndex: [0],
+		            start: 1,
+		            end: 60
+		        }
+		    ],
+				series:[{
+					name:'销量',
+					type:'bar',
+					itemStyle: {
+		                normal: {
+		                    color:new echarts.graphic.LinearGradient(
+		                        0, 0, 0, 1,
+		                        [
+		                            {offset: 0, color: '#005faf'},
+		                            {offset: 0.5, color: '#005faf'},
+		                            {offset: 1, color: '#005faf'}
+		                        ]
+		                    )
+		                },
+		            },
+					data:arrNum
+				}]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+#box div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+<script type="text/javascript">
+	
+	var box = document.getElementById('box');
+	var btns = box.getElementsByTagName('input');
+	var divs = box.getElementsByTagName('div');
+	
+	
+	for(var i = 0,len = btns.length; i<len ; i++){
+		btns[i].index = i;
+		btns[i].onclick = function(){
+			
+			for(var i = 0,len = btns.length; i<len ; i++){
+				btns[i].className = divs[i].className = '';
+			}
+			this.className = 'active';
+			divs[this.index].className = 'show';
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

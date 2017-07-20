@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+
+#box,#box2{
+	width:250px;
+	/*border: 1px solid #000;*/
+}
+#box div,#box2 div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show,#box2 div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+	
+	<div id="box2">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+	
+	<input type="button" value="点击的时候让第一个停"/>
+	<input type="button" value="点击的时候让第二个开始轮播"/>
+	<input type="button" value="点击的时候让第一个开始轮播第二个停"/>
+	<input type="button" value="点击的时候如果轮播就停如果停就轮播"/>
+	
+<script type="text/javascript">
+	
+	function tab(id,onOff){
+		var box = document.getElementById(id);
+		var btns = box.getElementsByTagName('input');
+		var divs = box.getElementsByTagName('div');
+		var timer = null;
+		var num = 0;
+		
+		for(var i = 0,len = btns.length; i<len ; i++){
+			btns[i].index = i;
+			btns[i].onclick = function(){
+				
+				for(var i = 0,len = btns.length; i<len ; i++){
+					btns[i].className = divs[i].className = '';
+				}
+				num = this.index;
+				this.className = 'active';
+				divs[this.index].className = 'show';
+			}
+		}
+		
+		if(onOff){
+			timer = setInterval(t,1000);
+		}
+		
+		function t(){
+			num ++;
+			for(var i = 0,len = btns.length; i<len ; i++){
+				btns[i].className = divs[i].className = '';
+			}
+			
+			btns[num%=btns.length].className = 'active';
+			divs[num%=btns.length].className = 'show';
+			
+		}
+		
+		
+		box.onmouseover = function(){
+			clearInterval(timer);
+		}
+		box.onmouseout = function(){
+			if(onOff){
+				timer = setInterval(t,1000);
+			}	
+		}
+	}
+	
+	tab('box',true);
+	tab('box2');
+	
+	
+</script>
+</body>
+</html>

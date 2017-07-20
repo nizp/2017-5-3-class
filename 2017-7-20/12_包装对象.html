@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		非空对象下才可以加属性和方法 
+		
+		
+		包装对象：
+			当简单类型去调用固定的属性或者方法的时候，那么系统内部会偷偷的
+			把这个简单类型转成对象类型去调用属性或者方法，调用结束之后这个
+			包装对象自动销毁。
+		
+		注意：
+			简单类型内置对象中的属性只能读不能写。
+		
+	*/
+//	var arr = [];
+//	
+//	arr.num = 10;
+//	
+//	arr.num++;
+//	
+//	alert(arr.num);//11
+
+	var str = '123456';
+	
+	str.num = 20;
+	
+	str.num++;
+	
+	//alert(str.num);
+	//length,方法呀，都是String的
+	//console.log(str.substr(1));
+	
+	
+	var str2 = new String('123');
+	
+	str2.length = 1;
+	
+	console.log(str2);
+	
+	
+	
+</script>
+</body>
+</html>

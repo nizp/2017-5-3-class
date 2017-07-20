@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+#box div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+<script type="text/javascript">
+
+	/*
+		this
+			函数名 + ()  window
+			
+			setTimeout  window
+			
+			div.onclick  div
+			
+			new Fn       Fn{}
+	*/
+	
+	//归类
+	function Tab(id){
+		this.box = document.getElementById(id);
+		this.btn = this.box.getElementsByTagName('input');
+		this.divs = this.box.getElementsByTagName('div');
+	}
+	
+	//给按钮绑定事件，并且执行某些事情
+	Tab.prototype.Event = function(){
+		//this  Tab
+		var _this = this;
+		for(var i=0;i<this.btn.length;i++){
+			this.btn[i].index = i;
+			this.btn[i].onclick = function(){
+				//_this.index(this.index);
+				_this.change(this);
+//				//console.log(this);//当前点击的btn
+			}
+		}
+	}
+	
+	Tab.prototype.index = function(index){
+		alert(index);
+	}
+	
+	//清->加
+	Tab.prototype.change = function(that){//当前点击的btn
+		//alert(1);
+		
+		//console.log(this);
+		
+		for(var i=0;i<this.btn.length;i++){
+			this.btn[i].className = this.divs[i].className = '';
+		}
+		that.className = 'active';
+		
+		this.divs[that.index].className = 'show';
+		
+	}
+	
+	
+	
+	var t = new Tab('box');
+	t.Event();
+	
+</script>
+</body>
+</html>

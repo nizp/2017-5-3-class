@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+   	<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 800px;height:600px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var data = [
+        	{
+        		name:'衬衫',
+        		num:5
+        	},
+        	{
+        		name:'羊毛衫',
+        		num:20
+        	},
+        	{
+        		name:'雪纺衫',
+        		num:36
+        	},
+        	{
+        		name:'裤子',
+        		num:10
+        	},
+        	{
+        		name:'高跟鞋',
+        		num:10
+        	},
+        	{
+        		name:'袜子',
+        		num:20
+        	}
+        ];
+        var arrName = [];
+        for(var i =0;i<data.length;i++){
+        	arrName.push(data[i].name)
+        }
+        var arrNum = [];
+        for(var i = 0;i<data.length;i++){
+        	arrNum.push(data[i].num)
+        }
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            //提示信息
+            tooltip: {},
+            //工具切换
+            toolbox: {
+		            show : true,
+		            feature : {
+		                mark : {show: false},
+		                dataView : {show: true, readOnly: false},
+		                magicType: {show: true, type: ['line', 'bar']},
+		                restore : {show: true},
+		                saveAsImage : {show: true}
+		            }
+		        },
+		    //图例
+            legend: {
+                data:['销量']
+            },
+            //横轴数据
+            xAxis: {
+                data: arrName,
+                /*type: 'category',
+	   				axisLabel:{
+//	   					inside: true,
+			         	interval:0,
+			         	margin: 30,
+			         	rotate:40,
+			         	textStyle:{
+			              	color:'#000',
+			              	align: 'center'
+			         	}
+			      	},*/
+            },
+            //纵轴数据
+            yAxis: {
+            	type: 'value',
+	    			min: '3',
+			        max: 'dataMax',
+			        splitLine: {
+			            show: true
+			        }
+            },
+             dataZoom: [
+		        {
+		            type: 'slider',
+		            show: true,
+		            xAxisIndex: [0],
+		            start: 1,
+		            end: 99
+		        },
+		        {
+		            type: 'slider',
+		            show: true,
+		            yAxisIndex: [0],
+		            left: '93%',
+		            start: 1,
+		            end: 100
+		        },
+		        {
+		            type: 'inside',
+		            xAxisIndex: [0],
+		            start: 1,
+		            end: 100
+		        },
+		        {
+		            type: 'inside',
+		            yAxisIndex: [0],
+		            start: 1,
+		            end: 100
+		        }
+		    ],
+            //
+            series: [{
+                name: '销量',
+                //显示类型
+                type: 'bar',
+                itemStyle: {
+		                normal: {
+		                    color:new echarts.graphic.LinearGradient(
+		                        0, 0, 0, 1,
+		                        [
+		                            {offset: 0, color: '#005faf'},
+		                            {offset: 0.5, color: '#005faf'},
+		                            {offset: 1, color: '#005faf'}
+		                        ]
+		                    )
+		                },
+		            },
+                data: arrNum
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        
+        //echarts.baidu.com
+    </script>
+</body>
+</html>

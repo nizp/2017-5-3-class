@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		请用面向对象描述一个人，他有名字，年龄，会说话，会跑步。
+	*/
+	
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	
+	Person.prototype.say = function(){
+		alert('我会说话');
+	}
+	Person.prototype.running = function(){
+		alert('跑步');
+	}
+	
+	Person.say1 = function(){
+		alert('我在Person下');
+	}
+	
+	Function.say1 = function(){
+		alert('function')
+	}
+	
+	Function.prototype.say1 = function(){
+		alert('function原型');
+	}
+	
+	Object.say1 = function(){
+		alert('Object');
+	}
+	
+	Object.prototype.say1 = function(){
+		alert('Object原型');
+	}
+	
+	var p1 = new Person('偲鸿',40); //p = {}  var str = fun;
+//	p1.say1();
+	//console.dir(p1);
+	
+//	var n = new Function;
+	
+	//n.say1();
+	
+	var n = new Object;//function (){};
+	
+	//console.dir(n);
+	
+//	Object.say1();
+//	p1.say();
+//	p1.running();
+	
+//	console.log(Person);
+	
+	
+	
+</script>
+</body>
+</html>

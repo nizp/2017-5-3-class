@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+
+#box,#box2{
+	width:250px;
+	/*border: 1px solid #000;*/
+}
+#box div,#box2 div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show,#box2 div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+	
+	<div id="box2">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+	
+	
+	<input type="button" value="点击的时候让第一个停" id="btn1"/>
+	<input type="button" value="点击的时候让第二个开始轮播" id="btn2"/>
+	<input type="button" value="点击的时候让第一个开始轮播第二个停" id="btn3"/>
+	<input type="button" value="点击的时候如果轮播就停如果停就轮播" id="btn4"/>
+	
+<script type="text/javascript">
+
+	
+	function Tab(id){
+		this.box = document.getElementById(id);
+		this.btn = this.box.getElementsByTagName('input');
+		this.divs = this.box.getElementsByTagName('div');
+		this.timer = null;
+		this.num = 0;
+	}
+	//点击事件
+	Tab.prototype.Event = function(){
+		var _this = this;
+		for(var i=0;i<this.btn.length;i++){
+			this.btn[i].index = i;
+			this.btn[i].onclick = function(){
+				_this.num = this.index;
+				_this.change();
+			}
+		}
+	}
+	//切换
+	Tab.prototype.change = function(){
+		
+		for(var i=0;i<this.btn.length;i++){
+			this.btn[i].className = this.divs[i].className = '';
+		}
+		
+		this.btn[this.num%=this.btn.length].className = 'active';
+		
+		this.divs[this.num%=this.btn.length].className = 'show';
+	}
+	
+	//自动播放
+	Tab.prototype.autoPlay = function(){
+		
+		var _this = this;
+		
+		this.timer = setInterval(function(){
+			
+			_this.num ++;
+			
+			_this.change();
+			
+			
+		},1000);
+	}
+	
+	//播放停止
+	Tab.prototype.stop = function(){
+		
+		clearInterval(this.timer);
+		
+		this.timer = null;
+		
+	}
+	
+	//是否为播放状态
+	Tab.prototype.isAutoPlay = function(){
+		
+		return this.timer;
+		
+	}
+	
+	
+	var t1 = new Tab('box');
+	var t2 = new Tab('box2');
+	var btn1 = document.getElementById('btn1');
+	var btn2 = document.getElementById('btn2');
+	var btn3 = document.getElementById('btn3');
+	var btn4 = document.getElementById('btn4');
+	t1.Event();
+	t1.autoPlay();
+	
+	btn1.onclick = function(){
+		t1.stop();
+	}
+	btn2.onclick = function(){
+		t2.autoPlay();
+	}
+	
+	btn3.onclick = function(){
+		t2.stop();
+		t1.autoPlay();
+	}
+	
+	btn4.onclick = function(){
+		
+		if(t1.isAutoPlay()){//在轮播
+			t1.stop();
+		}else{
+			t1.autoPlay();
+		}
+		
+		if(t2.isAutoPlay()){//在轮播
+			t2.stop();
+		}else{
+			t2.autoPlay();
+		}
+		
+	}
+	
+	
+</script>
+</body>
+</html>
