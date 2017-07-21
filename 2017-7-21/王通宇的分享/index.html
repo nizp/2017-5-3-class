@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				position: relative;
+				width: 700px;
+				height: 200px;
+				background:#000000;
+				margin:250px auto;
+			}
+			#con{
+				width: 5px;
+				height: 5px;
+				position: absolute;
+				left:-2px;
+				top: 180px;
+				background: #fff;
+				border-radius: 50%;
+			}
+			span{
+				display: block;
+				width: 1px;
+				height: 1px;
+				background: #fff;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="con"></div>
+		</div>
+		<script src="TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var t= new TimelineMax();
+			var con=document.getElementById('con');
+			t.staggerTo('#con',3,{
+				ease:Linear.easeIn,
+				x:350,
+				onUpdate:function(){
+				var disX=con.getBoundingClientRect().left-box.offsetLeft;
+				var disY=con.getBoundingClientRect().top-box.getBoundingClientRect().top;
+					var span=document.createElement('span');
+					span.style.left=disX+'px';
+					span.style.top=disY+'px';
+					box.appendChild(span);
+				},
+				onComplete:function(){
+					t.staggerTo('#con',8,{
+						ease:Linear.easeIn,
+						cycle:{
+							bezier:function(){
+								return [
+								{x:250,y:-120},
+								{x:300,y:-150},
+								{x:350,y:-100},
+								{x:400,y:-150},
+								{x:450,y:-120},
+								{x:352,y:0}
+								]
+							}
+						},
+						onUpdate:function(){
+						var disX=con.getBoundingClientRect().left-box.offsetLeft;
+						var disY=con.getBoundingClientRect().top-box.getBoundingClientRect().top;
+							var span=document.createElement('span');
+							span.style.left=disX+'px';
+							span.style.top=disY+'px';
+							box.appendChild(span);
+						},
+						onComplete:function(){
+							t.staggerTo('#con',3,{
+								ease:Linear.easeIn,
+								x:700,
+								onUpdate:function(){
+								var disX=con.getBoundingClientRect().left-box.offsetLeft;
+								var disY=con.getBoundingClientRect().top-box.getBoundingClientRect().top;
+									var span=document.createElement('span');
+									span.style.left=disX+'px';
+									span.style.top=disY+'px';
+									box.appendChild(span);
+								}
+							})
+							
+						}
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

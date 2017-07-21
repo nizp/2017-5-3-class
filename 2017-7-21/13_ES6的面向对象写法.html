@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	function Person(name,age){
+//		this.name = name;
+//		this.age = age;
+//	}
+//	
+//	Person.prototype.say = function(){
+//		alert(this.name);
+//	}
+
+	/*
+		
+		class 类名 {
+			constructor(name,age){
+				属性放在constructor里面
+			}
+			
+			say(){
+				方法放在类中即可。
+			}
+		}
+		
+		注意：
+			如果使用class的方式写类，那么类的prototype是不能被改写的
+			
+			Person.prototype = {
+				
+			}
+			
+		继承：
+			class 子类 extends 父类 {
+				constructor(name,age,job){
+					super(name,age);
+				}
+				
+				kuangfu(){
+					//子类自己的方法
+				}
+				
+			}
+			
+		注意：
+			如果要添加子类自己的属性，那么需要把属性放在super()下面
+			不然会报错。
+		
+	*/
+
+	class Person{
+		
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		say(){
+			alert(this.name);
+		}
+
+	}
+	
+	
+//	Person.prototype = {
+//		constructor:Person,
+//		running(){
+//			alert(1);
+//		}
+//		
+//	}
+	
+	Person.prototype.running = function(){
+		alert('我会跑');
+	}
+	
+	
+	class Police extends Person{
+		constructor(name,age,job){
+//			this.job = job;	  //报错
+			super(name,age);
+			this.job = job;	
+		}
+		
+		chineseKungFu(){
+			alert('扫堂腿,冲锋,一阳指,九阴白骨爪,金钟罩');
+		}
+		
+		
+	}
+	
+	
+	var p1 = new Person('脏脏',88);
+	var PoliceMan = new Police('中国队长',16,'警察');
+	
+	PoliceMan.say();
+	
+	PoliceMan.chineseKungFu();
+	
+	
+	
+	//console.dir(p1.__proto__ == Person.prototype);
+	
+//	p1.say();
+//	p1.running();
+	
+	
+	
+</script>
+</body>
+</html>

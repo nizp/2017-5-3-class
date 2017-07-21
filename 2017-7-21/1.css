@@ -1,0 +1,12 @@
+.active{
+	background: yellow;
+}	
+#box div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}

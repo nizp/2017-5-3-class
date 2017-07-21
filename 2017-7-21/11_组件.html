@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<div id="box"></div>
+<script src="myTab_1.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		组件：
+			是对数据和方法的简单封装
+			
+			方便复用
+			
+		组件要有配置参数，能够做到，有配置走配置，没配置走默认。
+		
+	*/
+	
+	var t = new Tab({
+		el:'#box',
+		navs:['新闻','体育','社会','技术','娱乐'],
+		contents:['北京近期大到暴雨','可以划船','解放军战士划船救人了','10年专业开船经验','林肯主唱仙游了']
+	});
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

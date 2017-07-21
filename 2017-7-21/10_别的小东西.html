@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>1</li>
+		<li>2</li>
+	</ul>
+<script src="myTab_1.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		组件：
+			是对数据和方法的简单封装
+			
+			方便复用
+		
+		apply(this,[]);
+		
+		var arr = [1,2,3];//找出数组最大值。
+		Math.max.apply(null,arr)
+		
+		{
+			name,
+			fn(){
+				
+			}
+		}
+			
+	*/
+	var slice = Array.prototype.slice;
+	var ul = document.getElementById('ul');
+	
+	var lis = slice.call(ul.getElementsByTagName('li'));
+	
+	var lis = Array.from(ul.getElementsByTagName('li'))
+	
+//	var lis = ul.getElementsByTagName('li');
+	
+	var arr = [1,2,3];
+	
+//	console.log(lis.push);
+
+//	var arr2 = arr.slice();
+
+//	arr2.push(4);
+	
+//	console.log(arr2)
+	
+	console.log(lis.forEach);
+	
+	//var tab = new Tab();
+	
+	
+	
+</script>
+</body>
+</html>

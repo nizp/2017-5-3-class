@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+#box div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+	</div>
+<script type="text/javascript">
+
+	/*
+		
+	*/
+	
+	(function(global,factory){
+		"use strict"
+		factory(global);
+	})(typeof window === 'undefined'?window:this,function(global,noglobal){
+		
+		function Tab(id){
+			this.box = document.getElementById(id);
+			this.slice = Array.prototype.slice;
+			this.btns = this.slice.call(this.box.getElementsByTagName('input'));
+			
+			this.divs = this.slice.call(this.box.getElementsByTagName('div'));
+			
+		}
+		
+		
+		Tab.prototype = {
+			
+			constructor : Tab,
+			
+			Events : function(){
+				var _this = this;
+				this.btns.forEach((ele,i)=>{
+					ele.addEventListener('click',function(){
+						_this.change(i);
+					});
+				});
+				
+			},
+			
+			change:function(index){
+				
+				this.btns.forEach((ele,i)=>{
+					ele.className = '';
+					this.divs[i].className = '';
+				});
+				
+				this.btns[index].className = 'active';
+				
+				this.divs[index].className = 'show';
+			}
+			
+		}
+		
+		var ff = Tab.prototype.fn = function(id){
+			return new Tab(id);
+		}
+		
+		Tab.prototype.fn.prototype = Tab.prototype;
+		
+		Tab.prototype.fn.prototype.constructor = Tab.prototype.fn;
+		
+		
+	
+		global.Tab = ff;
+		
+	});
+	
+	
+	var t = Tab('box');
+	console.log(t);
+	t.Events();
+	
+</script>
+</body>
+</html>

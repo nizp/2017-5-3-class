@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var settings = { //默认参数
+		name:'小管管',
+		age:24
+	}
+	
+	var json = { //配置参数
+		name:'管金亮'
+	}
+	
+	for(var attr in json){
+		settings[attr] = json[attr];
+	}
+	
+	console.log(settings);
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
