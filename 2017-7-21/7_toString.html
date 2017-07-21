@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		toString -> String
+		
+		把别的数据类型转成字符串。
+		
+		每个内置对象都有toString方法
+		
+		
+		只要你使用alert，那么alert函数会调用这个类型toString方法.
+		
+		obj.toSting() -> [object Object]
+		
+		[object 由什么内置的构造函数构造出来的]
+		
+		自定义的实例化对象的toString指向Object的toString。（通过原型链查找的）
+		
+		用途：
+			1.转进制
+				num.toString(要转换的进制数)
+			2.判断内置对象的实例化对象的构造函数是谁
+			
+			var arr = [];
+			
+				
+		
+	*/
+	
+	
+	
+	var arr = [];
+	
+//	console.log(arr instanceof Array)
+
+//	console.log(arr.constructor.name == 'Array');
+
+//	console.log( arr.push  != undefined );
+
+	/*
+		因为Object的toString[object Object],他能显示内置构造函数
+		所以说把Object的toString借给arr用，等同于，arr就有了Object
+		的toString，利用Object的toString中的特性，可以检查出来到底
+		是不是数组。
+		
+		
+		fn() //window  window.fn
+		
+		fn.call(document)  document.fn
+		
+	*/
+
+	console.log(Object.prototype.toString.call(arr) == '[object Array]');
+	
+	
+	
+//	function fn(){}
+//	
+//	var f = new fn;
+//	
+//	var num = 6;
+	
+	/*
+		6/2  3  0
+		3/2  1  1
+		1/2  1  1
+		
+	*/
+	
+//	console.log(num.toString(2));
+
+	console.log(parseInt('110',2));//转成10进制。
+	
+	
+//	console.log(f.toString());
+	
+	//console.dir(f);
+	
+	
+	
+	
+//	var arr = [1,2,3,4];
+//	var obj = {name:'hehe'};
+	
+	//console.log(obj.toString());
+	
+//	console.log(obj);
+//	alert(obj);
+	
+//	console.log(arr);
+//	alert(arr);
+	
+	
+	
+</script>
+</body>
+</html>

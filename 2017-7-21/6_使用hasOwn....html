@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+	
+#box{
+	width: 100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	left:0;
+	top:0;
+}
+#box2{
+	width: 100px;
+	height: 100px;
+	background: yellowgreen;
+	position: absolute;
+	left:200px;
+	top:0;
+}
+</style>
+</head>
+<body>
+	dsadsa
+	<div id="box"></div>
+	<div id="box2"></div>
+<script type="text/javascript">
+	
+	Object.prototype.fnhehe = function(){
+		alert(1);
+	}
+	
+	function Drag(id){
+		this.disX = 0;
+		this.disY = 0;
+		this.l = 0;
+		this.t = 0;
+		this.box = document.getElementById(id);
+		this.init();
+	}
+	
+	//初始化
+	Drag.prototype.init = function(){
+		var _this = this;
+		this.box.onmousedown = function(ev){
+			_this.down(ev);
+
+			return false;
+		}
+	}
+	
+	Drag.prototype.down = function(ev){
+		
+		var _this = this;
+		this.disX = ev.clientX - this.box.offsetLeft;
+		this.disY = ev.clientY - this.box.offsetTop;
+		
+		
+		document.onmousemove = function(ev){
+			_this.move(ev);
+		}
+		
+		document.onmouseup = function(ev){
+			_this.up(ev);
+		}
+	}
+	
+	Drag.prototype.move = function(ev){
+		
+		this.l = ev.clientX - this.disX;
+		
+		this.t = ev.clientY - this.disY;
+
+		this.box.style.left = this.l + 'px';
+		
+		this.box.style.top = this.t  + 'px';
+	}
+	
+	Drag.prototype.up = function(ev){
+		document.onmousemove = document.onmouseup = null;
+	}
+	
+	function Drag2(id){
+		Drag.call(this,id);
+	}
+	
+	for(var attr in Drag.prototype){
+		//只继承父类自身的属性
+		if(Drag.prototype.hasOwnProperty(attr)){
+			Drag2.prototype[attr] = Drag.prototype[attr];
+		}
+	}
+	
+	console.log(Drag2.prototype);
+	
+	Drag2.prototype.move = function(ev){
+		
+		this.l = ev.clientX - this.disX;
+		
+		this.t = ev.clientY - this.disY;
+		
+		if(this.l < 0){
+			this.l = 0;
+		}else if(this.l > window.innerWidth - this.box.offsetWidth){
+			this.l = window.innerWidth - this.box.offsetWidth;
+		}
+		
+		if(this.t < 0){
+			this.t = 0;
+		}else if(this.t > window.innerHeight - this.box.offsetHeight){
+			this.t = window.innerHeight - this.box.offsetHeight;
+		}
+		
+		
+
+		this.box.style.left = this.l + 'px';
+		
+		this.box.style.top = this.t  + 'px';
+		
+	}
+	
+	
+	
+
+	var d1 = new Drag('box');
+	var d2 = new Drag2('box2');
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//	Drag.prototype.lim = function(){
+//		if(this.l < 0){
+//			this.l = 0;
+//		}else if(this.l > window.innerWidth - this.box.offsetWidth){
+//			this.l = window.innerWidth - this.box.offsetWidth;
+//		}
+//		
+//		if(this.t < 0){
+//			this.t = 0;
+//		}else if(this.t > window.innerHeight - this.box.offsetHeight){
+//			this.t = window.innerHeight - this.box.offsetHeight;
+//		}
+//	}
+</script>
+</body>
+</html>

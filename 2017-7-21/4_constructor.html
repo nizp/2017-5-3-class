@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		constructor 
+		
+		构造函数上的一个属性。这个属性指向这个实例化对象的构造函数。
+		
+		不过这个属性非常容易被修改。如果被修改，那么手动的修正constructor的指向。
+	*/
+	
+	function Fn(){}
+	
+//	console.dir(Fn);
+	
+	Fn.prototype = {
+		
+		constructor:Fn,
+		
+		say:function(){
+			alert('1');
+		},
+		
+		running:function(){
+			alert('2');
+		},
+		
+		hehe:function(){
+			alert('3');
+		}
+		
+	}
+	
+	var f = new Fn;
+	
+	console.log(f.constructor)
+	
+	f.hehe();
+	
+	
+	
+	
+	
+	
+	
+	
+	console.log(f.constructor);
+	
+	
+	
+</script>
+</body>
+</html>

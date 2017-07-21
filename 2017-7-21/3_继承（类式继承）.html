@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+#div2{
+	width:100px;
+	height: 100px;
+	background: deepskyblue;
+	position: absolute;
+	top:0;
+	left: 150px;
+}
+</style>
+</head>
+
+<body>
+	<div id="div"></div>
+	<div id="div2"></div>
+<script type="text/javascript">
+	function Drag(id){
+		this.div = document.getElementById(id);
+		this.disX = 0;
+		this.disY = 0;
+		
+//		alert(1);
+		
+	}
+	
+	Drag.prototype.init = function(){
+		
+		var _this = this;
+		this.div.addEventListener('mousedown',function(ev){
+			_this.down(ev);
+			ev.preventDefault();
+		});
+	}
+	
+	
+	
+	Drag.prototype.down = function(ev){
+		
+		this.disX = ev.clientX - this.div.offsetLeft;
+		this.disY = ev.clientY - this.div.offsetTop;
+		var _this = this;
+		var Move = function(ev){
+			_this.move(ev);
+		}
+		var Up = function(ev){
+			_this.up(ev,Move,Up);
+		}
+		
+		document.addEventListener('mousemove',Move);
+		document.addEventListener('mouseup',Up);
+		
+	}
+	
+	Drag.prototype.move = function(ev){
+		
+		this.div.style.left = ev.clientX - this.disX + 'px';
+		this.div.style.top = ev.clientY - this.disY + 'px'; 
+		
+	}
+	
+	Drag.prototype.up = function(ev,move,up){
+		document.removeEventListener('mousemove',move);
+		document.removeEventListener('mouseup',up);
+	}
+	
+	/*
+		类式继承:
+			1.属性继承
+				调用父类修正this指向
+			2.方法继承
+	*/
+	
+	function Drag2(id){
+		Drag.call(this,id);
+	}
+	
+	
+	/*
+		
+		d2.move -> d2.__proto__ -> Drag2.prototype.move
+		
+		Drag2.prototype = ph -> ph.move -> ph.__proto__
+		
+		-> paohui.prototype.move -> Drag.prototype.move
+		
+		
+		
+		两个对象的赋值为赋址，修改了一个就会改变另一个,反之不会被修改。
+		js有个特性，实例化对象上如果没有查找的方法或者属性，那么会
+		通过该实例化对象的原型上去查找。
+		
+		Drag2.prototype = ph  (他们2个的地址是同一个地址)
+		
+		paohui.prototype = Drag.prototype (他们2个的地址是同一个地址)
+		
+		改变Drag2.prototype是不会影响Drag.prototype（因为他们2个不是同一个地址）
+		
+		但是ph是个实例化对象，ph上没有要继承的方法，会通过原型链
+		找到paohui.prototype，又等于Drag.prototype，而Drag.prototype有要查找的方法，所以可以继承下来
+		
+			
+		
+	*/
+	
+	function paohui(){}
+	
+	paohui.prototype = Drag.prototype;
+	
+//	var ph = new Drag;
+	
+	var ph = new paohui;
+	
+	Drag2.prototype = ph;
+	
+	//手动去修改constructor的指向。
+	Drag2.prototype.constructor = Drag2;
+	
+	
+	
+	Drag2.prototype.move = function(ev){
+		
+		var l = ev.clientX - this.disX ;
+		if(l<0)l=0;
+		this.div.style.left = l + 'px';
+		this.div.style.top = ev.clientY - this.disY + 'px'; 
+	}
+	
+	
+	
+	
+	var d = new Drag('div');
+	var d2 = new Drag2('div2');
+	
+	
+	
+	d.init();
+	d2.init();
+	
+	console.dir(d2);
+	
+	
+	
+	
+	/*
+		function fn(){}
+		
+		var f = new Fn
+		
+		f{} == fn.prototype ={}
+	*/
+	
+	
+	//console.log(div)
+	
+</script>
+</body>
+</html>

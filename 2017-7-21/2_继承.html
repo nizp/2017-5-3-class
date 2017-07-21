@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+#div2{
+	width:100px;
+	height: 100px;
+	background: deepskyblue;
+	position: absolute;
+	top:0;
+	left: 150px;
+}
+</style>
+</head>
+
+<body>
+	<div id="div"></div>
+	<div id="div2"></div>
+<script type="text/javascript">
+	function Drag(id){
+		this.div = document.getElementById(id);
+		this.disX = 0;
+		this.disY = 0;
+		this.init();
+	}
+	
+	Drag.prototype.init = function(){
+		
+		var _this = this;
+		this.div.addEventListener('mousedown',function(ev){
+			_this.down(ev);
+		});
+	}
+	
+	
+	
+	Drag.prototype.down = function(ev){
+		
+		this.disX = ev.clientX - this.div.offsetLeft;
+		this.disY = ev.clientY - this.div.offsetTop;
+		var _this = this;
+		var Move = function(ev){
+			_this.move(ev);
+		}
+		var Up = function(ev){
+			_this.up(ev,Move,Up);
+		}
+		
+		document.addEventListener('mousemove',Move);
+		document.addEventListener('mouseup',Up);
+		
+	}
+	
+	Drag.prototype.move = function(ev){
+		
+		this.div.style.left = ev.clientX - this.disX + 'px';
+		this.div.style.top = ev.clientY - this.disY + 'px'; 
+		
+	}
+	
+	Drag.prototype.up = function(ev,move,up){
+		document.removeEventListener('mousemove',move);
+		document.removeEventListener('mouseup',up);
+	}
+	
+	
+	
+	function Drag2(id){
+		Drag.call(this,id);
+	}
+	
+	for(var attr in Drag.prototype){
+		Drag2.prototype[attr] = Drag.prototype[attr];
+	}
+	
+	Drag2.prototype.move = function(ev){
+		
+		var l = ev.clientX - this.disX ;
+		if(l<0)l=0;
+		this.div.style.left = l + 'px';
+		this.div.style.top = ev.clientY - this.disY + 'px'; 
+	}
+	
+	
+	
+	
+	var d = new Drag('div');
+	var d2 = new Drag2('div2');
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//console.log(div)
+	
+</script>
+</body>
+</html>

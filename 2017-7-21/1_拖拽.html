@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+</style>
+</head>
+
+<body>
+	<div id="div"></div>
+<script type="text/javascript">
+	
+//	div.onclick = fn1;
+//	
+//	function fn1(){
+//		console.log(this);
+//		return function(){
+//			console.log(2);
+//		}
+//	}
+	
+	/*
+		小技巧：
+			尽量把构造函数原型下的方法this都指向构造函数。
+	*/
+	
+	function Drag(id){
+		this.div = document.getElementById('div');
+		this.disX = 0;
+		this.disY = 0;
+		this.init();
+	}
+	
+	Drag.prototype.init = function(){
+		
+		var _this = this;
+		this.div.addEventListener('mousedown',function(ev){
+			_this.down(ev);
+		});
+	}
+	
+	
+	
+	Drag.prototype.down = function(ev){
+		
+		this.disX = ev.clientX - this.div.offsetLeft;
+		this.disY = ev.clientY - this.div.offsetTop;
+		var _this = this;
+		var Move = function(ev){
+			_this.move(ev);
+		}
+		var Up = function(ev){
+			_this.up(ev,Move,Up);
+		}
+		
+		document.addEventListener('mousemove',Move);
+		document.addEventListener('mouseup',Up);
+		
+	}
+	
+	Drag.prototype.move = function(ev){
+		
+		this.div.style.left = ev.clientX - this.disX + 'px';
+		this.div.style.top = ev.clientY - this.disY + 'px'; 
+		
+	}
+	
+	Drag.prototype.up = function(ev,move,up){
+		document.removeEventListener('mousemove',move);
+		document.removeEventListener('mouseup',up);
+	}
+	
+	
+	
+	var d = new Drag('div');
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//console.log(div)
+	
+</script>
+</body>
+</html>

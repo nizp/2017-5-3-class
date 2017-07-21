@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		
+		hasOwnProperty：
+			某个属性是不是这个对象下的。
+		
+		返回值：Boolean
+		
+		注意：
+			属性只有在对象自身上的才为true，原型上都不算。
+	*/
+	
+	
+	
+	function Fn(name){
+		this.name = name;
+	}
+	
+	Fn.prototype.h = 10;
+	
+	
+	var f = new Fn('呵呵');
+	
+	console.dir(f.hasOwnProperty('h'));
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
