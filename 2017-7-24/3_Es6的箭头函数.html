@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		箭头函数的this默认永远指向定义的父级。
+		
+		注意：
+			事件绑定函数不用使用箭头函数
+	*/
+	
+//	function fn(){
+//		alert(1);
+//	}
+//	fn();
+
+	//var fn = () => alert(1); //括号必须加
+	
+//	var fn = () => {
+//		alert(123);
+//	}
+	
+	
+//	function fn(){
+//		return 5;
+//	}
+	//var fn = () => 5; //声明一个函数return了5
+	
+	
+	
+//	var fn = function (){
+//		var a = 1+1;
+//		var b = a+2; 
+//		alert(b);
+//	}
+
+//	var fn = () => {
+//		var a = 1+1;
+//		var b = a+2; 
+//		alert(b);
+//	}
+//	
+//	fn();
+
+	
+//	var fn = (a) => a;//定义个fn的函数，传入一个a的形参return a
+
+//	var fn = a => a;//只有一个参数的时候可以省略括号
+//	
+//	var fn = (a,b) => a+b;//如果有多个参数()不能省略
+//	
+//	var a = fn(5,6);
+//	
+//	console.log(a);
+
+
+
+
+
+	//document.onclick = fn2;
+//	function fn2(){
+//		
+//		var fn = () => alert(this);
+//		
+//		function fn3(){
+//			alert(this);
+//			fn();
+//		}
+//		
+//		fn3();
+//	};
+	
+	//var f = new fn2();
+	
+//	fn2.call(document);
+
+
+
+
+	//this指向的是window
+	document.onclick = () => {
+		
+		alert(this);
+		
+	}
+
+
+	
+</script>
+</body>
+</html>

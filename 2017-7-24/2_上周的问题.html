@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		call
+		apply
+		
+		修改this指向或者去借别人的方法来用。
+	*/
+	
+	var arr = [5,1,4,2];
+	
+	Math.max.apply(null,arr); //把Math.max这种特性借给null使用，传入了一个数组
+	
+//	function fn(a,b){
+//		alert(this);
+//	}
+//	
+//	fn();
+//	
+//	fn.call(document,1,2);
+//	fn.apply(document,[1,2]);
+	
+	
+	console.dir(fn);
+	
+	
+</script>
+</body>
+</html>

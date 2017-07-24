@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		严格模式：
+			"use strict"
+		
+		如果直接是函数名 + ()  this -> undefined
+		
+		在事件绑定函数中还是事件触发的那个元素。
+		
+		
+		只要函数名 + () 前面没有主或者改变this的方法，this就是window
+		
+	*/
+	
+//	function fn(){
+//		"use strict"
+//		
+//		var a = 10;
+//		
+//		alert(a);
+//		
+//		alert(this); //undefined
+//	}
+//	fn();
+
+//	document.onclick = function(){
+//		"use strict"
+//		alert(this);
+//	}
+
+	
+	function fn(){
+		alert(this);
+	}
+//	
+//	fn(); //window
+
+//	document.onclick = fn; //document
+
+//	document.onclick = function(){
+//		fn();//window
+//	};
+
+//	document.onclick = function(){
+//		function fn2(){
+//			fn(); //window
+//		}
+//		fn2.call(document);
+//	};
+
+	
+//	document.onclick = function(){
+//		function fn2(){
+//			fn(); //window
+//		}
+//		new fn2;
+//	};
+
+//	document.onclick = function(){
+//		function fn2(){
+//			alert(this);//fn2{}
+//		}
+//		new fn2;
+//	};
+
+//	document.onclick = function(){
+//		alert(this);//document
+//		function fn2(){
+//			alert(this);//fn2{}
+//			function fn3(){
+//				alert(this);//window
+//			}
+//			fn3();
+//		}
+//		new fn2;
+//	};
+
+	document.onclick = function(){
+		alert(this); //document
+		function fn2(){
+			alert(this);//报错
+			function fn3(){
+				alert(this);
+			}
+			fn3();
+		}
+		new fn2.call(document);
+	};
+	
+	//报错。
+	/*
+		直接new函数下的**内置**方法就报错,自己定义的是不会报错的。 
+	*/
+	
+	//function fn2(){}
+	
+	//console.dir(new Function.prototype.call); //报错
+	
+//	var arr = [];
+//	console.log(new arr.push)
+
+//	function fn3(){}
+//	
+//	fn3.prototype.call = function(){
+//		alert(123);
+//	}
+//	
+//	console.log(new fn3.prototype.call); //不会报错
+	
+//	new fn2.call();
+
+
+	
+//	document.onclick = function(){
+//		"use strict"
+//		var f = (a) => {
+//			alert(this); //document
+//		}
+//		f();
+//	}
+
+//	document.onclick = function(){
+//		"use strict"
+//		var f = (a) => {
+//			alert(this);
+//		}
+//		new f(); //箭头函数不能new，不然报错。
+//	}
+
+	
+	document.onclick = function(){
+		"use strict"
+//		setTimeout(()=>{
+//			alert(this);//document
+//		},1000);
+		
+		var arr = [];
+		arr.fn = function(){
+			alert(this);
+		}
+		
+		setTimeout(arr.fn,1000);//window
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
