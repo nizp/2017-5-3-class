@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<title>Document</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		addEventListener('click'); 
+		
+		自定义事件：
+			将某些业务中特殊情况的事件定义成一个独立的事件。
+		
+		比如：
+			手机端点击 {
+				在固定时间内按下的坐标和抬起的坐标相似,这个时候就能判定用户点击了
+			}
+			
+			if(disY - ev.clientY < 5 && disX - ev.clientX < 5){
+				//用户点击了
+			}
+			
+		wx.addEventListener('左划')
+		
+		wx.addEventListener('左划')
+			
+	*/
+	
+	
+	
+	addEvent(document,'点击',function(){
+		document.documentElement.style.background = 'red';
+	});
+	
+	//A
+	addEvent(document,'长按',function(){
+		//alert('下');
+		document.documentElement.style.background = '#fff';
+	});
+	
+	//B
+	addEvent(document,'长按',function(){
+		alert(456);
+	});
+	
+	
+	
+
+	
+	document.onmousedown = function(ev){
+		var disX = ev.clientX;
+		var disY = ev.clientY;
+		var d = new Date;
+		
+		document.onmouseup = function(ev){
+			var d2 = new Date;
+			if(d2 - d > 2000 && disY - ev.clientY < 5 && disX - ev.clientX < 5){ //长按
+				//alert('触发了长按事件');
+				trigger(document,'长按');
+			}else{
+				//用户点击了
+				
+				trigger(document,'点击');
+				
+//				alert('点击');
+			}
+		}
+	}
+	
+	
+	//存储器
+	function addEvent(obj,Events,fn){
+		//调用addEvent第一次的时候这个对象是没有zdy这个对象
+		//没有就创建一个对象，有就使用之前的那个对象
+		
+		//1.有对象走原来那个对象，没有对象就创建一个对象去管理。
+		
+		obj.zdy = obj.zdy || {};
+		
+		/*
+			addEvent(document,'click',function(){}); 
+			obj.zdy = {
+				click:[function(){},function(){}] √
+				click:[click:] ×
+			}
+		*/
+		
+		//2.如果obj.zdy有了这个事件名就在之前的事件名的数组中添加函数
+		//如果没有就创建一个空数组，把函数添加到数组中。
+		obj.zdy[Events] = obj.zdy[Events] || [];
+		
+		/*
+			第一次调用的时候
+				obj.zdy[Events] = [fn1];
+			第二次调用的时候
+				obj.zdy[Events] = [fn1,fn2];
+			
+		*/
+		
+		//3.把函数push到这个obj.zdy[指定事件]中
+		obj.zdy[Events].push(fn);
+		
+	};
+	
+	
+	//触发器:
+	
+	function trigger(obj,Events){
+		//如果obj.zdy没有这个事件，说明没有绑定这个事件
+		if(!obj.zdy[Events])return;
+		
+		obj.zdy[Events].forEach((e,i)=>{
+			e.call(obj);
+		});
+	}
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+.active{
+	background: yellow;
+}	
+</style>
+</head>
+<body>
+	<input type="checkbox" id=""/>
+	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		btn.checked = true
+		btn.checked = false
+		
+		attr()
+		
+		注意：
+			操作表单元素属性：checked，disabled ，统一使用prop
+	*/
+	
+	$('input').change(function(){
+		console.log($('input').prop('checked'))//回去弹attr
+		if($('input').prop('checked')){
+//			$('body').css('background','skyblue');
+			
+			//$('body').style.background = 'skyblue';
+			
+			document.body.style.background = 'skyblue';
+			
+		}else{
+			$('body').css('background','#fff');
+		}
+	});
+	
+</script>
+
+</body>
+</html>

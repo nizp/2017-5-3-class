@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+.active{
+	background: yellow;
+}	
+</style>
+</head>
+<body>
+	<input type="button" id="" value="按钮"  class="a"/>
+	<div>
+		我是div
+	</div>
+	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		val()  =  vlaue
+		
+		html()  = innerHTML
+		
+		text() = innerText
+		
+		addClass('xxx') => className = 'xxx' 
+		
+		removeClass('xxx') => 删除指定的class名
+		
+		console.log(attr('index'))  -> getAttribute('index')
+		
+		attr('index','1')  -> setAttribute('index','1');
+		
+	*/
+//	console.log($('input[type="button"]').val()) //读
+
+//	$('input[type="button"]').val('点击');//写
+
+//	console.log($('div').html());
+
+	//$('div').html('我就是我，一个不一样的烟火'); //读
+	
+//	$('div').html('<p>我就是我，一个不一样的烟火</p>');//写
+
+	//$('div').text('<p>我就是我，一个不一样的烟火</p>');
+	
+	$('input[type="button"]').addClass('a');
+	
+	$('input[type="button"]').removeClass('active');
+//	
+//	
+	$('input[type="button"]').removeAttr('class');
+	
+</script>
+
+</body>
+</html>

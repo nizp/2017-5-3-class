@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+</style>
+</head>
+<body>
+	<div>
+		<input type="button" id="" value="全选" />
+		<input type="button" id="" value="不选" />
+		<input type="button" id="" value="反选" />
+	</div>
+	
+	<input type="checkbox" />
+	<input type="checkbox" />
+	<input type="checkbox" />
+	<input type="checkbox" />
+	<input type="checkbox" />
+	<input type="checkbox" />
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	const checked = $('input[type="checkbox"]');
+	const arr = Array.from(checked);
+	
+	$('input[value="全选"]').click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		$('input[type="checkbox"]').prop('checked',true);
+	});
+	
+	$('input[value="不选"]').click(function(){
+		
+		$(this).addClass('active').siblings().removeClass('active');
+		$('input[type="checkbox"]').prop('checked',false);
+	});
+	
+	
+	$('input[value="反选"]').click(function(){
+
+		for(var i=0;i<checked.length;i++){
+//			console.log($(checked[i]).prop())
+			
+			if($(checked[i]).prop('checked')){
+				$(checked[i]).prop('checked',false);
+			}else{
+				$(checked[i]).prop('checked',true);
+			}
+		}
+		
+		if(!arr.every(e=> $(e).prop('checked'))){//没有全选
+			//反选亮
+			$(this).addClass('active').siblings().removeClass('active');
+		}else{
+			//全选亮
+			$('input[value="全选"]').addClass('active').siblings().removeClass('active');
+		}
+		
+	});
+	
+	
+	checked.change(function(){
+		
+		if(arr.every(e=> $(e).prop('checked'))){
+			
+			//全选按钮添加一个active类名，别的兄弟节点删除active类名。
+			$('input[value="全选"]').addClass('active').siblings().removeClass('active');
+			
+		}else{
+			
+			$('input[value="全选"]').removeClass('active');
+			
+		}
+		
+		
+		
+	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

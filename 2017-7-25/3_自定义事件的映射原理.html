@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		 自定义事件映射
+		 
+		 document.addEventListener(事件名,函数);
+		 
+		 当某个特性的事件触发之后，调用了所有与这个事件相关的所有函数
+		
+		1.事件存储器:
+		 
+		 	当使用document.addEventListener,把这个事件所有的函数存在一个数组中
+		 	
+		2.事件触发器
+			
+			当某个指定的事件触发的时候，调用这个触发器，执行触发器中的执行事件的所有函数。
+			
+		 
+		fn('click',函数)
+		fn('click',函数2)
+		fn('mouseover',函数3)
+		
+		function fn(事件名1,函数){
+			{
+				事件名1:[函数,函数2],
+				事件名2:[函数3]
+			}
+		}
+		
+		document.onclick = function(){
+			fn3('click',[函数,函数2]());
+		}
+		
+		
+		 
+	*/
+	
+	//存储器
+	function addEvent(obj,Events,fn){
+		//调用addEvent第一次的时候这个对象是没有zdy这个对象
+		//没有就创建一个对象，有就使用之前的那个对象
+		
+		//1.有对象走原来那个对象，没有对象就创建一个对象去管理。
+		
+		obj.zdy = obj.zdy || {};
+		
+		/*
+			addEvent(document,'click',function(){}); 
+			obj.zdy = {
+				click:[function(){},function(){}] √
+				click:[click:] ×
+			}
+		*/
+		
+		//2.如果obj.zdy有了这个事件名就在之前的事件名的数组中添加函数
+		//如果没有就创建一个空数组，把函数添加到数组中。
+		obj.zdy[Events] = obj.zdy[Events] || [];
+		
+		/*
+			第一次调用的时候
+				obj.zdy[Events] = [fn1];
+			第二次调用的时候
+				obj.zdy[Events] = [fn1,fn2];
+			
+		*/
+		
+		//3.把函数push到这个obj.zdy[指定事件]中
+		obj.zdy[Events].push(fn);
+		
+	};
+	
+	
+	//触发器:
+	
+	function trigger(obj,Events){
+		//如果obj.zdy没有这个事件，说明没有绑定这个事件
+		if(!obj.zdy[Events])return;
+		
+//		obj.zdy[Events].forEach((e,i)=>{
+//			e.call(obj);
+//		});
+
+		for(var i=0;i<obj.zdy[Events].length;i++){
+			obj.zdy[Events][i].call(obj);
+		}
+	}
+	
+	
+	
+
+	addEvent(document,'点击',function(){
+		alert(1);
+	});
+	addEvent(document,'点击',function(){
+		alert(2);
+	});
+	addEvent(document,'mouseover',function(){
+		alert(3);
+	});
+	
+	
+	document.onclick = function(){
+		trigger(this,'点击');
+	}
+	
+	
+	//console.log(document.zdy);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	document.addEventListener('click',function(){
+//		alert(1);
+//	});
+//	document.addEventListener('click',function(){
+//		alert(2);
+//	});
+	
+	
+	
+	
+</script>
+</body>
+</html>

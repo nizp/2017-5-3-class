@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="div"></div>
+	<ul>
+		<li class="li"></li>
+		<li class="li"></li>
+		<li class="li1"></li>
+		<li class="li"></li>
+		<li class="li"></li>
+		<li class="l-li"></li>
+		<li class="li-l"></li>
+	</ul>
+	
+	<input type="button" name="" id="" value="" />
+	<input type="text" name="" id="" value="" />
+	<input type="checkbox" name="" id="" value="" />
+	<input type="radio" name="" id="" value="" />
+	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		$('#div') id选择器
+		$('.li') class选择器
+		$('input[type="button"]')  属性选择器
+		
+		$('li[class*="li"]') 属性通配选择器
+		
+		$('li[class^="li"]') 属性开头选择器
+		
+		$('li[class$="li"]') 属性结尾选择器
+		
+		$('li[class!="li"]') 属性排除选择器
+		
+		$('li:odd') 奇数选择器 （从0开始计数）
+		
+		$('li:even') 偶数选择器 （从0开始计数）
+		
+		
+		$('li:gt(3)') 大于选择器
+		$('li:lt(3)') 小于选择器
+		
+		$('li:eq(3)') 下标选择器
+		
+	*/
+//	console.log($('#div'))
+	//$('.li').css('background','red');
+	
+	
+//	$('input[type="button"]').val('呵呵');
+//	
+//	$('input[type="text"]').val('呵呵da');
+//	
+//	$('input[type="checkbox"]').prop('checked',true);
+	
+//	$('li[class*="li"]').css('background','red');
+
+	
+//	$('li[class^="li"]').css('background','red');
+
+//	$('li[class$="li"]').css('background','red');
+
+//	$('li[class!="li"]').css('background','red');
+	
+	$('li:odd').css('background','red'); //奇数，视觉上是偶数从0开始奇数
+	$('li:even').css('background','green');
+	
+	$('li:gt(3)').css('background','green');
+	$('li:lt(3)').css('background','pink');
+	
+	$('li:eq(1)').css('background','yellow');
+	
+	$('li:eq(1)').next().css('background','#000');
+	
+</script>
+</body>
+</html>

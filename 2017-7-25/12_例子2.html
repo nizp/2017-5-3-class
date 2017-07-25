@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+	width:50px;
+	height: 50px;
+	float:left;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 50px;
+	border: 1px solid #000;
+	cursor: pointer;
+}
+.active{
+	background: skyblue;
+}
+.red{
+	background: red;
+}
+
+	
+</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		
+		$().each(function(i,e){//跟forEach参数对调
+			
+		})
+		
+		index(); //当前元素相对于兄弟元素的索引
+		
+		移入
+	*/
+	$('li').mouseover(function(){
+
+		if($(this).index() < 2){
+			$('li').removeClass('active');
+			$('li').removeClass('red');
+			let num = $(this).index()+1;
+			
+			$('li:lt('+num+')').addClass('red');
+		}else{
+			
+			$('li').removeClass('active');
+			$('li').removeClass('red');
+			let num = $(this).index()+1;
+			$('li:lt('+num+')').addClass('active');
+		}	
+	});
+	
+	$('li').mouseout(function(){
+		
+		$('li').removeClass('active');
+		$('li').removeClass('red');
+		
+	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

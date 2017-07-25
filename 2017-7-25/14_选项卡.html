@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+.active{
+	background: yellow;
+}	
+#box div{
+	width:200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		
+		<div class="show">第一块内容</div>
+		<div>第二块内容</div>
+		<div>第三块内容</div>
+		
+		<input type="button" value="按钮一" class="active" />
+		<input type="button" value="按钮二" />
+		<input type="button" value="按钮三" />
+		
+		
+	</div>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		index(); //当前元素相对于兄弟元素的索引 
+		
+		尽量在写index()的时候，把范围传入到index()方法中。
+		
+		比如：
+			
+			index(':button') ; 从button中当前触发的元素索引为几
+	*/
+	
+	
+	$(':button').click(function(){
+		
+		//$(this).addClass('active').siblings(':button').removeClass('active');
+		
+		//$('#box div').eq($(this).index()).addClass('show').siblings('div').removeClass('show');
+		
+		$(':button').removeClass('active');
+		$('#box div').removeClass('show');//hide(500)
+		$(this).addClass('active');
+		$('#box div').eq($(this).index(':button')).addClass('show');
+		
+		
+		//alert($(this).index(':button'))
+		
+//		$('#box div').eq($(this).index()).show(500);
+		
+	});
+	
+		
+		
+</script>
+</body>
+</html>

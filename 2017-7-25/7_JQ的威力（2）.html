@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	_display: none;
+	position: absolute;
+	left:0;
+	top:30px;
+}
+
+</style>
+</head>
+<body style="height:3000px">
+	<input type="button" id="btn" value="点击展开" />
+	<div id="div">3213213213</div>
+	
+	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//DOM加载完毕之后执行
+	$(function(){
+		
+		var fn = ()=>{
+			
+			$('#div').stop().animate({
+				left:($(window).innerWidth() - $('#div').width())/2,
+				top:($(window).innerHeight() - $('#div').height())/2 + $(window).scrollTop(),
+			});
+			
+		}
+		fn();
+		
+		$(document).scroll(fn);
+		$(window).resize(fn);
+		
+	});
+	
+</script>
+</body>
+</html>

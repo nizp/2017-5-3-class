@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	_display: none;
+	position: absolute;
+	left:0;
+	top:30px;
+}
+ul{
+	width: 100%;
+	position: absolute;
+	top:130px
+}
+</style>
+</head>
+<body>
+	<input type="button" id="btn" value="点击展开" />
+	<div id="div">3213213213</div>
+	
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+	</ul>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//DOM加载完毕之后执行
+	$(function(){
+		$('#btn').click(function(){
+			//$('#div').toggle();
+			$('#div').animate({
+				top:200,
+				left:400,
+				fontSize:'50px'
+			},1000,function(){
+				$('#div').animate({
+					top:0,
+					left:0,
+					fontSize:'12px'
+				});
+			});
+		});
+	});
+	
+	$('li:even').css('background','red');
+	$('li:odd').css('background','yellow');
+	
+	$('li:lt(3)').css('background','green');
+	$('li:gt(3)').css('background','pink');
+	
+</script>
+</body>
+</html>

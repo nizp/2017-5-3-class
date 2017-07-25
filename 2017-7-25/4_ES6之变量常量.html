@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" id="" value="按一" />
+	<input type="button" id="" value="按二" />
+	<input type="button" id="" value="按三" />
+<script type="text/javascript">
+	
+	/*
+		变量：可变的量
+			var 
+			let:
+				1.没有预解析，声明变量之前调用不会出现undefined而是报错
+				
+				2.使用let之后，不会在window下注册一个属性，所以为undefined
+				3.变量名不允许是重复的，如果重复报错。
+				
+				4.在某些情况下可以替代索引
+				
+				
+		常量：不可变的量
+			const
+				
+				1.没有预解析，声明变量之前调用不会出现undefined而是报错
+				
+				2.声明时要立即声明立即赋值，不然会报错。
+				
+				3.变量名不允许是重复的，如果重复报错。
+				
+				4.某些值只是使用不会改变的就使用const
+				
+				5.使用const之后，不会在window下注册一个属性，所以为undefined
+				
+		块：{}
+			{
+				fn(){},
+				age,
+				name
+			}
+			
+			一个块就相当于一个作用域，子级能够访问父级域中的变量/常量，而父级不能访问子级的变量/常量
+	*/
+	
+	//变量死区，暂存死区
+	
+	//alert(a);  //报错
+	
+	//let a = 10;
+	
+//	function fn(){
+//		alert(window.a);
+//	}
+//	fn();
+//	console.dir(window);
+
+	//let a = 20;
+	
+	
+//	{
+//		let a = 10;
+//		{
+//			alert(a);
+//		}
+//	}
+	
+	
+	
+	const inputs = document.getElementsByTagName('input');
+	
+	for(let i=0;i<inputs.length;i++){
+		inputs[i].onclick = function(){
+			alert(i);
+		}
+	}
+	
+	/*
+		for(let i=0;i<inputs.length;i++){
+			inputs[0].onclick = function(){
+				alert(0);
+			}
+		}
+		for(let i=0;i<inputs.length;i++){
+			inputs[1].onclick = function(){
+				alert(1);
+			}
+		}
+		for(let i=0;i<inputs.length;i++){
+			inputs[2].onclick = function(){
+				alert(2);
+			}
+		}
+		
+	*/
+	
+	
+	//console.log(i);
+	
+	
+	
+	
+	
+	
+//	var a = 12;
+//	const b = 12;
+//	
+////	a = 'heheda';
+//
+//	b = '123';
+//	
+//	console.log(b);
+
+	
+	//const a = 10;
+	
+	const obj = {
+		name:'hehe'
+	}
+	
+	obj.name = 'haha'; //不会报错
+//	obj = {
+//		name:'haha'  会报错
+//	}
+	
+	alert(obj.name);
+	
+	const ab = 10;
+	
+	console.log(window.ab);
+	
+	
+	
+</script>
+</body>
+</html>
