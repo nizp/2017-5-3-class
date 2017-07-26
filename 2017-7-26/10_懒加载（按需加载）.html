@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+ul{
+	border: 1px solid #000;
+	width:450px;
+	overflow: hidden;
+}	
+li{
+	list-style: none;
+	width:200px;
+	height: 200px;	
+	float: left;
+	margin: 5px;
+	border: 1px solid #ccc;
+}
+img{
+	width:200px;
+	height: 200px;
+	border: none;
+	opacity:0;
+	transition: 1s;	
+}
+</style>
+</head>
+<body>
+	<ul id="ul">
+		<!--<li><img src=""/></li>-->
+	</ul>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	const arr = [
+		'http://pic.35pic.com/normal/07/89/45/11295670_190951512136_2.jpg',
+		'http://pic.qiantucdn.com/58pic/11/31/58/97p58PICV26.jpg',
+		'http://pic39.nipic.com/20140312/18085061_092729513131_2.jpg',
+		'http://img.taopic.com/uploads/allimg/110920/2443-1109200TK99.jpg',
+		'http://pic.qiantucdn.com/58pic/11/31/58/97p58PICV26.jpg',
+		'http://pic.58pic.com/58pic/12/81/91/94858PICWxT.jpg',
+		'http://pic23.nipic.com/20120908/10639194_105138442151_2.jpg',
+		'http://pic3.16pic.com/00/12/61/16pic_1261451_b.jpg',
+		'http://sc.jb51.net/uploads/allimg/131031/2-13103115593HY.jpg',
+		'http://pic.qiantucdn.com/58pic/11/31/58/97p58PICV26.jpg',
+		'http://pic39.nipic.com/20140312/18085061_092729513131_2.jpg',
+		'http://img.taopic.com/uploads/allimg/110920/2443-1109200TK99.jpg',
+		'http://img1.imgtn.bdimg.com/it/u=1390986087,966587056&fm=26&gp=0.jpg',
+		'http://img1.3lian.com/2015/a1/46/d/198.jpg',
+		'http://pic23.nipic.com/20120908/10639194_105138442151_2.jpg',
+		'http://pic3.16pic.com/00/12/61/16pic_1261451_b.jpg'
+	];
+	
+	/*
+		如果在img的src中写入图片地址，在打开页面的时候就会加载，
+		所以咋们不用设置图片的src。
+		
+		当结构进入可视区范围的时候，就把进入可视区范围的img的src设置为真实的地址即可。
+	*/
+	
+	//生成结构
+	arr.forEach((e) => {
+		let li = $('<li><img _src="'+e+'"></li>');
+		$('#ul').append(li);
+	});
+	
+	//加事件去监听每个li的绝对位置是否小于等于可视区的高度 + 滚动条的距离
+	
+	//只要加上了就把_src删除，在滚动的时候判断是否有_src,如果有才加载
+	
+	const $lis = $('li');
+	$(window).scroll(fn);
+	fn();
+	function fn(){
+//		console.log($(window).scrollTop())
+		$lis.each(function(i,e){
+			
+			if($(e).offset().top <= $(window).innerHeight() + $(window).scrollTop()){
+				
+				if($(e).find('img').attr('_src')){
+					
+					$(e).find('img').css('opacity',1);
+					
+					$(e).find('img').attr('src',$(e).find('img').attr('_src'));
+				
+					$(e).find('img').removeAttr('_src');
+				}
+			
+			}
+			
+		});
+	}
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

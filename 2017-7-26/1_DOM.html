@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		DOM
+			
+			document  id,className,tagName,appendChild
+			
+			DOM描述（Document Object Model）
+				通过document提供的api赋予我们操作页面的能力
+			
+			
+			1.DOM树的关系
+			2.增删改查
+			
+			上一个  prev();
+			下一个  next();
+			子级 children();
+			父级 parent();
+			兄弟级 siblings();
+			第一个 first()
+			最后一个 last();
+			
+	*/
+	
+	const ul = $('ul');
+	const lis = ul.children();
+	const first = lis.first();
+	const last =  lis.last();
+	const firstNext = first.next();
+	const lastPrev = last.prev();
+	
+	first.css('background','red');
+	last.css('background','yellow');
+	firstNext.css('background','orange');
+	lastPrev.css('background','skyblue');
+	lis.eq(2).css('background','green');
+	
+	last.parent().css('border','1px solid #000');
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

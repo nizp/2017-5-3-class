@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li class="dd">1</li>
+		<li class="dd">2</li>
+		<li class="dd">3
+			<div>
+				div
+				<p >
+					p
+					<span >span</span>
+					<span class="dd">span</span>
+				</p>
+				<p >
+					p
+					<span >span</span>
+					<span >
+						<i>
+						  iiiiii
+						</i>
+					</span>
+				</p>
+			</div>
+		</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<div>
+		<i>
+		  iiiiii
+		</i>
+		<i>
+		  iiiiii
+		</i>
+		<i>
+		  iiiiii
+		</i>
+		<i>
+		  iiiiii
+		</i>
+		<i>
+		  iiiiii
+		</i>
+	</div>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		find(必传搜索范围);找到某个元素下的所有子元素 （可以查找某个范围下的所有）
+		
+		children(支持搜索范围);//只能找一层
+	*/
+	//不推荐直接通过关系去选择元素，性能差。css选择器一样，先找i再找ul
+//	$('#ul i').text('1234');
+
+	//建议下面的获取方式
+	const ul = $('#ul');
+	ul.find('i').text('1234');
+	
+	console.log(ul.children('.dd'));//查找一层
+	
+	
+	
+	
+</script>
+</body>
+</html>

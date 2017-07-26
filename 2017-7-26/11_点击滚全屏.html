@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}	
+ul{
+	list-style: none;
+}
+ol{
+	position: fixed;
+	top:50%;
+}	
+ol li{
+	list-style: none;
+	width:30px;
+	height: 30px;
+	float: left;
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<ul id="ul">
+		<!--<li><img src=""/></li>-->
+	</ul>
+	<ol>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ol>	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	let arr = ['skyblue','pink','orange','green']
+	
+	let h = $(window).innerHeight();
+
+	arr.forEach(e=>{
+		let li = $('<li style="background:'+e+';height:'+h+'px;"></li>');
+		$('#ul').append(li);
+	});
+	
+	
+	$('ol').find('li').click(function(){
+		let _index = $(this).index();
+		$('body').animate({
+			scrollTop:$('#ul').find('li').eq(_index).offset().top
+		});
+	});
+	console.log(h)
+	$(window).resize(function(){
+		$('#ul').html('');
+		h = $(window).innerHeight();
+//		console.log(h);
+		arr.forEach(e=>{
+			let li = $('<li style="background:'+e+';height:'+h+'px;"></li>');
+			$('#ul').append(li);
+		});
+	});
+	
+	
+	
+	
+</script>
+</body>
+</html>

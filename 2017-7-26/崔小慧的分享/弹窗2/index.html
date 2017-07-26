@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>SweetAlert - 演示6种不同的提示框效果</title>
+        <link rel="stylesheet" type="text/css" href="sweetalert.css"/>
+        <style>
+            .demo{width:300px; margin:60px auto 10px auto}
+            @media only screen and (min-width: 420px) {
+                .demo{width:500px; margin:60px auto 10px auto}
+            }
+            button, .button {
+                background-color: #AEDEF4;color: white;border: none;box-shadow: none;
+                font-size: 17px;font-weight: 500;font-weight: 600;
+                border-radius: 3px;padding: 15px 35px;margin: 26px 5px 0 5px;cursor: pointer; }
+            button:hover, .button:hover {background-color: #a1d9f2; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="demo">
+                <div class="demo_1">
+                    	基本示例：<button id="btn1">点击这里</button>
+                </div>
+                <div class="demo_2">
+                    	提示成功：<button>点击这里</button>
+                </div>
+                <div class="demo_3">
+                    	提示失败：<button>点击这里</button>
+                </div>
+                <div class="demo_4">
+                    	提示确认：<button>点击这里</button>
+                </div>
+                <div class="demo_5">
+                  		定义内容：<button>点击这里</button>
+                </div>
+                <div class="demo_6">
+                   		确认输入：<button>点击这里</button>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="sweetalert.min.js"></script>
+        <script>
+        	/*
+        		1.引入css,js文件 
+        		2.想要哪个就是那个代码
+        	*/
+            $(function() {
+                $("#btn1").click(function() {
+                    swal("这是一个信息提示框!");
+                });
+                $(".demo_2 button").click(function() {
+                    swal("Good!", "弹出了一个操作成功的提示框", "success");//这个success这个东西是这个东西是控制动画效果的，如果不写就没有效果了
+                });
+                $(".demo_3 button").click(function() {
+                    swal("OMG!", "弹出了一个错误提示框", "error");
+                });
+                $(".demo_4 button").click(function() {
+                    swal({
+                        title: "您确定要删除吗？",//标题，问题
+                        text: "您确定要删除这条数据？",//详细问题
+                        type: "warning",//效果图标->√、×...
+                        showCancelButton: true,//取消的按钮，true->显示,false->不显示
+                        closeOnConfirm: false,//点击确认的按钮，不写，就没有提示
+                        confirmButtonText: "我要删除",//取消的按钮:提示文字
+                        confirmButtonColor: "#ec6c62"//取消按钮的文字color
+                    }, function() {
+                        $.ajax({
+                            url: "do.php",
+                            type: "DELETE"
+                        }).done(function(data) {
+                            swal("操作成功!", "已成功删除数据！", "success");
+                        }).error(function(data) {
+                            swal("OMG", "删除操作失败了!", "error");
+                        });
+                    });
+                });
+
+                $(".demo_5 button").click(function() {
+                    swal({
+                        title: "Good!",//标题
+                        text: '<div>塘主</div>',//自定义内容，可以写标签对
+                        imageUrl: "images/thumbs-up.jpg",//图片地址
+                        html: true,//是否识别标签对，如果是false或者不写，就不识别，如果是true就识别
+                        timer: 5000,//多长时间后消失
+                        showConfirmButton: false//是否显示确认，如果显示确认，那么就点击确认就回关闭
+                    });
+                });
+
+                $(".demo_6 button").click(function() {
+                    swal({
+                        title: "输入框来了",//标题
+                        text: "这里可以输入并确认:",//提示信息
+                        type: "input",//输入框
+                        showCancelButton: true,//确认按钮
+                        closeOnConfirm: false,//取消按钮
+//                      animation: "slide-from-top",
+                        inputPlaceholder: "填点东西到这里面吧"//输入框的提示信息
+                    }, function(inputValue) {
+                        if (inputValue === false)
+                            return false;
+                        if (inputValue === "") {
+                            swal.showInputError("请输入!");
+                            return false
+                        }
+                        swal("棒极了!", "您填写的是: " + inputValue, "success");
+                    });
+                });
+            });
+        </script>
+    <!--<script type="text/javascript" src="http://shouce.ren/static/ad/gg.js"></script></body>-->
+</html>

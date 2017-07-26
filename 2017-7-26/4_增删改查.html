@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+*{
+	_margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+
+</style>
+</head>
+<body>
+	<input type="text" />
+	<input type="button" value="点击创建"/>
+	<ul id="ul">
+		<!--<li><i>1-</i> <span>这个内容</span><a href="javascript:;" style="display: none;">确定删除第<i>1条</i></a></li>-->
+		<!--<li>5</li>-->
+	</ul>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		创建：
+			$('<li>') 没内容
+			$('<li></li>') 有内容
+		
+		删除：
+			remove()
+			
+		插入：
+			append();
+			appendTo()
+			prepend():放到某个元素的第一位
+			
+				<p>I would like to say: </p>
+				
+				$("p").prepend("<b>Hello</b>");
+				
+				结果:
+				[ <p><b>Hello</b>I would like to say: </p> ]
+	
+	*/
+	
+	let num = 0;
+	$(':button').click(function(){
+		num ++;
+		let val = $(':text').val();
+		
+		let li = $(`
+			<li>
+				<i>${num}</i> - 
+				<span>${val}</span>
+				<a href="javascript:;" style="display: none;">
+					确定删除第
+					<i>${num}</i>条
+				</a>
+			</li>
+		`);
+		
+		li.mouseover(function(){
+			$(this).css('background','yellow');
+			$(this).find('a').show(); //display:block
+		});
+		li.mouseout(function(){
+			$(this).css('background','');
+			$(this).find('a').hide(); //display:none
+		});
+		
+		li.find('a').click(function(){
+			num--;
+			$(this).closest('li').remove();
+			
+			let lis = $('li'); 
+//			for(var i=0;i<num;i++){
+//				lis.eq(i).find('i').text((i+1));
+//			}
+			/*
+				4  0
+				3  1
+				
+				4 - 4  0
+				4 - 3  1
+				
+			*/
+			for(var i=num;i>0;i--){
+//				console.log(i);
+				lis.eq(num-i).find('i').text((i));
+			}
+			
+	});
+
+		//$('ul').append(li);
+		
+		$('ul').prepend(li);
+
+		$(':text').val('');
+		
+//		console.log(val)
+	});
+	
+	
+</script>
+</body>
+</html>

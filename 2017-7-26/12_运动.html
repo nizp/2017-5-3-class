@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:150px;
+	height: 150px;
+	background: salmon;
+}
+</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div id="box"></div>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		在hide或者show中设置时间之后，会有运动效果,改变宽、高 、透明度
+		
+		slow（慢），normal（中等），fast（快）
+	*/
+	$(':button').click(function(){
+		
+		//$('#box').hide(1000);
+		
+		//$('#box').toggle('slow');
+		
+//		$('#box').slideToggle(); //改变高度。
+		
+		
+		$('#box').fadeToggle();
+	});
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>Intro.js演示</title>
+        <link rel="stylesheet" href="css/demo.css">
+        <link rel="stylesheet" href="css/introjs.css">
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/introjs-ie.css?v=030">
+        <!-- <![endif]-->
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+        <style type="text/css">
+        	X
+.animation{
+-webkit-animation:shake 1s .2s ease both;
+-moz-animation:shake 1s .2s ease both;}
+@-webkit-keyframes shake{
+0%,100%{-webkit-transform:translateX(0);}
+10%,30%,50%,70%, 90%{-webkit-transform:translateX(-10px);}
+20%,40%,60%,80%{-webkit-transform:translateX(10px);}
+}
+@-moz-keyframes shake{
+0%,100%{-moz-transform:translateX(0);}
+10%,30%,50%,70%, 90%{-moz-transform:translateX(-10px);}
+20%,40%,60%,80%{-moz-transform:translateX(10px);}
+}
+        </style>
+    </head>
+    <body>
+        <div class="container-narrow">
+            <div class="masthead">
+                <ul class="nav nav-pills pull-right" data-step="6" data-intro="下载并使用它吧！">
+                    <li><a href="https://github.com/usablica/intro.js/tags" ><i class='icon-black icon-download-alt'></i> 下载</a></li>
+                    <li><a href="https://github.com/usablica/intro.js"  >Github</a></li>
+                </ul>
+                <h3 class="muted" data-step="1" data-intro="这是第一步">Intro.js</h3>
+            </div>
+            <div class="jumbotron">
+                <h1><i class="iconfont icon-PingPong"></i>Intro<span style="font-weight: normal;">.js</span></h1>
+                <p class="lead" data-step="5" data-intro="试试吧，它是免费的、开源的。">为您的网站和项目提供一步一步的、更好的介绍</p>
+                <a class="btn btn-large btn-success" href="javascript:;">点击我</a> </div>
+            <hr>
+            <div class="row-fluid marketing">
+                <div class="span6" data-step="2" data-intro="是不是很有趣呢？" data-position="right">
+                    <h4>使用简单</h4>
+                    <p>引入 js 和 css，然后在代码中加入步骤和介绍。</p>
+                    <h4>快速小巧</h4>
+                    <p><strong>7 KB</strong> 的 JavaScript 和 <strong>3 KB</strong> CSS，就是全部。</p>
+                    <h4>免费开源</h4>
+                    <p>免费和开源（包括商业用途），MIT许可证下。</p>
+                </div>
+                <div class="span6" data-step="3" data-intro="更多的功能，更多的乐趣。"  data-position="left">
+                    <h4>键盘加鼠标导航</h4>
+                    <p>鼠标或键盘 <code>←</code>, <code>→</code>, <code>ENTER</code> 导航，<code>ESC</code> 键退出。</p>
+                </div>
+            </div>
+            <div class="footer">
+                <p>&copy; <a href="http://shouce.ren"  title="手册网">shouce.ren</a></p>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> 
+        <script src="js/intro.js"></script>
+        <script type="text/javascript" src="js/iconfont.js">
+        	
+        </script>
+        <script>
+        	/*
+        		1.将css文件引入：
+        			introjs.css和bootstrap-responsive.min.css
+        		2.将js文件引入：
+        			intro.js
+        			jquery-3.2.1.min.js
+        		3.代码：
+        			Js:
+        			$(function(){
+        				$('btn').on('click', function() {
+		                    introJs().setOptions({
+		                        nextLabel: '下 &rarr;',
+		                        prevLabel: '&larr; 上一步',
+		                        skipLabel: '退出'
+		                    }).start();
+		                });
+        			});
+        		4.html代码：
+        			data-step="1" data-intro="这是标题"
+        	*/
+//          $(function() {
+//              var $btn = $('.btn');
+//              $btn.on('click', function() {
+//                  introJs().setOptions({
+//                      nextLabel: '下 &rarr;',
+//                      prevLabel: '&larr; 上一步',
+//                      skipLabel: '退出'
+//                  }).start();
+//              });
+//          });
+	$(function(){
+		$('.btn').click(function(){
+			introJs().setOptions({
+				nextLabel:'上一步',
+				prevLabel:'下一步',
+				skipLabel:'退出',
+			}).start();
+		})
+	})
+        </script>
+    <!--<script type="text/javascript" src="http://shouce.ren/static/ad/gg.js"></script>-->
+    </body>
+</html>

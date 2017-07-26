@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li class="dd">1</li>
+		<li class="dd">2</li>
+		<li class="dd">3
+			<div>
+				div
+				<p >
+					p
+					<span >span</span>
+					<span class="dd">span</span>
+				</p>
+				<p >
+					p
+					<span >span</span>
+					<span >span</span>
+				</p>
+			</div>
+		</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		逐级向上级元素匹配，并返回最先匹配的元素,也包括自身。
+		closest('范围')
+	*/
+	
+	$('span').eq(0).closest('.dd').css('background','red');
+	
+	
+</script>
+</body>
+</html>

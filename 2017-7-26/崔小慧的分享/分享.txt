@@ -1,0 +1,13 @@
+字库：http://iconfont.cn/
+
+2D,3D:http://www.shouce.ren/example/show/s/6869
+
+各种手册：http://www.shouce.ren/
+
+svg:https://tympanus.net
+
+各种实用css:http://www.layui.com/
+
+jq库：http://www.jq22.com/
+
+http://www.htmleaf.com/jQuery/

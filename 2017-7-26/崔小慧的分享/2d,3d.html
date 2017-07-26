@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">        	
+.animation{
+	width:200px;
+	height: 200px;
+	background:indianred;
+		-webkit-animation:tada 1s .2s ease both;
+-moz-animation:tada 1s .2s ease both;}
+@-webkit-keyframes tada{
+0%{-webkit-transform:scale(1)}
+10%,20%{-webkit-transform:scale(0.9) rotate(-3deg)}
+30%,50%,70%,90%{-webkit-transform:scale(1.1) rotate(3deg)}
+40%,60%,80%{-webkit-transform:scale(1.1) rotate(-3deg)}
+100%{-webkit-transform:scale(1) rotate(0)}
+}
+@-moz-keyframes tada{
+0%{-moz-transform:scale(1)}
+10%,20%{-moz-transform:scale(0.9) rotate(-3deg)}
+30%,50%,70%,90%{-moz-transform:scale(1.1) rotate(3deg)}
+40%,60%,80%{-moz-transform:scale(1.1) rotate(-3deg)}
+100%{-moz-transform:scale(1) rotate(0)}
+		}
+	</style>
+</head>
+<body>
+	<div id="box" class="animation"></div>
+</body>
+</html>

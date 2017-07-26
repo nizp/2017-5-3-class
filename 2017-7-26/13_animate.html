@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:150px;
+	height: 150px;
+	background: salmon;
+	position: absolute;
+	left:0;
+	top:20px;
+}
+</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div id="box"></div>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		jQ中的运动是走队列的。 
+		
+		只要使用jQ中的运动，那么就要加stop()
+	*/
+	$(':button').click(function(){
+		$('#box').animate({
+			left:300,
+			opacity:0
+		},1000,function(){
+			$('#box').animate({
+				left:0,
+				opacity:1
+			},1000);
+		});
+	});
+	
+</script>
+</body>
+</html>

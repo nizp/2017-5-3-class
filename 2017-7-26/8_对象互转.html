@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+
+</style>
+</head>
+<body>
+	<textarea name="" rows="5" cols="20" id="box"></textarea>
+	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		原生转jQ对象   $(原生对象)  -> JQ对象 
+		
+		JQ对象转原生  $('textarea').get(0) -> 原生对象
+					
+					 $('textarea')[下标] -> 原生对象
+					
+	*/
+	
+	$(document).click(function(){
+		
+		//const box = document.getElementById('box');
+		
+		//console.log($(box).height());
+		
+//		console.log($('textarea').get(0))
+
+		console.log($('textarea')[0].scrollHeight - $('textarea').width());
+	});
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:150px;
+	height: 150px;
+	background: salmon;
+	position: absolute;
+	left:0;
+	top:50px;
+}
+#box2{
+	width:50px;
+	height:50px;
+	background: seagreen;
+}
+</style>
+</head>
+<body>
+	<!--<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>-->
+	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		$.each()专门给非JQ对象使用的。（工具方法） $.
+		
+		
+		
+		
+	*/
+	
+	const arr = [
+		'第一条内容',
+		'第二条内容',
+		'第三条内容'
+	];
+	
+	
+	$.each(arr,function(i,e){
+		var b = $(`<button>按钮${i+1}</button>`).on('click mouseover',{a:arr[i],id:i},function(ev){
+			console.log(ev.data);
+		});
+		
+		$('body').append(b);
+	});
+	
+	
+	
+	
+//	$(':button').each(function(i,e){
+//		
+//		$(e).on('click',{a:arr[i]},function(ev){
+//			console.log(ev.data);
+//		});
+//	})
+	
+	
+	
+</script>
+</body>
+</html>

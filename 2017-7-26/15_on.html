@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:150px;
+	height: 150px;
+	background: salmon;
+	position: absolute;
+	left:0;
+	top:50px;
+}
+#box2{
+	width:50px;
+	height:50px;
+	background: seagreen;
+}
+</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div id="box"></div>
+	<div id="box2"></div>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		jQ中所有的事件方法全是addEventListener事件绑定的
+		
+		并且所有的事件方法都是由on()来扩展出来的。
+	*/
+	
+	/*
+		在使用JQ中，碰到事件套事件，那么就会出现，多次触发父级事件的时候
+		再触发一次子级事件，这个时候子级事件触发的频率跟父级触发是一样的。
+		
+		解决：
+			使用off在子级事件函数前解绑。
+			
+		****阻止冒泡与阻止默认行为都是return false;
+	*/
+	
+	$('#box,#box2').on('click.one',function(){
+		alert(1);
+	});
+	$('#box').on('click',function(){
+		alert(2);
+	});
+	
+//	$('#box2').on('mouseover',function(){
+//		$('#box').trigger('click.one');
+//	});
+	
+	
+//	$('#box2').on('click',function(){
+//		alert(1);
+//		return false;
+//	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

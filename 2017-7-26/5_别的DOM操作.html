@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+*{
+	_margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#red{
+	width:100px;
+	height: 100px;
+	background: red;
+}
+#blue{
+	width:100px;
+	height: 100px;
+	background:blue;
+}
+</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div id="red"><span>span</span></div>
+	<hr />
+	<div id="blue"></div>
+
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	
+//	$('#red').click(function(){
+//		alert(1);
+//	})
+	
+	$(':button').click(function(){
+		
+		let red = $('#red').clone(true);//既可以克隆元素包括子级还能克隆事件
+		
+		//$('#blue').replaceWith(red);
+		
+//		$('#blue').replaceWith('<div id="red">');
+
+		
+		/*
+			父元素.append(要插入的元素)
+			要插入的元素.appendTo(父元素)
+			
+			如果要继续给要插入的元素添加别的操作，那么appendTo可以直接使用链式操作。
+		*/
+		
+//		$('body').append(red);
+//		
+//		red.click(function(){
+//			alert(1);
+//		});
+
+		red.appendTo('body').click(function(){
+			alert(1);
+		});
+		
+//		red.click(function(){
+//			alert(1);
+//		});
+		
+	});
+	
+</script>
+</body>
+</html>
