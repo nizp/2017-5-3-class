@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="box"></div>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+<script src="sizzle.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	(function(global,factory){
+		"use strict"
+		factory(global);
+	})(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+		
+		let jQuery = function(selector){
+			return new paohui(selector);
+		};
+		
+		jQuery.prototype = {
+			constructor:jQuery,
+			css:function(){
+//				console.log(this)
+				/*
+					要么是获取，要么是批量设置 
+				*/
+				var toS = Object.prototype.toString;
+				if(arguments.length == 1){
+					//如果传进来的是对象为批量设置
+					if(toS.call(arguments[0]) == '[object Object]'){
+						
+						for(var i=0;i<this.length;i++){
+							
+							for(var attr in arguments[0]){
+								this[i].style[attr] = arguments[0][attr];
+							}
+							
+						}
+//						console.log(this)
+						
+						
+					}else{
+						//如果是字符串为获取
+						if(typeof arguments[0] === 'string'){
+							return getComputedStyle(this[0])[arguments[0]];
+						}
+					}
+					
+				}else{
+					//如果传了2个参数
+					if(arguments.length == 2){
+						 this[0].style[arguments[0]] = arguments[1];
+					}
+				}
+				
+				//console.log(this)
+				return this; //链式操作。
+			}
+		}
+		
+		function paohui(selector){
+			
+			if(typeof selector === 'function'){
+				document.addEventListener('DOMContentLoaded',function(){
+					selector();
+				});
+			}else{
+				
+				var arr = Sizzle(selector);
+			
+				//给对象身上加属性（元素）
+				for(var i=0;i<arr.length;i++){
+					this[i] = arr[i];
+				}
+				
+				//给这个对象加了length属性，能够赋予for循环
+				this.length = arr.length;
+				
+			}
+			//console.log(arr);
+		}
+		
+		paohui.prototype = jQuery.prototype;
+		
+		global.$ = global.jQuery = jQuery;
+		
+	});
+	
+	
+	//链式操作。
+	//return this即可
+	
+//	console.log($('#box').css('width')) //获取
+//	
+//	//批量设置
+//	$('li').css({'width':'100px','height':'200px',background:'red'})
+//
+//	//设置一个样式
+//	$('#box').css('height','200px').css({
+//		background:'green',
+//		border:'1px solid #000'
+//	});
+	
+	
+		$(function(){
+			$('#box').css('height','200px').css({
+				background:'green',
+				border:'1px solid #000'
+			});
+		});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	function fn(){
+//		return typeof arguments;
+//	}
+//	var f = fn();
+//	
+//	console.log(f); //object
+	
+	
+</script>
+</body>
+</html>

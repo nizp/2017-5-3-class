@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	function fn(a=1,b=2){
+//		alert(a+b);
+//	}
+//	
+//	fn();
+
+//	function fn([x,y]){
+//		alert(x+y);
+//	}
+//	
+//	fn([1,2]);
+
+	function fn(a,b,...f){
+		console.log(a+b);
+		
+		var num = 0;
+		for(var i=0;i<f.length;i++){
+			num+=f[i];
+		}
+		
+		console.log(num);
+		
+	}
+	
+	fn(1,2,3,4,5,6,7,8,9);
+
+	
+	
+	
+</script>
+</body>
+</html>

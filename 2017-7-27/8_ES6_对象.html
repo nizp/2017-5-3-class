@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	border: 1px solid #000;
+	position: absolute;
+	top:10px;
+	left:20px;
+	margin: 2px;
+	padding: 5px;
+}	
+</style>
+</head>
+<body>
+	<div id="div"></div>
+<script type="text/javascript">
+	/*
+		如果右边是对象，左边也有用{}包裹，直接找对应的属性名即可。 
+		
+		如果变量名要修改，那么:新的变量名。
+	*/
+	
+//	let {b,a} = {a:1,b:2};
+	
+//	console.log(a,b); //2,1
+	
+	
+//	let {x,y} = {a:1,b:2};
+//	console.log(x,y);//undefined,undefined
+	
+	//let {b:x,a:y} = {a:1,b:2};
+	
+//	console.log(x,y);
+
+	//let div = document.getElementById('div');
+	
+//	console.log(getComputedStyle(div)['width'])
+//	console.log(getComputedStyle(div)['height'])
+
+	//let {width:w,height:h,border:b,margin:m} = getComputedStyle(div);
+	
+//	console.log(m);
+
+
+	/*
+		如果数组与对象嵌套，那么直接把右边的值复制过来，换成变量名即可。 
+	*/
+//	let obj = {
+//	  p: [
+//	    'Hello',
+//	    { y: 'World' }
+//	  ]
+//	};
+//
+//	let { p: [x, { y }] } = obj;
+	
+//	console.log(x,y)
+
+	/*
+		使用解构赋值将下列数字放到同一个数组中 
+	*/
+//	let obj = {
+//		a:{
+//			b:[
+//				[1,2,3],
+//				['a','b','c',{d:7}]
+//			]
+//		}
+//	};
+//	
+//	let {
+//		a:{
+//			b:[
+//				c,
+//				[v,h,k,{d:f}]
+//			]
+//		}
+//	} = obj;
+//	
+//	c.push(f);
+//	
+//	console.log(c);
+
+
+	
+//	var {x: y = 3} = {x: 5};
+	
+//	let {x: y = 3} = {};  //y = 3
+
+//	let {x, y = 5} = {x: 1};
+	
+	
+	
+	/*
+		如果有默认设置，右边为没有值或者值为undefined，走默认，别的都走配置。 
+	*/
+//	var {x = 3} = {x: undefined};
+//	//x // 3
+//	
+//	var {x = 3} = {x: null}; 
+//	
+//	var [x=3] = [undefined]
+//	console.log(x);
+
+	let {baz: {bar}} = {baz: 'baz'};
+	console.log(bar); //undefined 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

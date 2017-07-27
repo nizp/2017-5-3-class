@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	
+	<img src="http://tupian.enterdesk.com/2015/saraxuss/04/08/fj/2/10.jpg">
+	<img src="http://img.pconline.com.cn/images/photoblog/7/5/2/7/7527035/20089/26/1222406207852.jpg">
+
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+	/*
+		当页面静态资源加载完成之后执行xxxx 
+		
+		一般想要当DOM加载完成时就执行xxxx
+		
+		DOMContentLoaded 当DOM加载完执行xxx 不兼容。
+		
+		在低版本IE下：
+			readystatechange事件来触发。
+			如果DOM没有加载完毕调用doScroll会报错,一旦报错，就进catch
+			在catch中继续查看doScroll('left')
+			document.documentElement.doScroll('left');
+			
+			try{
+				//正确的代码 ，如果这个代码报错，那么就走catch，这段代码就不会报错了
+			}catch(e){
+				//上面代码报错，那么就走catch，e报错的细节信息。
+			}
+		
+	*/
+//	window.onload = function(){
+//		alert(111111);
+//	}
+	
+//	document.addEventListener('DOMContentLoaded',function(){
+//		alert(111111);
+//	});
+
+//	$(function(){
+//		alert(1);
+//	});
+
+	$(document).ready(function(){
+		alert(2222);
+	});
+	
+	
+	
+//	try{
+//		console.log(a);
+//	}catch(e){
+//		let a = 10;
+//		console.log(e);
+//	}
+
+	//console.log(a);
+	
+//	alert(123456);
+	
+	
+</script>
+</body>
+</html>

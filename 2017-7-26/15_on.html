@@ -10,52 +10,59 @@
 	background: salmon;
 	position: absolute;
 	left:0;
-	top:50px;
-}
-#box2{
-	width:50px;
-	height:50px;
-	background: seagreen;
-}
+	top:0;
+}	
 </style>
 </head>
 <body>
-	<button>按钮</button>
-	<div id="box"></div>
-	<div id="box2"></div>
+	321321321321321335656ccxzczx
+	<div id="box">
+		<div id="box2"  style="width:50px;height: 50px;background: red;"></div>
+	</div>
 <script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	/*
-		jQ中所有的事件方法全是addEventListener事件绑定的
-		
-		并且所有的事件方法都是由on()来扩展出来的。
-	*/
 	
 	/*
-		在使用JQ中，碰到事件套事件，那么就会出现，多次触发父级事件的时候
-		再触发一次子级事件，这个时候子级事件触发的频率跟父级触发是一样的。
-		
-		解决：
-			使用off在子级事件函数前解绑。
+		***JQ中的ev为二次封装对象
+			常用的事件细节信息都会封装到这个ev中，
+			不过如果二次封装的ev中没有想要获取的信息，
+			那么通过ev.originalEvent去获取原生的事件对象。
 			
-		****阻止冒泡与阻止默认行为都是return false;
+			css('width')  //获取
+			
+			css('width','100px'); //设置
+			
+			css({     //批量设置
+				width:'100px',
+				height:'100px'
+			});
 	*/
 	
-	$('#box,#box2').on('click.one',function(){
-		alert(1);
+	var disX,disY = 0;
+	$('#box').mousedown(function(ev){
+		disX = ev.clientX - $(this).position().left;
+		disY = ev.clientY - $(this).position().top;
+		//console.log(ev)
+		
+		
+		$(document).mousemove(function(ev){
+			$('#box').css({
+				left:ev.clientX - disX,
+				top:ev.clientY - disY
+			});
+		});
+		
+		$(document).mouseup(function(){
+			$(document).off();
+		});
+		
+		return false;
+		
 	});
-	$('#box').on('click',function(){
-		alert(2);
-	});
 	
-//	$('#box2').on('mouseover',function(){
-//		$('#box').trigger('click.one');
-//	});
-	
-	
-//	$('#box2').on('click',function(){
-//		alert(1);
-//		return false;
+//	$('#box2').mousedown(function(ev){
+//		alert(2);
+//		ev.originalEvent.cancelBubble = true;
 //	});
 	
 	

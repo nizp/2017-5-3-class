@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	 		ECMAScript 2015（简称 ES2015）这个词
+	 			ECMAScript 6
+	 			
+	 		es6一种跨时代的版本。
+	 		ES6 既是一个历史名词，也是一个泛指，含义是5.1版以后的 JavaScript 的下一代标准，涵盖了ES2015、ES2016、ES2017等等
+	 	
+	 		解构赋值：
+	 			ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构
+	 			
+	*/
+	
+//	var a = 10;
+//	var b = 20;
+	
+//	var c = b;
+//	b = a;
+//	a = c;
+	
+//	var [b,a] = [a,b];
+	
+	//console.log(a,b);
+	
+	//小技巧保持左边的格式与右边的格式一致，就能解构右边的数据。
+//	let [foo, [[bar], baz]] = [1, [[2], 3]];
+	//console.log(foo,bar,baz);
+
+	//let [,,third] = ["foo", "bar", "baz"];
+	
+//	console.log(third);//baz
+	
+	//y和z右边因为没有对应的值，所以为undefined
+	//let [x,y,z] = ['a'];
+//	
+//	let h = 5;
+//	
+//	console.log(x);
+
+	
+//	let [foo] = [];
+//	let [bar, foo] = [1];  // 名字不要取一样的，不然会报错
+
+	
+	/*
+		***如果你使用[]去解构，那么右边的值必须为[],不然报错。 
+	*/
+//	let [foo] = 1;
+//	let [foo] = false;
+//	let [foo] = NaN;
+//	let [foo] = undefined;
+//	let [foo] = null;
+//	let [foo] = {};
+//	let [foo] = function(){}
+
+//	console.log(foo); //报错
+	
+	
+	
+	
+	//解构赋值允许指定默认值。
+	/*
+		遵循有配置走配置没配置走默认 
+	*/
+	
+//	let [a=10,b] = [,2]; console.log(a); //10
+
+	/*
+		右边如果没有值，左边为解构变量，并且有被赋值，赋值的这个值为一个
+		没有声明过的变量时，就报错。
+		
+		只要右边有值(左边的变量名必须要有默认配置值并且默认值不能为全局没有定义过的变量)，使用let声明的时候左边就不会报错。
+		
+		
+		
+		1.当右边有值的时候，左边就走右边的值
+		
+		2.当右边没有值的时候，看看左边有没有等号，如果有等号就走等号右边的值（这个值不能为全局没有定义过的变量）,如果没有为undefined
+		
+		
+	*/
+	
+	
+//	let [x=1200,y] = [1,2];
+	
+//	console.log(x);
+
+	
+	function f() {
+	  console.log('aaa');
+	}
+
+//	let [x = f()] = [1];
+	
+//	let [x = 1] = [null];
+	
+//	console.log(x);
+
+	
+	let arr = [1,2,3,4,[[[['a'],'b'],['c']]]];
+	
+	let [,,,num,[[[[a],b],[c],d=10],x=f()]] = arr;
+	
+	console.log(num,a,b,c,d,x);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

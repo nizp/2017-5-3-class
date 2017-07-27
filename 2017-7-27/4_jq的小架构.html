@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	(function(global, factory){
+		"use strict";
+		
+		factory(global);
+		
+	})(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+		//console.log(noGlobal);//undefined
+		
+		var version = "2017.7.27",
+		
+		/*
+			
+			如果直接在jQuery的构造函数中new自己，那么就递归报错了。
+			
+			解决（无new化操作）：
+				只要不new自己就不会出现递归，找个炮灰来代替自己
+				这个炮灰要有jQuery所有的特性,其实就是把jq中的原型
+				指向炮灰的原型。再去new炮灰就解决了。
+				
+			
+		*/
+		jQuery = function (selector){
+//			//new jQuery(selector);
+			
+			return new paohui(selector);
+		}
+		
+		jQuery.fn = jQuery.prototype = {
+			
+			constructor: jQuery,
+	
+			css:function(){
+				alert(1);
+			}
+		}
+		
+		var paohui = function(selector){
+		 	document.querySelector(selector);
+		}
+		
+	 	paohui.prototype = jQuery.fn;
+		paohui.constructor = paohui;
+		
+		
+		
+		
+		
+		
+		//把函数挂在window上，全局就能访问了。
+		window.$ = window.jQuery = jQuery;
+		
+	});
+	
+	//在低版本IE下undefined会被修改,所以通过函数未传参就为undefined的特性来使用undefined。
+//	var undefined = 10;
+//	
+//	alert(undefined);
+
+	//无new化操作。
+
+	//$ 别的框架
+//	var j = jQuery;
+//	console.log(j('#div'));
+	
+	//var j = new $();
+	
+	console.log($())
+	
+	$().css();
+	
+</script>
+</body>
+</html>

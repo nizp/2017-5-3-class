@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#box{
+	width:150px;
+	height: 150px;
+	background: salmon;
+	position: absolute;
+	left:0;
+	top:50px;
+}
+#box2{
+	width:50px;
+	height:50px;
+	background: seagreen;
+}
+</style>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="box2"></div>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		attr
+		prop
+		css
+		text
+		html
+		$('<li>')
+		append()
+		$('<li>').appendTo(ul).css()
+		$('').trigger('click.xx');
+		off()
+		return false
+		on('click',{name:'leo'},fn)
+		p.on('click','li',fn)
+		stop().animate()
+		$('').each(fn)
+		$.each(arr,fn)
+		offset().top
+		position().top
+		outerHeight(true);
+		children
+		closest
+		index
+		find();
+	*/
+	
+	/*
+		如何解决触发某个元素事件的时候继承另一个元素下同一个事件多个函数的某一个函数。 
+	*/
+	$('#box').on('click.a',function(){
+		alert('1');
+	});
+	
+	$('#box').on('click',function(){
+		alert('2');
+	});
+	
+	$('#box2').click(function(){
+		$('#box').trigger('click.a');
+		
+		$('#box2').off();
+	});
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
