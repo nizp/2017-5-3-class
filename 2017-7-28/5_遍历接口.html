@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		Symbol(Symbol.iterator) 遍历器
+		
+		function [Symbol.iterator](){
+			//遍历函数
+			return {
+					next(){
+						return {
+							value:xxx,
+							done:boolean (如果是false要循环，true终止循环)
+						}
+						
+					}
+			}
+			
+			
+		}
+		
+		只要有遍历器就能使用for of
+		
+		Object.keys(obj),可以把对象中的key值提取出来放到一个数组中
+		
+		
+	*/
+//	var arr = [1,2,3,4];
+
+//	var str = new String('1','2','3');//有
+
+	var obj = {name:'chenbin',age:18};
+	
+	console.log(Object.keys(obj))
+	
+	
+//	obj[Symbol.iterator] = function(){
+//		var i = 0;
+//		return {
+//			
+//			next(){
+//				if(i < 10){
+//					return {
+//						value:++i,
+//						done:false
+//					}
+//				}else{
+//					return {
+//						value:i,
+//						done:true
+//					}
+//				}	
+//			}
+//		}
+//	}
+//	
+	
+	
+	obj[Symbol.iterator] = function(){
+		
+		let arr = Object.keys(obj);// [name,age];
+		let i = 0;
+		let len = arr.length;
+		
+		return {
+			next(){
+				if(i < len){
+					return {
+						value:{
+							key:arr[i],
+							val:obj[arr[i++]]
+						},
+						done:false
+					}
+				}else{
+					return {
+						value:null,
+						done:true
+					}
+				}
+			}
+		}
+	}
+	
+	
+	for(var {val:v,key:k} of obj){
+		console.log(k);
+	}
+	
+	//console.dir(obj);
+	
+</script>
+</body>
+</html>

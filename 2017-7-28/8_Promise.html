@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		div.move({left:'10px'},function(){
+			div.move({top:'10px'},function(){
+				div.move({fontSize:'100px'},function(){
+					div.move({opacity:.5},function(){
+				
+					});
+				});
+			});
+		});
+		
+		div.move({left:'10px'})
+		div.move({top:'10px'})
+		div.move({fontSize:'100px'})
+		
+		Promise对象有以下两个特点。
+			1.
+				Promise对象代表一个异步操作，有三种状态：
+				Pending（进行中）、
+				Resolved（已完成，又称 Fulfilled）
+				和Rejected（已失败）。
+		
+		
+			2.
+				一旦状态改变，就不会再变.
+				
+				
+			catch	
+				
+		
+	*/
+	
+	var a = null;
+//	
+//	setTimeout(function(){
+//		a = 10;
+//	},1000);
+//	
+//	alert(a);
+
+	
+	
+//	var p = new Promise(function(success,error){
+//		
+//		setTimeout(function(){
+//			a = 10;
+//			if(a){
+//				success(a);
+//			}else{
+//				error('失败');
+//			}
+//		},1000);
+//		
+//	});
+//	
+//	p.then(function(value){
+//		alert(value);
+//	},function(val){
+//		alert(val);
+//	});
+
+	const arr = [
+		'http://pic.35pic.com/normal/07/89/45/11295670_190951512136_2.jpg',
+		'http://pic.qiantucdn.com/58pic/11/31/58/97p58PICV26.jpg',
+		'http://pic39.nipic.com/20140312/18085061_092729513131_2.jpg',
+		'http://img.taopic.com/uploads/allimg/110920/2443-1109200TK99.jpg',
+		'http://pic.qiantucdn.com/58pic/11/31/58/97p58PICV26.jpg',
+		'http://pic.58pic.com/58pic/12/81/91/94858PICWxT.jpg',
+		'http://pic23.nipic.com/20120908/10639194_105138442151_2.jpg',
+		'http://pic3.16pic.com/00/12/61/16pic_1261451_b.jpg',
+		'http://sc.jb51.net/uploads/allimg/131031/2-13103115593HY.jpg',
+		'http://pic.qiantucdn.com/58pic/11/31/58/97p58PICV26.jpg',
+		'http://pic39.nipic.com/20140312/18085061_092729513131_2.jpg',
+		'http://img.taopic.com/uploads/allimg/110920/2443-1109200TK99.jpg',
+		'http://img1.imgtn.bdimg.com/it/u=1390986087,966587056&fm=26&gp=0.jpg',
+		'http://img1.3lian.com/2015/a1/46/d/198.jpg',
+		'http://pic23.nipic.com/20120908/10639194_105138442151_2.jpg',
+		'http://pic3.16pic.com/00/12/61/16pic_1261451_b.jpg'
+	];
+	
+	function load(url){
+		
+		return new Promise(function(success,fail){
+			
+			var img = new Image();
+			
+			img.src = url;
+			//当这张图片加载完成时
+			img.onload = function(){
+				success(img);
+			}
+			img.onerror = function(){
+				fail(new Error);
+			}
+			
+		});	
+	}
+	
+	
+	var l = load(arr[0]);
+	
+//	l.then(function(img){
+////		console.log(img)
+//		document.body.appendChild(img);
+//		
+//	},function(data){
+//		console.log(data)
+//	});
+
+	//出错以后会进catch
+//	l.catch(function(data){
+//		console.log(data);
+//	});
+	
+	
+	Promise.all([load(arr[0]),load(arr[1]),load(arr[2]),load(arr[3]),load(arr[4]),load(arr[5])]).then(function(arr){
+		
+		for(var i=0;i<arr.length;i++){
+			document.body.appendChild(arr[i]);
+		}
+		
+		console.log('所有的都加载完毕');
+	}).catch(function(v){
+		console.log(v);
+	});
+	
+	
+	/*
+		用户等级:
+			一个接口 ：用户的name  用户的iphone     
+			
+		
+		用户的name需要一个接口  5分钟
+		
+		用户的iphone需要一个接口 30ms
+	*/
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

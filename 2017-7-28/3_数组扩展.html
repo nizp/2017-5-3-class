@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	var arr = [1,2,3,4,5];
+//	
+//	console.log(...arr); //把数组中的每个都拆出来
+
+	//var arr = [1,2,3,2,3,1,2,3,4,6,5,7,4,6,1];
+	
+//	console.log([...new Set(arr)]); 
+
+	//Set中不允许有重复项，最大的优点。
+//	console.log(new Set(['1','2']))
+	
+	
+//	for(var i=0;i<arr.length;i++){
+//		for(var j=i+1;j<arr.length;j++){
+//			if(arr[i] == arr[j]){
+//				arr.splice(j,1);
+//				j--;
+//			}
+//		}
+//	}
+	
+	//console.log(arr);
+	
+	
+	/*
+		Array.of方法用于将一组值，转换为数组。 
+	*/
+	
+	//创建一个数组的，并且length为3，每个值为undefined
+//	console.log(new Array(3));
+//	
+//	//创建一个数组，值为数字3
+//	console.log(Array.of(3));
+
+	
+	
+	/*
+		找出下列数组中最大差值 
+	*/
+//	var arr = [1,2,3,6,4,5,7,88,22,4,8];
+//	var max = Math.max.apply(null,arr);
+//	var min = Math.min.apply(null,arr);
+	
+//	console.log(Math.max.apply(null,arr) - Math.min.apply(null,arr));
+	
+//	console.log(arr.find(e=>(e*2 >= 6 )));	//找出数组第一个值*2大于6的	
+//	console.log(arr.filter(e=>(e*2 >= 6 )));
+
+//	console.log(arr.findIndex(e=>(e==6))) //找到6出现的位置
+	
+//	console.log(arr.indexOf(10))
+
+	
+	var arr = [1,2,3,6,4,5,7,88,22,4,8];
+	
+//	for(var i of arr.keys()){
+//		console.log(i)
+//	}
+	
+	for(var [k,v] of arr.entries()){
+		console.log(k,v)
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

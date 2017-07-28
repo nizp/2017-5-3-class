@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<title>Document</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	let settings = {
+		name:'lisi',
+		age:6
+	};
+	
+	let obj = {
+		age:18
+	}
+	//有配置走配置，没配置走默认
+	var o = Object.assign(settings,obj);
+	
+	/*
+		有配置走配置，没配置走默认
+		$.extend(settings,obj);
+		 
+		var o2 = $.extend({},settings,obj);
+		
+		var arr2 = $.extend([],arr);//浅拷贝
+		 
+		var arr2 = $.extend(true,[],arr); //深拷贝
+		
+		$.extend  还可以通过它来扩展插件
+		
+		$('#box').upload();
+		
+	*/
+	
+	//var o2 = $.extend({},settings,obj);
+	
+	//console.log(o2)
+	
+	
+//	console.log(o);
+	
+	
+	//浅拷贝，拷贝一层
+	var arr = [1,2,3,4,[6]];
+	
+//	var arr2 = Object.assign([],arr);
+
+	var arr2 = $.extend(true,[],arr); //深拷贝
+	
+	arr2[4].push(5);
+	
+	console.log(arr)
+	
+	
+	
+</script>
+</body>
+</html>

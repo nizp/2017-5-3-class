@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="box"></div>
+<script type="text/javascript">
+	
+//	let [x=y,y] = [null,5];
+//	
+//	console.log(x,y);
+
+	/*
+		includes(), startsWith(), endsWith() 
+		
+		includes()：返回布尔值，表示是否找到了参数字符串。
+		startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。
+		endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。
+		
+		<%%>
+		{{}}
+	*/
+	
+	
+	//暂时没啥用。
+//	let arr = [1,2,3,4,5,6];
+//	
+//	let temp = `<ul>
+//		<%for(var i=0;i<arr.length;i++){%>
+//			<li><%=arr[i]%></li>
+//		<%}%>
+//	</ul>`;
+//	
+	//document.getElementById('box').innerHTML = temp;
+	
+	
+	/*
+		直接拿到字符串中的每个。 
+	*/
+	const str = 'miaov';
+	
+//	for(let i of str){
+//		//console.log(i);
+//		
+//		if(i === 'o'){
+//			i = i.toUpperCase()
+//		}	
+//	}
+
+	
+	console.log(str.replace(/o/,'O'));
+	
+	
+</script>
+</body>
+</html>
