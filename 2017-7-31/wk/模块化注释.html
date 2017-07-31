@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script src="build/app.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	
+	
+	
+	/*
+		CMD
+		
+		AMD
+		
+		一种规范
+		
+		AMD/CMD区别，（CMD是属于CommonJS标准的）
+		
+			虽然都是并行加载js文件，但还是有所区别，AMD是预加载，在并行加载js文件同时，还会解析执行该模块（因为还需要执行，所以在加载某个模块前，这个模块的依赖模块需要先加载完成）；而CMD是懒加载，虽然会一开始就并行加载js文件，但是不会执行，而是在需要的时候才执行。
+			
+		
+		ES6的模块化
+			
+			var a = 5;
+			var b = 6;
+			var c = 7;
+			
+			export导出
+			
+				export {a,b,c}
+				
+				export function multiply(x, y) {
+				  return x * y;
+				};
+				
+				function multiply(x, y) {
+				  return x * y;
+				};
+				
+				export {multiply}
+				
+				function v1() { ... }
+				function v2() { ... }
+				
+				export {
+				  v1 as streamV1,
+				  v2 as streamV2,
+				  v2 as streamLatestVersion
+				};
+				
+				as 取别名
+				
+				输出变量名的时候要加括号
+				
+				
+				
+				
+				
+				
+				
+				
+			import导入
+			
+				import {firstName, lastName, year} from './profile';
+				
+				import { lastName as surname } from './profile';
+				
+					把lastName换成了surname名字
+				
+				var a = './profile';
+				import { lastName as surname } from a;(报错)
+				from的右边不支持变量就支持字符串。
+				
+				
+				导出使用default
+				
+				export default function () {
+				  console.log('foo');
+				}
+				
+				导入的时候可以不加括号，并且名字随便取。
+				import nizp from './export-default';
+				
+				nizp();
+				
+		
+		
+		ES6的模块化语法浏览器是不支持的，通过babel去转一下，
+		将ES6的语法转成ES5
+		
+		使用webpack去将ES6转成ES5，开发的时候既可以使用ES6的新语法
+		又能再浏览器下正常运行。
+		
+		
+		webpack又是基于node环境的。
+		
+		安装node
+		
+		node.js基于JavaScript----开发后端的语言
+		
+		通过node 的npm去下载需要的文件。
+		
+		安装nrm可以切换速度更快的镜像
+		
+			npm install nrm --global
+			
+			切换:
+				nrm use xxx
+				
+			查看所有速度:
+				nrm test
+		
+		
+		webpack:
+			自动化构建工具
+			
+		1.入口
+			entry : './2.js'
+		2.出口
+			output:{
+				filename:'index.js',
+				path:path.resolve(__dirname,'build')
+			}
+		
+		3.模块
+			
+			module:{
+				rules:[
+					{
+						test:/\.js$/,
+						use:[]
+					}
+				]
+			}
+			
+		
+		4.插件
+		
+		
+		
+		如何构建？
+			
+			1.通过npm init初始化项目
+			
+			2.去项目中文件夹中安装webpack  npm install webpack --save
+			
+			在项目中配置你的webpack -> 新建一个webpack.config.js的文件
+			
+			
+			
+		
+	*/
+	
+</script>
+</body>
+</html>

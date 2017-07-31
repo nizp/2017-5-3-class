@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<button>播放/暂停</button>
+	<button>大</button>
+	<button>中</button>
+	<button>小</button>
+	<br />
+	<video id="myvideo" width="400px" controls="controls">
+		<source src="mov_bbb.mp4" type="video/mp4"></source>
+	</video>
+</body>
+	<script>
+		var btn=document.getElementsByTagName('button');
+		var myvideo=document.getElementById('myvideo');
+		btn[0].onclick=function(){
+			if(myvideo.paused){
+				myvideo.play();
+			}else{
+				myvideo.pause();
+			}
+		}
+		btn[1].onclick=function(){
+			myvideo.style.width='800px';
+		}
+		btn[2].onclick=function(){
+			myvideo.style.width='500px';
+		}
+		btn[3].onclick=function(){
+			myvideo.style.width='400px';
+		}
+	</script>
+</html>

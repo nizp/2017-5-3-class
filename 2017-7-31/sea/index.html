@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script src="sea.js" charset="utf-8"></script>
+   <!--<script src="1.js" charset="utf-8"></script>
+  <script src="2.js" charset="utf-8"></script>
+  <script src="3.js" charset="utf-8"></script> -->
+  <script type="text/javascript">
+    /*
+      1.引入sea.JS
+      2.seajs.use(要使用哪个js文件,function(cc){
+          cc就是这个js文件输出的数据
+      }) //去引入想要的js文件
+      3. exports,require
+    */
+    seajs.use('3',(c)=>{
+        console.log('引入了',c);
+    });
+    
+  </script>
+  </body>
+</html>

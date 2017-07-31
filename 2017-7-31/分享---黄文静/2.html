@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<style type="text/css">
+			div{
+				text-align: center;
+			}
+		</style>
+</head>
+	<div >
+			<button>播放/暂停</button>
+			<button>大</button>
+			<button>中</button>
+			<button>小</button>
+			<br/>
+			<video id="myvideo" width="400px" style="margin-top:20px" controls="controls">
+				<source src="mov_bbb.mp4" type="video/mp4"/>
+				Your browser does not support HTML5 video.
+				<!-- 你的浏览器不支持HTML5视频。 -->
+			</video>
+	</div>
+<body>
+
+	<script type="text/javascript">
+		var btns=document.getElementsByTagName('button');
+		var video=document.getElementById('video');
+
+		 btns[0].onclick=function(){
+		 		if(myvideo.paused){
+		 			myvideo.play();
+		 		}else{
+		 			myvideo.pause();
+		 		}
+		 }
+
+		 btns[1].onclick=function(){
+		 	myvideo.width=800;
+		 }
+
+		 btns[3].onclick=function(){
+		 	myvideo.width=300;
+		 }
+
+		 btns[2].onclick=function(){
+		 	myvideo.width=600;
+		 }
+	</script>
+</body>
+</html>
