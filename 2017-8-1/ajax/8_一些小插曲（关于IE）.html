@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+		用户名：<input type="text" id="user"/><span id="span"></span>
+<script type="text/javascript">
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+
+	
+	user.onblur = function(){
+		
+		const ajax = new XMLHttpRequest;
+		
+		//在IE浏览器下中文会被解析为URL编码格式，容易出问题，所以建议只要val值会出现中文就用encodeURI()转一下。
+		//ajax.open('get','php/get.php?user='+encodeURI(user.value));
+		
+		ajax.open('post','php/post.php');
+		
+		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		
+		ajax.send('user='+user.value);
+		
+		
+		ajax.onload = function(){
+			
+			span.innerHTML = ajax.responseText;
+			
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

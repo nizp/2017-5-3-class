@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		
+		用户名：<input type="text" name="user" id="user"/><span></span><br />
+		密码：<input type="password"/>
+		
+		<input type="button" value="提交"/>
+		<!--<input type="submit" value="提交"/>-->
+	<!--</form>-->
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		$.ajax({
+			url:'后端接口地址',
+			data:{
+				拼接的字段:需要拼接的数据（前端传给后端的数据）
+			},
+			//当服务器处理完之后返回的结果。
+			success:function(data){//回调。
+				console.log(data);
+			}
+		})
+	*/
+	
+//	$(':button').click(function(){
+	$('#user').blur(function(){
+		$.ajax({
+			url:'php/get.php',
+			data:{
+				pname:$('#user').val()
+			},
+			success:function(data){
+				$('span').text(data);
+//				console.log(data);
+			}
+		});
+		
+	});
+	
+</script>
+</body>
+</html>

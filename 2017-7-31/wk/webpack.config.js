@@ -1,6 +1,13 @@
 const path = require('path');
-const css = require('extract-text-webpack-plugin');//css分离
+const webpack = require('webpack');
+const ETWP = require('extract-text-webpack-plugin');//css分离
 const html = require('html-webpack-plugin');//html模板
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
+let cssExtract = new ETWP({
+	filename: '[name].css',
+	disable: true
+});
 
 module.exports = {
 	
@@ -9,7 +16,8 @@ module.exports = {
 	},
 	output:{
 		filename:'[name].js',
-		path:path.resolve(__dirname,'build')
+		path:path.resolve(__dirname,'build'),
+		publicPath: '/'
 	},
 	
 	module:{
@@ -22,9 +30,9 @@ module.exports = {
 			
 			{
 				test:/\.css$/,
-				use:css.extract({
+				use:cssExtract.extract({
 					fallback: "style-loader",
-          			use: "css-loader"
+          			use: ["css-loader"]
 				})
 				
 //				[
@@ -36,11 +44,20 @@ module.exports = {
 		]
 	},
 	plugins:[
-		new css('app.css'),
+		cssExtract
+		,
 		new html({
 			filename:'1.html',
 			template:'./index.html'
-		})
-	]
+		}),
+		new OpenBrowserPlugin({url: 'http://localhost:3000'}),
+		new webpack.HotModuleReplacementPlugin()
+	],
+	devServer: {
+	    hot: true, // 告诉 dev-server 我们在使用 HMR
+	    contentBase: path.resolve(__dirname),
+	    publicPath: '/',
+	    port: 3000
+	  }
 }
 

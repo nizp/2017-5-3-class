@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		
+		用户名：<input type="text" name="user" id="user"/><span id="span"></span>
+		<!--<input type="submit" value="提交"/>-->
+	<!--</form>-->
+<script type="text/javascript">
+	
+	/*
+		ajax交互模型（实现原理，实现机制） 
+		
+		打电话机制:
+			1.买部手机
+			
+			2.输入电话号码
+			
+			3.拨号
+			
+			4.等待对方接电话
+			
+			5.通话
+		
+	*/
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		
+		//1.创建一个ajax对象
+		
+		var ajax = new XMLHttpRequest(); 
+		
+		//2.填写请求地址
+		
+		/*
+			mothod:使用什么方式请求 
+			
+			url:请求的地址
+			
+			boolean：是否异步（默认为true）
+			
+			
+		*/
+		ajax.open('get','php/get.php?user='+user.value);
+		
+		
+		//3.发送请求
+		
+		ajax.send();
+		
+		//4.等待服务器响应
+		
+		span.innerHTML = ajax.responseText;
+		
+		ajax.onload = function(){
+			
+			//ajax.responseText：后端处理完成之后返回的数据
+			//5.通话
+			span.innerHTML = ajax.responseText;
+			
+		}
+		
+//		alert(1);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

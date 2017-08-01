@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="hint.css"/>
+		<link rel="stylesheet" type="text/css" href="滤镜/lvj.css"/>
+		<style type="text/css">
+			div{
+				width:50px;
+				height:50px;
+				background:red;
+			}
+			a{
+				width:500px;
+				height:500px;
+				display:block;
+			}
+			img{
+				width:500px;
+				height:500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div text="红色！" class="hint--bottom"></div>
+		<a href="">
+			<img src="image/pic.jpg"/>
+		</a>
+		<script type="text/javascript">
+			var a = document.getElementsByTagName('a')[0];
+			var img = document.getElementsByTagName('img')[0];
+			img.onmouseover = function(){
+				a.className = 'brannan';
+			}
+			img.onmouseout = function(){
+				a.className = '';
+			}
+		</script>
+	</body>
+</html>

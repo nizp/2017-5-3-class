@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+		用户名：<input type="text" id="user"/><span id="span"></span>
+<script type="text/javascript">
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	/*
+		post 不用在open这来拼接字段，在send这部来拼接
+		
+		在send之前就要设置一个请求头。
+		
+	*/
+	
+	user.onblur = function(){
+		
+		const ajax = new XMLHttpRequest;
+		
+		ajax.open('post','php/post.php');
+		
+		//请求头
+	
+		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		ajax.send('user='+user.value);
+		
+		ajax.onload = function(){
+			
+			span.innerHTML = ajax.responseText;
+			
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

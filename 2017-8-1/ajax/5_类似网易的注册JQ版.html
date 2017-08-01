@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+.red{
+	border: 1px solid red;
+}	
+.green{
+	border: 1px solid green;
+}
+</style>
+</head>
+<body>
+		用户名：<input type="text" id="user"/><span id="span"></span>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+
+	$('#user').blur(function(){
+		
+		$.ajax({
+			url:'php/get_json.php',
+			data:{
+				user:$('#user').val()
+			},
+			dataType:'json',
+			success:function(data){
+				//data = JSON.parse(data);
+				
+				$('#span').text(data.msg);
+				
+			}
+		})
+		
+	});
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+.red{
+	border: 1px solid red;
+}	
+.green{
+	border: 1px solid green;
+}
+</style>
+</head>
+<body>
+		用户名：<input type="text" id="user"/><span id="span"></span>
+<script type="text/javascript">
+	
+	/*
+		json :
+			'[]'
+			'{}'
+			
+			{}对象
+			[]数组对象
+			
+		只是一种获取动态数据的一种技术手段 --> 获取数据的方法
+		
+		var a = {
+			name:'momo'
+		}
+		
+		console.log(a);
+		
+	*/
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		
+		const ajax = new XMLHttpRequest;
+		
+		ajax.open('get','php/get_json.php?user='+user.value);
+		
+		ajax.send();
+		
+		ajax.onload = function(){
+			//var data = {name:xx,msg:'xxxx'}
+			var data = JSON.parse(ajax.responseText);//'{code:1,}'
+			if(data.code){
+				//失败
+				user.className = 'red';
+			}else{
+				//成功
+				
+				user.className = 'green';
+			}
+			
+			span.innerHTML = data.msg;
+			console.log(data);
+			
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

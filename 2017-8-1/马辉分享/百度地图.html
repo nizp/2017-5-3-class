@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,html,#allmap{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="allmap"></div>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=bjVPyuPgDoVVNA3GZSGqkqrdXIOyXgTx"></script>
+		<script type="text/javascript">
+//			var map = new BMap.Map("box");
+//			var point = new BMap.Point(116.404, 39.915); 
+//			map.centerAndZoom(point);
+			var map = new BMap.Map("allmap");
+			var point = new BMap.Point(116.404, 39.915); 
+			map.centerAndZoom(point, 6);
+			
+			
+			map.enableScrollWheelZoom();
+			
+			
+			var marker = new BMap.Marker(point); 
+			map.addOverlay(marker);          
+			marker.setAnimation(BMAP_ANIMATION_BOUNCE); 
+			
+			
+			var stCtrl = new BMap.PanoramaControl();
+			stCtrl.setOffset(new BMap.Size(20, 20));
+			map.addControl(stCtrl);
+			
+			
+			map.setMapStyle({style:'midnight'});
+		</script>
+	</body>
+</html>
