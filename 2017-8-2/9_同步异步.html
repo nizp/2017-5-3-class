@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" /><span id="span"></span>
+<script type="text/javascript">
+	/*
+		同步:
+			代码执行是一句一句的来，如果一句代码没有执行完就不会执行下段代码
+			下一句代码始终要等待上一句代码执行完成才会执行。
+			
+		异步:
+			代码执行是一句一句的来，如果上一句代码没有执行完可以执行另一段代码的
+			不用等待上一句代码执行完成就能执行。
+			
+	*/
+	
+	
+	var txt = document.getElementById('txt');
+	
+	txt.onblur = function(){
+		
+		var ajax = new XMLHttpRequest;
+			
+		ajax.open('get','php/get.php?user='+encodeURI(txt.value),false);
+	
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState == 4){
+				
+				if(ajax.status >= 200 && ajax.status <= 207 || ajax.status == 304){
+					alert(ajax.status)
+					
+				}else{
+					//失败
+					
+					alert(ajax.status)
+				}
+			}
+		}
+		
+		
+		ajax.send();
+		
+	}
+	
+	
+	
+
+</script>
+
+
+</body>
+</html>

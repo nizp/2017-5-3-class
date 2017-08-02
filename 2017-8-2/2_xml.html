@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="paohui" style="display: none;"/>
+	<button id="btn">点击走你</button>
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	
+	const btn = document.getElementById('btn');
+	
+	const ul = document.getElementById('ul');
+	
+	btn.addEventListener('click',click);
+	
+	function click(){
+		
+		const ajax = new XMLHttpRequest;
+		
+		ajax.open('get','php/data.xml');
+		
+		ajax.send();
+		
+		ajax.onload = function(){
+			//console.log( ajax.responseXML );
+			//专门用来解析XML数据的。
+			const data = ajax.responseXML;
+			
+			let persons = data.getElementsByTagName('person');
+			
+			persons = Array.from(persons);
+			
+			let html = '';
+			
+			persons.forEach(function(e){
+				
+				let name = e.getElementsByTagName('name')[0];
+				let age = e.getElementsByTagName('age')[0];
+				let sex = e.getElementsByTagName('sex')[0];
+				let info = e.getElementsByTagName('info')[0];
+				
+				html += `<li>我的名字叫${name.innerHTML}:我今年${age.innerHTML}岁了,不用猜我的性别一定是${sex.innerHTML}, 此时此刻想说:${info.innerHTML}</li>`;
+			});
+			
+			ul.innerHTML = html;
+			
+			console.log(persons);
+			
+		}
+	}
+	
+	
+	
+//	var str = `<content>
+//	<person>
+//		<name>小明</name>
+//		<age>18</age>
+//		<sex>男</sex>
+//		<info>我是一个快乐的逗逼青年。</info>
+//	</person>
+//	<person>
+//		<name>小红</name>
+//		<age>16</age>
+//		<sex>女</sex>
+//		<info>有人陪我逛街么？</info>
+//	</person>
+//	<person>
+//		<name>小梅</name>
+//		<age>17</age>
+//		<sex>女</sex>
+//		<info>只要你看到我的笑容，不要你看到我的笑纹</info>
+//	</person>
+//	<person>
+//		<name>小赵</name>
+//		<age>19</age>
+//		<sex>男</sex>
+//		<info>阿里月饼666</info>
+//	</person>
+//	<person>
+//		<name>小码</name>
+//		<age>19</age>
+//		<sex>男</sex>
+//		<info>十一还加班，码农真心伤不起....</info>
+//	</person>
+//	<person>
+//		<name>真胖</name>
+//		<age>18</age>
+//		<sex>男</sex>
+//		<info>永生这个大屌丝,继续互相伤害</info>
+//	</person>
+//</content>`;
+//	<name>小明</name>
+
+	//去除回车。
+//	function ClearBr(key) { 
+//		key = key.replace(/[\r\n]/g, ""); 
+//		return key; 
+//	} 
+//	
+//	str = ClearBr(str);
+//	
+//	//console.log(str.match(/<person>.+<\/person>/g));
+//	
+//	paohui.value = str.match(/<person>.+<\/person>/g);
+//	
+//	var Person = document.getElementsByTagName('person');
+//	console.log(paohui.value);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

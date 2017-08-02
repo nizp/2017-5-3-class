@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" /><span id="span"></span>
+<script type="text/javascript">
+	
+	/*
+		1. 请求了但是没成功
+		
+		ajax.status就是专门用查看HTTP状态码值的。
+		
+		状态码：
+			1,2,3,4,5字开头的
+			
+			
+			2字代表成功
+				200 - 207
+				
+			3字头重定向
+				www.baidu.com/app   (娱乐节目)
+				
+				www.baidu.com/appP 
+				
+			4字开头就是出错（请求错误）
+				404
+				
+			5字开头就是服务器的问题
+				
+		
+		成功的范围：
+			status >= 200 && status < 300 || status === 304
+		
+			
+		
+	*/
+	
+	let txt = document.getElementById('txt');
+	
+	txt.onblur = function(){
+		
+		const ajax = new XMLHttpRequest;
+		
+		ajax.open('get','php/get.php?user='+encodeURI(txt.value));
+		
+		//ajax.send();
+		
+		ajax.onload = function(){
+			var status = ajax.status;
+			if(status >= 200 && status <= 207 || status === 304){
+				span.innerText = ajax.responseText;
+			}else{
+				alert('挂了');
+			}
+			
+			console.log(ajax.status);
+			//span.innerText = ajax.responseText;
+//			//console.log(ajax.responseText);			
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

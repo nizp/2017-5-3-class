@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+<script type="text/javascript">
+	
+	/*
+		eval:
+			让字符串能够执行js代码
+	*/
+	
+//	var str = 'alert(123)';
+
+//	var arr = "[1,2,3,4]";
+
+//	var obj = "({'name':123})";
+
+	var obj = "{'name':123}";
+	
+	//new Function('a,b','return alert(a+b)')(1,2);
+	
+	var data = new Function('','return'+obj)();
+	
+	console.log(data);
+	
+	
+//	console.log(eval('('+ obj + ')'));
+	
+	
+//	console.log(obj.name)
+	
+//	console.log(eval(obj));
+	
+//	(function(){
+//		alert(123);
+//	})()
+	
+	
+	/*
+		new Function() 
+	*/
+	
+	txt.onblur = function(){
+		
+		//eval(this.value);
+		
+	}
+	
+	
+	
+</script>
+</body>
+</html>

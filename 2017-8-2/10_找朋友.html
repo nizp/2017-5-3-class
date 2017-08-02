@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="" id="txt" value="" placeholder="搜索你要找的朋友" />
+	<button id="btn">点击搜索</button>
+<script src="ajax_promise_1.0.js" type="text/javascript" charset="utf-8"></script>	
+<script type="text/javascript">
+	
+	const btn = document.getElementById('btn');
+	const txt = document.getElementById('txt');
+	
+	btn.onclick = function(){
+		
+		const fetch = ajax({
+			url:'php/ajax.php',
+			data:{
+				user:encodeURI(txt.value)
+			},
+			dataType:'json'
+		});
+		
+		fetch.then(function(json){
+			
+			switch(json.code){
+				case  0:
+					const div = document.createElement('div');
+					div.innerHTML = `<div>我叫${json.data.name},今年${json.data.age},爱好:${json.data.hobby},我想说:${json.data.info}!!</div>`
+//					console.log(json.data)
+					document.body.appendChild(div);
+				break;
+				case  1:
+					alert(json.data);
+				break;
+			}
+			
+			//console.log(json);
+			
+		}).catch(function(data){
+			alert(data.status);
+		});
+		
+		
+	}
+	
+	
+	
+</script>
+</body>
+</html>

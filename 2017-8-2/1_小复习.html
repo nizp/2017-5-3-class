@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" />
+<script type="text/javascript">
+	/*
+		
+		
+		2.php后面为什么有的带?有的不带?
+		
+			只要走url传输数据给后端那么就必须加问号。
+			
+			wd=变形金刚  & rsv_spt=1
+			
+		
+		3.请求头后面的设置是什么意思？
+		
+	*/
+	
+	
+	let txt = document.getElementById('txt');
+	
+	txt.onblur = function(){
+		
+		const ajax = new XMLHttpRequest;
+		
+		ajax.open('get','php/get.php?user='+encodeURI(txt.value));
+		
+		ajax.send();
+		
+		ajax.onload = function(){
+			
+			console.log(ajax.responseText);			
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

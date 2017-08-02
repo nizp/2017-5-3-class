@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            display: flex;
+            /*justify-content: center;
+            align-items: center;*/
+            width: 100%;
+            height: 100%;
+        }
+
+        div {
+            position: relative;
+            /*0*/
+            /*top: calc(50% - 100px);
+            left: calc(50% - 50px);*/
+            /*1*/
+            /*top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);*/
+            /*2*/
+            margin: auto;
+            width: 100px;
+            height: 200px;
+            background: linear-gradient(
+                transparent 21px, #ccc 21px, #ccc 29px, transparent 29px,
+                transparent 71px, #ccc 71px, #ccc 79px, transparent 79px,
+                transparent 121px, #ccc 121px, #ccc 129px, transparent 129px,
+                transparent 171px, #ccc 171px, #ccc 179px, transparent 179px
+            );
+        }
+        div:before,
+        div:after {
+            position: absolute;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 20px;
+            border-radius: 6px;
+            background: #ff0;
+            box-shadow: 0 50px #f00, 0 100px #0f0, 0 150px #00f;
+        }
+        div:before {
+            border-top-left-radius: 80px 20px;
+            border-top-right-radius: 80px 20px;
+        }
+        div:after {
+            top: 30px;
+            border-bottom-left-radius: 80px 20px;
+            border-bottom-right-radius: 80px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

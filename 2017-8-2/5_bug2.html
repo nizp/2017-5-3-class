@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" /><span id="span"></span>
+<script type="text/javascript">
+	
+	/*
+		1. 请求了但是没成功
+		
+		ajax.status就是专门用查看HTTP状态码值的。
+		
+		状态码：
+			1,2,3,4,5字开头的
+			
+			
+			2字代表成功
+				200 - 207
+				
+			3字头重定向
+				www.baidu.com/app   (娱乐节目)
+				
+				www.baidu.com/appP 
+				
+			4字开头就是出错（请求错误）
+				404
+				
+			5字开头就是服务器的问题
+				
+		
+		成功的范围：
+			status >= 200 && status < 300 || status === 304
+		
+		
+		2.IE9以下浏览器是不会触发onload的。
+			
+			在所有的浏览器都支持onreadystatechange
+			
+		当服务器进行响应的时候，每完成一个步骤就会触发这个事件。
+		
+		从发送到服务器处理完成一共有5个步骤
+		
+		每个步骤都是用数字来表示。
+		
+		0-4   ajax.readyState
+		
+		只不过0是监控不到的。
+		
+		不管它进行到几，只要到了数字4说明服务器接收并响应就绪。
+		
+		
+		XMLHttpRequest 对象的三个重要的属性：
+		
+			1.监听事件
+				onreadystatechange
+			
+			2.执行的步骤
+			
+				ajax.readyState
+			
+			3.状态码
+				ajax.status
+				
+		onreadystatechange放在send的前面与后面的区别？
+		
+		能多监听一步而已,其实能不能监听到意义不大，因为，只有数字4才算
+		请求响应完毕。
+			
+		
+			
+		
+	*/
+	
+	var txt = document.getElementById('txt');
+	
+	txt.onblur = function(){
+		
+		
+		var ajax = new XMLHttpRequest;
+		
+		
+		
+		ajax.open('get','php/get1.php?user='+encodeURI(txt.value));
+		
+		
+		
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState == 4){
+				
+				if(ajax.status >= 200 && ajax.status <= 207 || ajax.status == 304){
+					//成功
+					
+					alert(ajax.status)
+					
+				}else{
+					//失败
+					
+					alert(ajax.status)
+				}
+			}
+		}
+		
+		
+		ajax.send();
+		
+		
+		
+		
+		
+		
+		
+		
+//		ajax.onload = function(){
+//			alert( ajax.readyState );
+//			span.innerHTML = ajax.responseText;
+//		}
+		
+		//console.log(ajax.onload)
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

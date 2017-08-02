@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		
+		data : {
+			user:'leo',
+			pass:123456
+		}
+		
+		user=leo&pass=123456
+		
+		
+	*/
+	
+	var obj = {
+		user:'leo',
+		pass:123456
+	}
+	
+	var arr = [];
+	for(var attr in obj){
+		arr.push(attr + '=' + obj[attr]);
+	}
+	console.log(arr.join('&'));
+	
+	
+//	user=leo&pass=123456  转成 对象
+
+	var str = 'user=leo&pass=123456';
+	
+	var arr2 = str.split('&');
+	var obj2 = {};
+	for(var i=0;i<arr2.length;i++){
+		
+		var arr3 = arr2[i].split('=');
+		
+		obj2[arr3[0]] = arr3[1];
+	
+	}
+	
+	console.log(obj2)
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
