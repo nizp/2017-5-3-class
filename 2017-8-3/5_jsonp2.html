@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">按钮</button>
+<script type="text/javascript">
+	
+	function fn(data){
+		console.log(data);
+	}
+	
+	const btn = document.getElementById('btn');
+	
+	btn.onclick = function(){
+		
+		const oS = document.createElement('script');
+		oS.src = 'http://localhost/2017-8-3/php/qq.js';
+		
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+body{
+	transition:1s;
+}
+#div1{
+	width:100%;
+	height:3px;
+	position: relative;
+	top:50px;
+}
+#num{
+	position: absolute;
+	width:100%;
+	height: 3px;
+	line-height: 3px;
+	text-align: center;
+	top:-1px;
+	font-size: 30px;
+}
+#div2{
+	width:0;
+	height: 3px;
+	background: #317EF3;
+	transition: .2s;
+	opacity:1;
+}
+</style>
+</head>
+<body>
+	<!--<form action="post_file.php" method="post" enctype="multipart/form-data">
+		
+	</form>-->
+	<input type="file" name="file" id="f" value="" />
+	<input type="button" value="按钮" id="btn"/>
+	<span id="span"></span>
+	
+	<div id="div1">
+		<div id="div2"></div>
+		<span id="num">0%</span>
+	</div>
+	
+<script type="text/javascript">
+	
+	/*
+		当使用表单上传控件的时候，可以通过表单控件下的
+		files[0],找到上传的文件资源。
+		
+		
+		new FormData:
+			FormData对象可以组装一组用 XMLHttpRequest发送请求的键/值对
+			
+			通过append方法把键值对放到FormData对象中，当send的时候直接传
+			FormData对象即可。
+			
+			FormData.append('user','momo');
+			FormData.append('pass','12345');
+			
+			ajax.send(FormData);
+			
+		
+		ajax.upload.onprogress 来监控当前上传的进度
+		
+		这个事件对象中有
+		
+		loaded  每次传输的进度
+		
+		total   总进度
+			
+	*/
+	
+	
+	const f = document.getElementById('f');
+	const btn = document.getElementById('btn');
+	const span = document.getElementById('span');
+	const div2 = document.getElementById('div2');
+	const num = document.getElementById('num');
+	
+	
+	console.dir(f)
+	
+	btn.onclick = function(){
+		
+		const ajax = new XMLHttpRequest;
+		
+		ajax.open('post','post_file.php');
+		
+		
+		//ajax.setRequestHeader('Content-Type','multipart/form-data');
+		
+		const ff = f.files[0];
+		
+		const formData = new FormData;
+		
+		formData.append('file',ff);
+		
+		ajax.upload.onprogress = function(ev){
+			
+			div2.style.width = Math.trunc((ev.loaded / ev.total)*100) + '%';
+			num.innerHTML = Math.trunc((ev.loaded / ev.total)*100) + '%';
+			div2.style.opacity = 1 - ev.loaded / ev.total;
+			
+			if(ev.loaded / ev.total == 1){
+				document.body.innerHTML = '';
+				document.body.style.backgroundColor = 'skyblue';
+			}
+			
+			console.log(ev);
+		}
+		
+//		console.dir(ajax);
+		
+	
+		ajax.send( formData );
+		
+		
+//		ajax.onload = function(){
+//			console.log(ajax.responseText)
+//			//span.innerHTML = JSON.parse(ajax.responseText).msg;
+//		}
+	
+	}
+	
+	
+	
+	
+	
+</script>
+	
+</body>
+</html>

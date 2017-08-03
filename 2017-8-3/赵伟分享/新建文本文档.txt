@@ -1,0 +1,28 @@
+地址：https://github.com/impress/impress.js
+
+函数名 函数作用
+
+pfx 给css3属性加上当前浏览器可用的前缀
+arrayify 将Array-Like对象转换成Array对象
+css 将指定属性应用到指定元素上
+toNumber 将参数转换成数字，如果无法转换返回默认值
+byId 通过id获取元素
+$ 返回满足选择器的第一个元素
+$$ 返回满足选择器的所有元素
+triggerEvent 在指定元素上触发指定事件
+translate 将translate对象转换成css使用的字符串
+rotate 将rotate对象转换成css使用的字符串
+scale 将scale对象转换成css使用的字符串
+perspective 将perspective对象转换成css使用的字符串
+getElementFromHash 根据hash来获取元素，hash就是URL中形如#step1的东西
+computeWindowScale 根据当前窗口尺寸计算scale因子，用于放大和缩小
+empty 什么用都没有的函数，当浏览器不支持impress的时候会用到，一点用都没有
+impress 主函数，构造impress对象，这是一个全局对象
+onStepEnter 用于触发impress:stepenter事件
+onStepLeave 用于触发impress:stepleave事件
+initStep 初始化给定step
+init 主初始化函数
+getStep 获取指定step
+goto 切换到指定step
+prev 切换到上一个step
+

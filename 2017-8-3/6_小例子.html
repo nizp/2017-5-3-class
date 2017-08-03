@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="txt" id="txt" />
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	
+	const txt = document.getElementById('txt');
+	const ul = document.getElementById('ul');
+	
+	function fn(data){
+		
+		var html = '';
+		for(var i=0;i<data.s.length;i++){
+			html += '<li>'+data.s[i]+'</li>'
+		}
+		ul.innerHTML = html;
+		
+		console.log(data);
+	}
+	
+	
+	
+	txt.onkeyup = function(){
+		
+		const oS = document.createElement('script');
+		oS.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+txt.value+'&cb=fn';
+		
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link type="text/css" rel="stylesheet" href="common.css">
+</head>
+<body>
+<!--登陆-->
+<div class="loginBox">
+	<ul class="loginList clearfix">
+    	<li class="hTxt">用户注册</li>
+        <li class="inputBox">
+        	<input type="text" class="inputs" id="add_user">
+        </li>
+        <li class="inputBox">
+        	<input type="password" class="inputs" id="add_pass">
+        </li>
+        <li class="btns">
+            <input id="add_btn" type="button" class="reg" value="" />
+        </li>
+        <li class="look"><a href="user_view.php" target="_blank">查看已注册用户</a></li>
+    </ul>
+</div>
+<!--注册-->
+<div class="loginBox">
+	<ul class="loginList clearfix">
+    	<li class="hTxt">用户登陆</li>
+        <li class="inputBox">
+        	<input type="text" class="inputs" id="login_user">
+        </li>
+        <li class="inputBox">
+        	<input type="password" class="inputs" id="login_pass">
+        </li>
+        <li class="btns">
+            <input id="login_btn" type="button" class="login" value="" />
+        </li>
+    </ul>
+</div>
+<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	/*
+		$.ajax({
+			url,
+			method:'get',
+			dataType:'json',
+			data:{
+				act:'add',
+				user:xxx.val()
+			},
+			success:function(data){
+				
+			}
+		})
+		
+	*/
+	
+	//user.php?act=add&user=用户名&pass=密码
+	
+	$('#add_btn').click(function(){
+		
+		let addVal = $('#add_user').val();
+		
+		let addPVal = $('#add_pass').val();
+		
+//		$.get('user.php?act=add&user='+addVal+'&pass='+addPVal,function(data){
+	
+	
+
+	$.get('user.php',{
+		act:'add',
+		user:addVal,
+		pass:addPVal
+	},function(data){
+			data = new Function('','return'+ data)();
+				
+				if(data.error == 0){
+					alert('恭喜你加入魔法的世界!!!!');
+					
+					setTimeout(function(){
+						location.href = 'ajax_error.php';
+					},2000);
+					
+				}
+				
+				if(data.error == 1){
+					alert('只给你一个漂亮的失败弹框');
+				}
+				
+				
+				$('#add_user,#add_pass').val('');
+
+				console.log(data);
+
+		})
+		
+//		$.ajax({
+//			url:'user.php',
+//			data:{
+//				act:'add',
+//				user:addVal,
+//				pass:addPVal
+//			},
+//			success:function(data){
+//				
+//				data = new Function('','return'+ data)();
+//				
+//				if(data.error == 0){
+//					alert('恭喜你加入魔法的世界!');
+//					
+//					setTimeout(function(){
+//						location.href = 'ajax_error.php';
+//					},2000);
+//					
+//				}
+//				
+//				if(data.error == 1){
+//					alert('只给你一个漂亮的失败弹框');
+//				}
+//				
+//				
+//				$('#add_user,#add_pass').val('');
+//
+//				console.log(data);
+//				
+//			}
+//		});
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

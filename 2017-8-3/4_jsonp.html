@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<button id="btn">按钮</button>-->
+<!--<script src="php/qq.js"></script>-->
+<script type="text/javascript">
+	
+	/*
+		一些跨域标签
+		
+			link  src="" 专门解析图片
+			
+			img src=""  专门解析图片
+			
+			script src=""  专门解析js的。
+			
+			文件是什么内容不是由后缀名决定的，而是内容决定的。
+			
+			script会尽可能的解析js相关的代码。
+			
+			
+			jsonp实现:
+			
+				1、
+					***首先数据必须要为一个函数名加括号的数据
+					fn([{},{},{}]); 
+				2、
+					需要在***全局***下声明一个与数据的函数名一致的函数。
+					
+					function fn(){}  //能找到
+					
+					//全局不能找到fn
+					window.onload = function(){  
+						function fn(){}
+					}
+					
+				3、
+					想在哪里使用就创建一个srcipt标签，src等于数据的地址即可
+					
+					
+				
+				
+			
+		
+	*/
+	
+	
+//	alert(a);
+
+	var a = 10;
+	
+//	setTimeout(function(){
+//		alert(b);
+//	})
+
+//	window.onload = function(){
+//		alert(b);
+//	}
+	
+	function fn(b){
+		console.log(b);
+	}
+	
+//	alert(b);  //在30行把15弹出来
+	
+	/*
+		A:报错   b:undefined c:15  d:5
+	*/
+	
+</script>
+
+<script type="text/javascript">
+	var b = 15;
+	alert(a);
+	fn(b);
+	
+	/*
+		A:报错   b:undefined c:10  d:'' 
+	*/
+	
+
+</script>
+</body>
+</html>
