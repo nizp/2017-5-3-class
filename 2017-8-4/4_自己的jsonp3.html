@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	
+	
+	let txt = document.getElementById('txt');
+	
+
+	txt.onkeyup = function(){
+		
+		jsonp({
+			url:'https://sug.so.360.cn/suggest',
+			data:{
+				
+				word:txt.value
+			}
+		});
+		
+	}
+	
+	
+	function jsonp(json){
+		
+		let settings = {
+			url:'',
+			data:{},
+			success:function(){}
+		}
+		
+		let fnName = 'jQuery'+Math.random()+(+new Date);
+		
+		fnName = fnName.replace('0.','_');
+		console.log(fnName)
+		
+		/*
+			因为fnName要挂在全局，后端接口才能调用得到。
+			
+			所以，把函数挂在了window身上。
+			
+			但是jsonp这个框架中的数据逻辑，不可能每次都一样，所以
+			数据的处理不能放在框架内。要提出去... 请看下个课件
+			
+		*/
+		window[fnName] = function (data){
+			console.log(data);
+			let html = '';
+			data.s.forEach((e,i)=>{
+				if(i <= 4){
+					html += `<li><a _blank href="https://www.so.com/s?ie=utf-8&fr=none&src=home_suggst_3.2.2&q=${e}&eci=3630d43d534fdb80&nlpv=suggest_3.2.2">${e}</li>`;
+				}
+			});
+			
+			ul.innerHTML = html;
+		}
+		
+		
+		
+		
+		//浅拷贝
+		Object.assign(settings,json);
+		
+		//表单序列化
+		let arr = [];
+		for(let attr in settings.data){
+			
+			arr.push(attr + '=' + settings.data[attr]);
+			
+		}
+		let str = arr.join('&');
+		
+		let oS = document.createElement('script');
+		oS.src = settings.url + '?' + str + '&callback='+ fnName ;
+		document.getElementsByTagName('head')[0].appendChild(oS);
+		//删
+		oS.remove();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+
+</body>
+</html>

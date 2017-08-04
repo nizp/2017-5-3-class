@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.say = function(){
+		alert(this.name);
+	}
+	
+	
+	function Police(name,age,job){
+		Person.call(this,name,age);
+		this.job = job;
+	}
+	
+	let paohui = function(){}
+	
+	paohui.prototype = Person.prototype;
+	
+	Police.prototype = new paohui;
+	
+	Police.prototype.constructor = Police;
+	
+	
+	Police.prototype.kongfu = function(){
+		alert('各种必杀技');
+	};
+	
+	Police.prototype.say = function(){
+		alert(this.name+'是个'+this.job);
+	};
+	
+	
+	var p = new Police('脏脏',18,'警察');
+	
+	var p2 = new Person('管管',17);
+	
+	p2.say();
+	
+	p.say();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

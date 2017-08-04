@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<button>按钮一</button>
+	<button>按钮二</button>
+<script type="text/javascript">
+	
+	const btns = document.getElementsByTagName('button');
+	/*
+		当数据为固定格式的时候如果在不同场景下访问同一个接口，
+		多个函数会被最后一个函数给覆盖
+		
+		如果有种情况就最好
+			
+			不同场景调用不同的函数就好了，也就是说，后端的接口的函数名是前端来定的，这样就能解决我们的问题。
+			
+		
+		
+	*/
+	
+	function fn1(data){
+		console.log(data);
+	}
+	
+	
+	function fn2(data){
+		alert(data);
+	}
+	
+	btns[0].onclick = function(){
+		
+		let oS = document.createElement('script');
+		
+		oS.src = 'data2.php?callback=fn1';
+		
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+	
+	btns[1].onclick = function(){
+		
+		let oS = document.createElement('script');
+		
+		oS.src = 'data2.php?callback=fn2';
+		
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+
+	
+	
+</script>
+</body>
+</html>

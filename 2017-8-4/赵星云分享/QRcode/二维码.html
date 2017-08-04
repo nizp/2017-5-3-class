@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" value="" />
+	<div id="qrcode" style="width: 256px;height: 256px;margin-top: 20px;"></div>
+	<script src="js/qrcode.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var qrcode = new QRCode(document.getElementById('qrcode'),{
+			text:'http://www.baidu.com',
+			width:256,
+			height:256,
+			colorDark:'#000',
+			colorLight:'#fff',
+			correctLevel:QRCode.CorrectLevel.L
+		})
+		function makeCode(){
+			var txt = document.getElementById('txt');
+			if(!txt.value){
+				alert('请输入网址');
+				return;
+			}else{
+				qrcode.clear();
+				qrcode.makeCode('http://'+txt.value)
+			}
+		}
+		var txt = document.getElementById('txt');
+		console.log(txt)
+		txt.onkeydown = function(ev){
+			if(ev.keyCode ==13){
+				makeCode()
+			}
+		}
+	</script>
+</body>
+</html>

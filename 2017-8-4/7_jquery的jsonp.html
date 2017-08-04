@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+	<ul id="ul">
+		
+	</ul>
+<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	$('#txt').keyup(function(){
+		
+		$.ajax({
+			dataType:'jsonp',
+			url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=?',
+			data:{
+				wd:$('#txt').val()
+			},
+			success:function(data){
+				let html = '';
+				data.s.forEach((e,i)=>{
+					if(i <= 4){
+						html += `<li><a _blank href="https://www.so.com/s?ie=utf-8&fr=none&src=home_suggst_3.2.2&q=${e}&eci=3630d43d534fdb80&nlpv=suggest_3.2.2">${e}</li>`;
+					}
+				});
+				
+				ul.innerHTML = html;
+			}
+		});
+	});
+	
+
+	
+</script>
+
+</body>
+</html>

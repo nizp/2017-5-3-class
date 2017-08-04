@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" value="" placeholder="请输入网址"/>
+		<div id="qrcode" style="width: 256px;height: 256px;margin-top: 20px;"></div>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/qrcode.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//设置qrcode参数
+			var qrcode = new QRCode(document.getElementById('qrcode'),/*自己设置参数*/ {
+			  text: 'www.baidu.com',
+			  width: 256,//二维码的宽高
+			  height: 256,
+			  colorDark: '#000',//颜色
+			  colorLight: '#fff',
+			  correctLevel: QRCode.CorrectLevel.H//容错级别
+			});
+			//生成二维码
+			function makeCode(){
+				var txt = document.getElementById('txt');
+				if(!txt.value){
+					alert('你还没输入网址');
+					return;
+				}else{
+					//使用API
+					qrcode.clear();
+					qrcode.makeCode('http://'+txt.value);//设置二维码内容
+				}
+			}
+			$('#txt').on('keydown',function(e){
+				if(e.keyCode == 13){
+					makeCode();
+				}
+			});
+		</script>
+	</body>
+</html>

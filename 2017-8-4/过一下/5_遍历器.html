@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var obj = {
+		name:'hehe',
+		age:18
+	}
+	obj[Symbol.iterator] = function(){
+		let arr = Object.keys(obj);
+		let num = 0;
+		let len = arr.length;
+		return {
+			next(){
+				
+				if(num < len){
+					
+					return {
+						value:{
+							val:arr[num],
+							key:num++
+						},
+						done:false
+					}
+					
+				}else{
+					
+					return {
+						value:null,
+						done:true
+					}
+					
+				}
+				
+				
+			}
+		}
+		
+		
+	}
+
+	
+
+	
+	
+	for(var {key,val} of obj){
+		console.log(val)
+	}
+	
+</script>
+</body>
+</html>

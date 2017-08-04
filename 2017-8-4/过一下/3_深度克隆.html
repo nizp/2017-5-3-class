@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+	 	深度克隆:
+	 	
+	 	var arr = [1,2,3,4,[1,2,3]]
+	 		
+	*/
+	
+	function deepclone(obj){
+		var o = (obj.push == undefined)?{}:[];
+		var toS = Object.prototype.toString;
+		
+		for(var attr in obj){
+			
+			if(toS.call(obj[attr]) == '[object Array]' || toS.call(obj[attr]) == '[object Object]'){
+				
+				o[attr] = deepclone(obj[attr]);
+				
+			}else{
+				o[attr] = obj[attr];
+			}
+		}
+		
+		return o;
+		
+	}
+	
+	var obj = [1,2,4,[1,2]];
+	
+	var arr = deepclone(obj)
+	
+	arr[3].push(5);
+	
+	console.log(obj);
+	
+	
+	
+</script>
+</body>
+</html>

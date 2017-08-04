@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	/*
+		var f = new FormData
+		
+		f.append(key,value)  user=xxx
+		
+		ajax.upload.onprogress
+		
+		ev.loaded
+		
+		ev.total
+		
+		跨域：
+			不同源就是跨域
+			
+			不同协议、端口、域名
+			
+		解决跨域：
+			1.新版XMLHttpRequest + 后端在请求头中设置权限
+			
+			2.服务器代理
+			
+			3.flash
+			
+			4.iframe
+			
+			5.jsonp (json + padding)
+			
+			
+		jsonp:
+		
+			1.全局声明一个函数
+			
+			2.后端返回的数据必须要为函数名+（）
+			
+			3.创建script标签 src="数据地址"
+					
+//	https://www.sogou.com/suggnew/ajajjson?key=sss&type=web&ori=yes&pr=web&abtestid=5&ipn=&t=1501816973032&suguuid=fdfab536-a9f3-4acf-aab6-ddade6dc2bfe&ip=218.247.211.50&iploc=1100&suid=7DE0F2B63665860A5890A7DB00078D9F&yyid=null&pid=sogou&policyno=null&mfp=null&hs=https&mp=1&prereq_a=&sugsuv=1485215571769602&sugtime=1501816980634
+
+
+//	https://sug.so.360.cn/suggest?callback=fn&encodein=utf-8&encodeout=utf-8&format=json&fields=word&word=miaov
+
+//	https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=ss&json=1&p=3&sid=1452_21125_17001_20928&req=2&csor=2&pwd=s&cb=jQuery110208274196507354024_1501816637639&_=1501816637644
+		
+		xxxx;
+		
+		;function fn1(){
+			alert(1);
+		}
+		
+			
+			
+	*/
+	
+	let txt = document.getElementById('txt');
+	function fn(data){
+		//console.log(data.result);
+		let html = '';
+		data.result.forEach((e,i)=>{
+			if(i <= 4){
+				html += `<li><a _blank href="https://www.so.com/s?ie=utf-8&fr=none&src=home_suggst_3.2.2&q=${e.word}&eci=3630d43d534fdb80&nlpv=suggest_3.2.2">${e.word}</li>`;
+			}
+		});
+		
+		ul.innerHTML = html;
+		
+		
+	}
+	
+	/*
+		拿到接口，第一件事，直接访问接口，看看是jsonp还是ajax 
+	*/
+	txt.onkeyup = function(){
+		let oS = document.createElement('script');
+		oS.src = 'https://sug.so.360.cn/suggest?callback=fn&encodein=utf-8&encodeout=utf-8&format=json&fields=word&word='+this.value;
+		
+		document.getElementsByTagName('head')[0].appendChild(oS);
+		
+		
+		/*
+			当创建script并且插入到页面的时候 （动态加载）都是异步
+			
+			这个时候本次请求已经提交，后端只要返回正确的数据fn()
+			
+			那么不管什么时候删除script前端都会接受到后端的数据。
+		*/
+		
+		oS.remove();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+
+</body>
+</html>

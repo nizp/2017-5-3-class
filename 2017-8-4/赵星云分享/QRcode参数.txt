@@ -1,0 +1,11 @@
+colorDark:前景色
+colorLight:背景色
+correctLevel:
+	QRCode.CorrectLevel.L(容错级别)
+	QRCode.CorrectLevel.L
+	QRCode.CorrectLevel.M
+	QRCode.CorrectLevel.Q
+	QRCode.CorrectLevel.H
+API接口：
+   makeCode(text)  //设置二维码内容
+   clear()         //清除二维码	

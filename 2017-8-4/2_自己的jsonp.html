@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	
+	
+	let txt = document.getElementById('txt');
+	function fn(data){
+		console.log(data);
+		let html = '';
+		data.s.forEach((e,i)=>{
+			if(i <= 4){
+				html += `<li><a _blank href="https://www.so.com/s?ie=utf-8&fr=none&src=home_suggst_3.2.2&q=${e}&eci=3630d43d534fdb80&nlpv=suggest_3.2.2">${e}</li>`;
+			}
+		});
+		
+		ul.innerHTML = html;
+	}
+
+	txt.onkeyup = function(){
+		
+		jsonp({
+			url:'https://sug.so.360.cn/suggest',
+			data:{
+				callback:'fn',
+				word:txt.value
+			}
+		});
+		
+	}
+	
+	
+	function jsonp(json){
+		
+		let settings = {
+			url:'',
+			data:{}
+		}
+		
+		//浅拷贝
+		Object.assign(settings,json);
+		
+		//表单序列化
+		let arr = [];
+		for(let attr in settings.data){
+			
+			arr.push(attr + '=' + settings.data[attr]);
+			
+		}
+		let str = arr.join('&');
+		
+		let oS = document.createElement('script');
+		oS.src = settings.url + '?' + str;
+		document.getElementsByTagName('head')[0].appendChild(oS);
+		//删
+		oS.remove();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    	body{
+    		_background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+       
+      }
+      ul{
+        list-style: none;
+        margin: 0 auto;
+        /*border:1px solid #000;*/
+        width:1050px;
+        overflow: hidden;
+         opacity: 0;
+        transition: 1s;
+      }
+      li{
+        /*position: absolute;*/
+        border: 1px solid #ccc;
+        float: left;
+        margin: 8px;
+        width:236px;
+      }
+      
+    #div1{
+			width:100%;
+			height:3px;
+			position: relative;
+			top:50px;
+		}
+		#num{
+			position: absolute;
+			width:100%;
+			height: 3px;
+			line-height: 3px;
+			text-align: center;
+			top:-1px;
+			font-size: 30px;
+		}
+		#div2{
+			width:0;
+			height: 3px;
+			background: #317EF3;
+			transition: .2s;
+			opacity:1;
+		}
+      
+    </style>
+  </head>
+  <body>
+  	<div id="div1">
+  		<div id="div2"></div>
+  		<span id="num">0%</span>
+  	</div>
+    <ul id="ul">
+    	<li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  <script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	/*
+		 <li>
+          <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+        </li>
+        
+      img = new Image()
+      
+      img.src = 'xxx';
+     //图片加载成功进的函数
+      img.onload = function(){
+      	
+      }
+      
+     //图片加载失败进的函数
+     img.onerror = function(){
+     	
+     }
+     
+   	
+	*/
+	
+	//http://www.wookmark.com/api/json/popular?callback=?
+	
+	
+	let num = 0; //计算加载完成个个数
+	
+	$.ajax({
+		dataType:'jsonp',
+		url:'http://www.wookmark.com/api/json/popular?page=2&callback=?',
+		success:function(data){
+			
+			$.each(data,function(i,e){
+				
+				const div = $('<div class="pic"></div>');
+				const img = $(`<img src="${e.preview}"/>`);
+				
+				//当图片加载完成之后才插入，过滤坏图。
+				img[0].onload = function(){
+					num++;
+					
+					//设置进度的宽度
+					$('#div2').css({
+						width:Math.trunc((num / 50)*100) + '%',
+						opacity:1-(num / 50)
+					});
+					
+					//num的数值
+					$('#num')[0].innerHTML = Math.trunc((num / 50)*100) + '%';
+
+					var index = minIndex(); //最小的
+					div.append(img);
+					$('li').eq(index).append(div);
+					
+					//当num==50的时候说明加载完成
+					if(num == 50){
+						setTimeout(function(){
+							$('ul').css({
+								opacity:1
+							});
+							$('#div1').hide();
+						},500)
+					}
+					
+					//console.log(index);
+				};
+				
+				//有的图片会挂，一旦挂了num就不会变为50，就卡了，所以当图片挂了的时候依然能够完成100%
+				img[0].onerror = function(){
+					num++;
+					if(num == 50){
+						setTimeout(function(){
+							$('ul').css({
+								opacity:1
+							});
+							$('#div1').hide();
+						},500);
+					}
+				}
+			});
+			
+			console.log(data);
+		}
+	});
+	
+	//找到li中谁最短
+	function minIndex(){	
+		let lis = $('li');
+		let arr = [];
+		let num = 0;
+		lis.each(function(i,e){
+			arr.push(e.scrollHeight);
+		});
+		//最小的。
+		num = Math.min.apply(null,arr);
+		
+		return arr.findIndex(e=>e==num);
+		
+	}
+	
+	
+	
+	
+</script>
+</body>
+</html>

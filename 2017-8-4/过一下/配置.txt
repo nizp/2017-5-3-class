@@ -1,0 +1,4 @@
+babel-core babel-loader babel-preset-env css-loader style-loader extract-text-webpack-plugin html-webpack-plugin  webpack
+
+
+open-browser-webpack-plugin webpack-dev-server
