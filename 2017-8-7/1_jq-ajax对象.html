@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+	
+<script type="text/javascript">
+	var a = $.ajax({
+//		beforeSend:function(XHR){
+//			console.log(XHR);
+//		}
+		url:'http://image.baidu.com/channel/listjson?&rn=30&ie=utf8&pn=0'
+		,
+		data:{
+			tag1:'明星',
+			tag2:'全部'
+		},
+		success:function(data){
+			console.log(data);
+		}
+	});
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    	body{
+    		background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+      }
+      ul{
+        list-style: none;
+        margin: 0 auto;
+        /*border:1px solid #000;*/
+        /*overflow: hidden;*/
+        position: relative;
+      }
+      li{
+        position: absolute;
+        border: 1px solid #ccc;
+        width:236px;
+        transition: .5s;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul"></ul>
+  <script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	/*
+		 <li>
+          <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+        </li>
+        
+      img = new Image()
+      
+      img.src = 'xxx';
+     //图片加载成功进的函数
+      img.onload = function(){
+      	
+      }
+      
+     //图片加载失败进的函数
+     img.onerror = function(){
+     	
+     }
+     
+	*/
+	
+	//http://www.wookmark.com/api/json/popular?callback=?
+	
+	
+	let oneW = 236;
+	let marginL = 10;
+	let iW = $(window).innerWidth() + marginL;
+	let ActW = oneW + marginL;
+	let len = Math.floor(iW / ActW);
+	let num = 0;
+	let arrT = [];
+	let arrL = [];
+	
+	
+	$('ul').width(ActW * len - marginL);
+	
+	for(var i=0;i<len;i++){
+		arrT.push(0);
+		arrL.push(ActW * i);
+	}
+	
+	AddPic(num);
+	function AddPic(num){
+			$.ajax({
+				url:'http://www.wookmark.com/api/json/popular?callback=?',
+				page:num,
+				dataType:'jsonp',
+				success:function(data){
+					$.each(data,function(i,e){
+						let li = $('<li>');
+						let iH = (e.height*oneW)/e.width;
+						let img = $(`<img src="${e.preview}" style="height:${iH}px">`)[0];
+										
+						img.onload = function(){
+							li.append(img);
+							
+							li.css({
+								left:arrL[minIndex()],
+								top:arrT[minIndex()]
+							});
+							
+							$('ul').append(li);
+							
+							arrT[minIndex()] += (iH+10);
+							
+						}
+					});
+				}
+			});
+	}
+	
+	$(window).resize(function(){
+		
+		let iW = $(window).innerWidth() + marginL;
+		let len = Math.floor(iW / ActW);
+		$('ul').width(ActW * len - marginL);
+		arrT.length = arrL.length = 0;
+		
+		for(var i=0;i<len;i++){
+			arrT.push(0);
+			arrL.push(ActW * i);
+		}
+		
+		$('li').each(function(i,e){
+	
+			$(e).css({
+				left:arrL[minIndex()],
+				top:arrT[minIndex()]
+			});
+			
+			arrT[minIndex()] += ($(e).height() + 10);
+			
+		});
+		
+		
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	console.log(len);
+	
+	
+	
+	
+	//找到arrT中谁最短
+	function minIndex(){	
+		var num = 0;
+		num = Math.min.apply(null,arrT);
+		return arrT.findIndex(e=>e==num);
+	}
+	
+	
+	
+	
+</script>
+</body>
+</html>

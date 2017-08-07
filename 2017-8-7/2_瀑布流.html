@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    	body{
+    		background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+      }
+      ul{
+        list-style: none;
+        margin: 0 auto;
+        /*border:1px solid #000;*/
+        width:1050px;
+        overflow: hidden;
+      }
+      li{
+        /*position: absolute;*/
+        border: 1px solid #ccc;
+        float: left;
+        margin: 8px;
+        width:236px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul">
+    	<li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+          <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+        <li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+         <li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+         <li>
+          <!--<div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>-->
+        </li>
+        
+        
+    </ul>
+  <script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	/*
+		 <li>
+          <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+        </li>
+        
+      img = new Image()
+      
+      img.src = 'xxx';
+     //图片加载成功进的函数
+      img.onload = function(){
+      	
+      }
+      
+     //图片加载失败进的函数
+     img.onerror = function(){
+     	
+     }
+     
+   	
+	*/
+	
+	//http://www.wookmark.com/api/json/popular?callback=?
+	
+	let num = 1;
+	var lis = $('li');
+	var onOff = true;
+	
+	AddPic(num);
+	
+	/*
+		
+		
+		问题：
+			在滚动的时候只要最小的那个元素已经进入if判断就会不停加载，
+			滚动的频率非常高，所以才会出现这个bug
+			
+		想要的:
+			滚一下加载一组（50张），在加载的过程中不允许加载下一组图片，
+			加载下组图片的条件，本次加载完。
+			
+	*/
+	
+	
+	$(window).scroll(function(){
+		 var index = lis[minIndex()];
+
+		 if(index.scrollHeight <= $(window).innerHeight() + $(window).scrollTop()){
+		 		
+		 		if(onOff){
+		 			num++;
+//			 		console.log(num);
+			 		AddPic(num);
+		 		}
+		 		
+		 }
+		
+	});
+	
+	
+	
+	
+
+
+	function AddPic(num){
+		console.log('小菊花开始转');
+		onOff = false;
+		$.ajax({
+			dataType:'jsonp',
+			url:'http://www.wookmark.com/api/json/popular?callback=?',
+			data:{
+				page:num
+			},
+			success:function(data){
+				
+				$.each(data,function(i,e){
+					
+					const div = $('<div class="pic"></div>');
+					const img = $(`<img src="${e.preview}"/>`);
+					
+					//当图片加载完成之后才插入，过滤坏图。
+					img[0].onload = function(){
+						var index = minIndex();
+						div.append(img);
+						$('li').eq(index).append(div);
+						//console.log(index);
+					};
+	
+				});
+				
+				onOff = true;
+				console.log('小菊花转完了');
+			}
+	});
+	}
+	
+	//找到li中谁最短
+	function minIndex(){	
+		let lis = $('li');
+		let arr = [];
+		let num = 0;
+		lis.each(function(i,e){
+			arr.push(e.scrollHeight);
+		});
+		//最小的。
+		num = Math.min.apply(null,arr);
+		
+		return arr.findIndex(e=>e==num);
+		
+	}
+	
+	
+	
+	
+</script>
+</body>
+</html>

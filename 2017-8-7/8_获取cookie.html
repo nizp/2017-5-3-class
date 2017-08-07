@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		获取的时候，一次性能获取到当前域名下的所有cookie
+		每个cookie是用; 来分割的（*分号空格*）
+	*/
+//	var n = 0;
+	//alert(document.cookie);
+	console.log(getCookie('num'));
+	
+//	console.log(n);
+	
+	
+	function getCookie(key){
+		let str = document.cookie;
+		let arr = str.split('; ');
+		let val = null;
+		
+		for(var i=0;i<arr.length;i++){
+			let arr2 = arr[i].split('=');
+			if(arr2[0] == key){
+				val = arr2[1]; 
+				break;
+			}
+		}
+		
+		if(!val){
+			return -1;
+		}else{
+			return val;
+		}
+	}
+	
+	
+	
+	
+</script>
+</body>
+</html>

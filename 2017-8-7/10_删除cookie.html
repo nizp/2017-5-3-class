@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		删除cookie:
+		
+			其实就是设置一个时间小于当前。
+			
+	*/
+	
+	
+	setCookie('name2','momo',10);
+	
+	document.onclick = function(){
+		removeCookie('name2','momo');
+	}
+	
+	
+	
+	function removeCookie(key,value){
+		setCookie(key,value,-1);
+	}
+	
+	function setCookie(key,value,time){
+		if(time){
+			var iDate = new Date();
+			iDate.setDate(iDate.getDate()+time);
+			document.cookie = key+'='+value+';expires='+iDate
+		}else{
+			document.cookie = key+'='+value;
+		}
+	}
+	function getCookie(key){
+		let str = document.cookie;
+		let arr = str.split('; ');
+		let val = null;
+		
+		for(var i=0;i<arr.length;i++){
+			let arr2 = arr[i].split('=');
+			if(arr2[0] == key){
+				val = arr2[1]; 
+				break;
+			}
+		}
+		
+		if(!val){
+			return -1;
+		}else{
+			return val;
+		}
+	}
+	
+	
+	
+	
+</script>
+</body>
+</html>

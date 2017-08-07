@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" name="" id="" value="上一个" />
+	<input type="button" name="" id="" value="下一个" />
+	<div id="div"></div>
+<script type="text/javascript">
+	
+	/*
+		前进：
+			history.back()
+			
+		后退：
+			history.forward()
+			
+		前进后退
+			go(1) 进一
+			go(-1)退一
+		
+		添加历史记录:
+			history.pushState(数据,名字,url)
+		
+	*/
+	const inputs = document.getElementsByTagName('input');
+	const div = document.getElementsByTagName('div')[0];
+	let num = 0;
+	let obj = {}
+	let arr = ['第一天','第二天','第三天','第四天']
+	
+	inputs[0].onclick = function(){
+		history.go(-1);
+		num -- ;
+		if(num<0)num=0;
+		obj.page = num;
+		
+		div.innerHTML = arr[obj.page];
+	}
+	inputs[1].onclick = function(){
+		//history.go();
+		
+		num ++;
+		
+		obj.page = num;
+		
+		history.pushState(obj, '', '#page='+num);
+		
+		div.innerHTML = arr[obj.page];
+	}
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

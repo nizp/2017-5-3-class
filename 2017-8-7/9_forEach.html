@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		forEach只有跳过，没有跳出。
+		
+		forEach不能brack。
+		
+	*/
+	var arr = [1,2,3,4,5];
+	
+	
+	arr.forEach(function(e,i){
+		if(e > 2){
+			//alert(e);
+			return;
+		}
+
+		alert(e);
+		
+	});
+	
+	
+</script>
+</body>
+</html>
