@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="div"></div>
+	
+	<p id="p">
+		<!--<span style="padding:10px;background: #ccc;margin:3px;">服装</span><span style="padding:10px;background: #ccc;">游戏</span>-->
+	</p>
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	
+	/*
+		1.服装
+		2.游戏
+		3.电影
+		4.音乐
+	*/
+	
+	
+	var arr = ['服装','游戏','电影','音乐'];
+	let obj = {
+		['num'+arr[0]]:['男装','女装','童装','唐装','汉服','西服'],
+		['num'+arr[1]]:['魔兽世界','LOL','DOT2','炉石','风暴英雄','守望先锋'],
+		['num'+arr[2]]:['战狼2','阿凡达','死神来了','生化危机','异形','速度与激情','地道战'],
+		['num'+arr[3]]:['count on me','暧昧','爱如潮水','200x年的第一场雪','告白气球','壁虎漫步']
+	}
+	
+	console.log(obj);
+	
+	var arr2 = [];
+	
+	var html = '';
+	for(var i=0;i<arr.length;i++){
+		html += `<button>${arr[i]}</button>`
+	}
+	div.innerHTML = html;
+	
+	//如果有like的数据
+	if(getCookie('like')!=-1){
+		var concatArr = [];
+		var lHtml = '';
+		let likes = JSON.parse(getCookie('like'));
+		
+		//把之前看过的数据提取出来
+		for(var i=0;i<likes.length;i++){
+			lHtml += '<span style="padding:10px;background: #ccc;margin:3px;">'+likes[i]+'</span>';
+			
+			concatArr.push(obj['num'+likes[i]])
+			
+		}
+		
+		//如果有cookie值那么arr2就不能为空数组(这次点击的时候，会记录本次和上次的喜好)
+		arr2 = likes;
+		p.innerHTML = lHtml;
+		
+		//取喜欢的数据，随机挑选几个字符出来，拼成一个数组
+		concatArr = concatArr.toString().split(',');
+		
+		concatArr.sort(function(){
+			return Math.random() - .5;
+		});
+		
+		concatArr.length = 5;
+		
+		var h = '';
+		for(var i=0;i<concatArr.length;i++){
+			h += `<li>${concatArr[i]}</li>`;
+		}
+		ul.innerHTML = h;
+		//console.log(concatArr)
+	}
+
+	
+	//点击按钮查看商品并且记录查看过的。
+	var btns = document.getElementsByTagName('button');
+	
+	for(let i = 0;i < btns.length;i++){
+		btns[i].onclick = function(){
+			var h = '';
+			for(var a=0;a<obj['num'+arr[i]].length;a++){
+				h += `<li>${obj['num'+arr[i]][a]}</li>`
+			}
+			
+			ul.innerHTML = h;
+			
+			//push点击过的
+			if(!arr2.includes(arr[i])){
+				arr2.push(arr[i]);
+				setCookie('like',JSON.stringify(arr2),2);
+			}	
+		}
+	}
+	
+	
+	/*
+		BUG1：
+			点完删除的时候刷新为undefined。
+	*/
+	p.onclick = function(ev){
+		if(ev.target.tagName == 'SPAN'){
+			ev.target.remove();
+			//判断ul有没有子级，如果没有就删除cookie
+//			if(this.children.length){
+//				arr2 = arr2.filter(e=> e != ev.target.innerHTML);
+//				setCookie('like',JSON.stringify(arr2),2);
+//			}else{
+//				removeCookie('like');
+//			}
+
+			arr2 = arr2.filter(e=> e != ev.target.innerHTML);
+			
+			if(arr2.length){
+				setCookie('like',JSON.stringify(arr2),2);
+			}else{
+				removeCookie('like');
+			}
+			
+			
+			
+			
+			
+		}
+	}
+	
+
+	
+	function removeCookie(key,value){
+		setCookie(key,value,-1);
+	}
+	
+	function setCookie(key,value,time){
+		if(time){
+			var iDate = new Date();
+			iDate.setDate(iDate.getDate()+time);
+			document.cookie = key+'='+value+';expires='+iDate
+		}else{
+			document.cookie = key+'='+value;
+		}
+	}
+	function getCookie(key){
+		let str = document.cookie;
+		let arr = str.split('; ');
+		let val = null;
+		
+		for(var i=0;i<arr.length;i++){
+			let arr2 = arr[i].split('=');
+			if(arr2[0] == key){
+				val = arr2[1]; 
+				break;
+			}
+		}
+		
+		if(!val){
+			return -1;
+		}else{
+			return val;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
