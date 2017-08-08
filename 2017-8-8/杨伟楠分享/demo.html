@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<canvas id="cas"></canvas>
+		</div>
+		
+		<script src="sobel.js" type="text/javascript" charset="utf-8"></script>
+		<script src="delaunay.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var cas=document.getElementById('cas');
+			var cxt=cas.getContext('2d');
+			var jxd=80;
+			var img= new Image;
+			img.src='wtt.jpg';
+			img.onload=function(){
+				parse(this);
+			}
+			function parse(img){
+				var arr1=[];
+				var arr2=[];//收集像素点
+				cas.width=img.width>800?800:img.width;
+				cas.height=cas.width/img.width*img.height;
+				cxt.drawImage(img,0,0,cas.width,cas.height);
+				
+				var imgData=cxt.getImageData(0,0,cas.width,cas.height);
+				
+				Sobel(imgData,function(value,x,y){
+					if(value>60)arr2.push([x,y]);
+				});
+				//添加随机边缘点，数量为边缘点数量除于jxd
+				var length=Math.round(arr2.length/jxd),num;
+				for(var i=0;i<length;i++){
+					num=Math.round(Math.random()*arr2.length);
+					arr1.push(arr2[num]);
+				}
+				//四个角添加进去
+				arr1.push([0,0],[0,cas.height],[cas.width,0],[cas.width,cas.height]);
+				var triangles=Delaunay.triangulate(arr1);
+				
+				for(var i=0;i<triangles.length;i+=3){
+					var x1,x2,x3,y1,y2,y3,cx,xy;
+					x1=arr1[triangles[i]][0];
+					x2=arr1[triangles[i+1]][0];
+					x3=arr1[triangles[i+2]][0];
+					y1=arr1[triangles[i]][1];
+					y2=arr1[triangles[i+1]][1];
+					y3=arr1[triangles[i+2]][1];
+					//获取中心点坐标
+					cx=Math.round((x1+x2+x3)/3);
+					cy=Math.round((y1+y2+y3)/3);
+					//获取中心点的颜色
+					var index=(cy*imgData.width+cx)*4;//每个像素点占4个位置，分别是r,g,b,a
+					var r=imgData.data[index];
+					var g=imgData.data[index+1];
+					var b=imgData.data[index+2];
+					
+					cxt.beginPath();
+					cxt.moveTo(x1,y1);
+					cxt.lineTo(x2,y2);
+					cxt.lineTo(x3,y3);
+					cxt.closePath();
+					cxt.fillStyle=`rgb(${r},${g},${b})`;
+					cxt.fill();
+				}
+			}
+		</script>
+	</body>
+</html>
