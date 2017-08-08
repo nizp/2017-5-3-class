@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">点击改变本地数据</button>
+<script type="text/javascript">
+	/*
+		事件：
+			storage事件
+				能够监听同域同浏览器的兄弟页面数据并且实时更新
+		
+		只有手动删除浏览器的数据才会在当前页面上触发这个事件。
+				
+	*/
+	
+	const btn = document.getElementById('btn');
+	let num = 0;
+	btn.onclick = function(){
+		num ++;
+		localStorage.setItem('key',num);
+	}
+	
+	window.addEventListener('storage',function(){
+		console.log('数据改了2');
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

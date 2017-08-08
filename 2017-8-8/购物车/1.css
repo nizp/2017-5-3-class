@@ -1,0 +1,23 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+	width:200px;
+	border: 1px solid #000;
+	border-bottom: none;
+}
+li{
+	height:40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 20px;
+	border-bottom: 1px solid #000;
+	cursor: pointer;
+}
+#div2{
+	position: fixed;
+	top:20%;
+	right:0;
+}

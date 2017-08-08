@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">点击渲染</button>
+	<div id="app"></div>
+<!--<script src="template_min.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script src="template.js" type="text/javascript" charset="utf-8"></script>
+
+<!--<script type="text/html" id="txt">
+	<h1>{{title}}</h1>
+	<ul>
+		{{each list}}
+			<li>{{$value}}</li>
+		 {{/each}}
+	</ul>
+</script>-->
+
+<script type="text/html" id="txt">
+	<h1><%=title%></h1>
+	<ul>
+		<%for(var i=0;i<list.length;i++){%>
+			
+			<li><%=list[i]%></li>
+			
+		<%}%>	
+	</ul>
+</script>
+
+
+<script type="text/javascript">
+	
+	/*
+		<%for(){%> 
+			
+		
+		<%}%>
+		
+		MVC:
+			Model:数据
+			View:模板
+			Controller:控制器
+			
+		
+		1.引入template
+		
+		2.新建一个script type="text/html" id="view"（写模板语法）
+		
+		3.全局创建一个元素（生成的结构就放在这个元素中）
+		
+		4.创建数据
+		
+		5.调用template(第二步的元素id,第四步的数据)
+		
+		6.获取第三步的元素，把第五步的返回值放到这个元素中
+		
+		
+		
+			
+	*/
+	
+	
+	var data = {
+	    title: '标签',
+	    list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+	};
+	
+	
+	
+	btn.onclick = function(){
+		var html = template('txt', data);
+		document.getElementById('app').innerHTML = html;
+	}
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
