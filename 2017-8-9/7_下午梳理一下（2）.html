@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+.red{
+	background: red;
+}
+</style>
+</head>
+<body>
+	<div id="app"></div>
+<script src="src/react.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/react-dom.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/browser.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/babel">
+	
+	/*
+		组件化开发：
+			
+			实现低耦合高内聚，玩的是团队、协作。
+		
+			创建一个组件
+			
+			状态  通信  事件
+			
+			初始化状态在getInitialState
+			
+			使用getInitialState中的数据:this.state.xxx
+			
+			更改状态:
+				this.setState()
+			
+			
+			render中的return里面不能有分号,不能有注释，只允许有模板。
+			
+			render中的return上面可以注释和写逻辑。
+			
+			逻辑什么的一般是写在render中的return上面或者函数中。
+			
+			
+			
+	*/
+	
+	
+	var App = React.createClass({
+		
+		getInitialState:function(){
+			return {
+				num:100,
+				arr:[]
+			}
+		},
+		fn:function(){
+			var numT = this.state.num;
+			
+			numT += 200;
+			
+			this.setState({
+				num:numT,
+				arr:['你','觉得','会了','吗']
+			});
+		},
+		render:function(){
+			var arr = null;
+			arr = this.state.arr.map(function(e,i){
+				if(e === '会了'){
+					return <li key={i} className="red">{e}</li>
+				}else{
+					return <li key={i} >{e}</li>
+				}
+			});
+			
+			console.log(arr);
+			
+			return (
+				<div>
+					<button onClick={this.fn}>按钮</button>
+					<p>你好!世界!</p>
+					<span>{this.state.num}</span>
+					<ul>
+						{
+							arr
+						}
+					</ul>
+				</div>
+			)
+		}
+	});
+	
+	
+	//把虚拟DOM插入真实DOM中
+	ReactDOM.render(<App />,document.getElementById('app'));
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

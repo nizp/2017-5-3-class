@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Example 01.04 - Materials, light and animation</title>
+    <script type="text/javascript" src="three.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="WebGL-output">
+</div>
+
+<script type="text/javascript">
+// 创建一个场景，保存我们所有的元素，如物体、照相机和灯光。
+var scene = new THREE.Scene();
+
+// 创建照像机，并且定义我们要看的位置
+var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);    //视场，长宽比，近面，远面
+
+// 创建渲染并设置大小
+var renderer = new THREE.WebGLRenderer();
+
+renderer.setClearColor(new THREE.Color(0xEEEEEE, 1.0));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMapEnabled = true;   //允许阴影映射，渲染阴影需要大量的资源，因此我们需要告诉渲染器我们需要阴影
+
+//设置坐标，通过它可以找到物体渲染的位置
+var axes = new THREE.AxisHelper(50);
+scene.add(axes);
+
+//创建物体(形状、材质)
+//二维场地
+var planeGeometry = new THREE.PlaneGeometry(60, 20);
+var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.receiveShadow = true;
+
+// 给平面设置旋转及定位
+plane.rotation.x = -0.5 * Math.PI;
+plane.position.x = 15;
+plane.position.y = 0;
+plane.position.z = 0;
+
+// 将平面添加到场地
+scene.add(plane);
+  
+// 给相机定位并指向场景中心
+camera.position.x = -30;
+camera.position.y = 40;
+camera.position.z = 30;
+camera.lookAt(scene.position);
+
+// 添加环境光
+var ambientLight = new THREE.AmbientLight(0x0c0c0c);
+scene.add(ambientLight);
+
+// 给阴影添加灯泡效果
+var spotLight = new THREE.SpotLight(0xffffff);
+spotLight.position.set(-40, 60, -10);
+spotLight.castShadow = true;
+scene.add(spotLight);
+  
+  //创建三维立方体，并且把线框属性设为true
+  var cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
+  var cubeMaterial = new THREE.MeshNormalMaterial({color: 0xff0000});
+  var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+  cube.castShadow = true;
+
+  // 立方体
+  cube.position.x = -4;
+  cube.position.y = 3;
+  cube.position.z = 0;
+
+  // 添加立方体到场地
+  scene.add(cube);
+  
+  var sphereGeometry = new THREE.SphereGeometry(4,20,20);
+  var sphereMaterial = new THREE.MeshNormalMaterial({color: 0x7777ff});
+  var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+  
+  sphere.position.set(20,0,2);
+  sphere.castShadow = true;
+  // 添加球体到场地
+  scene.add(sphere);
+  
+  var ambientLight = new THREE.AmbientLight(0x0c0c0c);
+  scene.add(ambientLight);
+  
+  document.getElementById("WebGL-output").appendChild(renderer.domElement);
+  
+  renderer.render(scene, camera);
+  // 调用渲染函数
+  var step = 0;
+  renderScene();
+  
+  function renderScene() {
+      // 围绕各个轴旋转
+      cube.rotation.x += 0.02;
+      cube.rotation.y += 0.02;
+      cube.rotation.z += 0.02;
+
+      // 球体上下弹起
+      step += 0.04;
+      sphere.position.x = 20 + ( 10 * (Math.cos(step)));
+      sphere.position.y = 2 + ( 10 * Math.abs(Math.sin(step)));
+
+      // 使用requestAnimationFrame渲染
+      requestAnimationFrame(renderScene);
+      renderer.render(scene, camera);
+  }
+
+</script>
+</body>
+</html>

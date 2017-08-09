@@ -1,0 +1,4 @@
+babel-loader babel-core babel-preset-env webpack css-loader style-loader extract-text-webpack-plugin html-webpack-plugin
+
+reat:
+babel-plugin-react-transform babel-preset-react react react-dom

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+<script src="src/react.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/react-dom.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		1.创建 React对象的时候名字***一定要大写*** 
+		
+		2.把虚拟的DOM放到页面。
+		
+		虽然下面的操作可以将一个h1标签渲染到页面，但是写起来很不方便
+		如果有种写法跟写html类似，就更好了，看下一个课件
+		
+	*/
+	
+	let H = React.createElement('h1',{className:'active'},'你好!世界!');
+	
+	ReactDOM.render(
+		H,
+		document.getElementById('app')
+	);
+	
+	console.log(H);
+	
+	
+	
+</script>
+</body>
+</html>

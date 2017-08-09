@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+<script src="src/react.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/react-dom.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/browser.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/babel">
+	
+	
+	let UL = React.createClass({
+		
+		click:function(){
+			this.setState({
+				arr:['这个','框架','真','不难']
+			});
+		},
+		
+		render:function(){
+			//console.log(this.state.arr)
+			var list = null;
+			
+			list = this.state.arr.map(function(e,i){
+				return <li>{e}</li>;
+			});
+			
+			console.log(list);
+			
+			return (
+				<div>
+					<button 
+						onClick={this.click}>
+						点击渲染list
+					</button>
+					<ul>
+						{
+							list
+						}
+					</ul>
+				</div>
+			)
+		},
+		getInitialState:function(){
+			return {
+				arr:[]
+			}
+		}
+	});
+	
+	ReactDOM.render(<UL />,document.getElementById('app'));
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

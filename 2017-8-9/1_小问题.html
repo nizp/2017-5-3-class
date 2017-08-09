@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/html">
+	/*
+		作品:
+			1.更贴合实际的
+			
+			2.自己喜欢的
+			
+		
+		<%for(){%>
+			<%if(i<0){%>
+				<li class="active"><%=xx[i]%></li>
+			<%}else{%>
+				<li><%=xx[i]%></li>
+			<%}%>
+		<%}%>
+		
+		
+		原生 -> jQuery -> 模板引擎（专门把渲染页面的逻辑抽离出来）
+		
+		angular(MVVM框架)(26734) -> React(73074) -> vue(62819)（MVVM）
+		
+		
+		React:是MVC中的专注于View层的前端框架。
+		
+		虚拟（Virtual）DOM:
+			其实就是一个描述元素的对象。
+			
+			var element = {
+			  tagName: 'ul', // 节点标签名
+			  props: { // DOM的属性，用一个对象存储键值对
+			    id: 'list'
+			  },
+			  children: [ // 该节点的子节点
+			    {tagName: 'li', props: {class: 'item'}, children: ["Item 1"]},
+			    {tagName: 'li', props: {class: 'item'}, children: ["Item 2"]},
+			    {tagName: 'li', props: {class: 'item'}, children: ["Item 3"]},
+			  ]
+			}
+			
+			它描述下面结构
+			
+				<ul id='list'>
+				  <li class='item'>Item 1</li>
+				  <li class='item'>Item 2</li>
+				  <li class='item'>Item 3</li>
+				</ul>
+
+			
+			这就是所谓的 Virtual DOM 算法。
+			包括几个步骤：
+			1.用 JavaScript 对象结构表示 DOM 树的结构；
+			
+			2.然后用这个树构建一个真正的 DOM 树，
+			    插到文档当中当状态变更的时候，
+			     重新构造一棵新的对象树。
+			     
+			3.然后用新的树和旧的树进行比较，
+			    记录两棵树差异把2所记录的差异应用到步骤1所构建的真正的DOM树上，
+			    视图就更新了
+			    
+		专注于数据、逻辑，渲染交给框架来完成
+			
+		
+		
+		
+		
+		
+			
+	*/
+	
+</script>
+</body>
+</html>

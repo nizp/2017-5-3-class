@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+<script src="src/react.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/react-dom.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/browser.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/babel">
+	
+	/*
+		1.创建 React对象的时候名字***一定要大写*** 
+		
+		2.把虚拟的DOM放到页面。
+		
+		text/babel
+		
+		注意：
+			1.在jsx语法中class要写成className
+			
+			2.顶层只能有一个标签
+		
+			3.表单元素需要闭合
+		
+		getInitialState	: 初始化状态，当这个状态中的值发生变化的时候
+		就会更新DOM
+		
+		更改状态：
+		
+			this.setState({})
+		
+		给元素身上绑定事件：
+			onClick={this.click}
+			
+		定义事件:
+			跟render函数是平级关系，创建一个事件函数
+			
+		输出:
+			{this.state.num}
+		
+	*/
+	
+//	let H = React.createElement('h1',{className:'active'},'你好!世界!');
+	
+	let H = React.createClass({
+		
+		click:function(){
+			var numT = this.state.num;
+			numT ++;
+			this.setState({
+				num:numT
+			});
+		},
+		render:function(){
+			return (
+				<div>
+					<button 
+						onClick={this.click}
+					>点击加一</button>
+					<h1 className="active">你好!世界!</h1>
+					<p>{this.state.num}</p>
+					<input type="text" />
+				
+				</div>
+			)
+		},
+		getInitialState:function(){
+			//初始化数据
+			return {
+				num:0
+			}
+		}
+	});
+	
+	ReactDOM.render(
+		<H />,
+		document.getElementById('app')
+	);
+	
+	
+	
+	
+</script>
+</body>
+</html>
