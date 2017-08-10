@@ -37,7 +37,7 @@ class Ul extends Component{
           key:i
         };
       
-        return <li {...data}>{e}</li>
+        return <li  {...data}>{e}</li>
       
       });
       
