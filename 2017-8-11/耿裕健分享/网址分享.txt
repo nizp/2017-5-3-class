@@ -1,0 +1,9 @@
+在线制作想要的字体图标：https://icomoon.io/
+
+免费图片：https://www.vcg.com/
+
+JQ弹出层插件：http://layer.layui.com/
+
+JQ全屏滚动插件:http://www.dowebok.com/77.html
+
+字体图标库：http://fontawesome.dashgame.com/

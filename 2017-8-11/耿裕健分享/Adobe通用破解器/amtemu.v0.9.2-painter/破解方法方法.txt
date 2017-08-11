@@ -1,0 +1,20 @@
+
+
+使用方法：
+
+1. 断开网络链接，以试用模式安装 Adobe 各类软件程序
+
+2.运行 AMT Emulator，选择对应的软件版本，
+
+3.点击Install运行安装（自动替换 amtlib.dll，并生成painter.ini配置文件）
+(Ps:如果软件未默认安装到C盘，可在弹出的窗口中手动找到软件安装目录里面的 amtlib.dll 文件）
+
+4.完成安装。
+
+
+
+【修改软件语言】
+
+点击【Advanced】,勾选上【Force lang for apps】即可修改软件语言。
+
+例如：zh_CN 位中文，en_US为英文
