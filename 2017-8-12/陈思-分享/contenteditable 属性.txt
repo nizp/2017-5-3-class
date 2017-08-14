@@ -1,0 +1,8 @@
+在 HTML 5 中新增了一个新的全局属性，contenteditable 属性。
+contenteditable 属性规定是否可编辑元素的内容。
+值	             描述
+true	        规定可以编辑元素内容。
+false	        规定无法编辑元素内容。
+classname	继承父元素的 contenteditable 属性。
+
+
