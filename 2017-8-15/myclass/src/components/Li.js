@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 /*
   PropTypes是react提供的数据验证，专门用来验证props的数据类型是否为
   想要，如果不是会在控制台输出错误信息，方面快速定位错误
-// */
+*/
 class LiModel extends Component{
   constructor(props){
     super(props);
     this.state = {
       db:false,
-      txt:''
+      txt:this.props.txt
     }
   }
   
@@ -24,6 +24,7 @@ class LiModel extends Component{
   }
   
   dbclick = () => {
+    
     this.setState({
       db:true,
       txt:this.props.txt
@@ -40,14 +41,13 @@ class LiModel extends Component{
   
   blur = () => {
     let {id,checked} = this.props;
-    if(this.state.txt){
-      let newData = {
-        id:id,
-        checked:checked,
-        txt:this.state.txt
-      }
-      this.props.changeText(newData);
+    let newData = {
+      id:id,
+      checked:checked,
+      txt:this.state.txt
     }
+    this.props.changeText(newData);
+    
     this.setState({
       db:false
     });
@@ -71,7 +71,12 @@ class LiModel extends Component{
     let {txt,checked} = this.props;
     let sClass = checked?'completed':'';
     
-    console.log(this.state.txt);
+    /*
+      1.使用props的txt
+      
+      2.在要显示输入框的时候把value内容换成props的
+    */
+    console.log(this.state.txt)
     
     if(this.state.db){
       sClass += ' editing';

@@ -1,0 +1,27 @@
+Hosts是一个没有扩展名的系统文件，可以用记事本等工具打开
+
+
+(Windows 系统hosts位于 C:/Windows/System32/drivers/etc/hosts
+
+Android（安卓）系统hosts位于 /system/etc/hosts
+
+Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts
+
+iPhone（iOS）系统hosts跟Linux Mac一样位于 /etc/hosts
+
+Linux系统hosts位于 /etc/hosts
+
+你也可以用Notepad++ 自行转换文本编码和换行符格式。)
+
+
+
+修改hosts后生效的方法
+Windows
+开始 -> 运行 -> 输入cmd -> 在CMD窗口输入   ipconfig /flushdns
+
+Mac OS X终端输入  sudo killall -HUP mDNSResponder
+
+
+
+第一次记得输入这个网址  注意 https   和末尾的ncr
+https://www.google.com/ncr
