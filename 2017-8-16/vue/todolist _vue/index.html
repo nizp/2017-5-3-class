@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <section class="todoapp" id="app">
+        <div>
+            <header class="header" >
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="请输入内容" @keyup.13="keyup" v-model="val">
+            </header>
+            <section class="main">
+                <input class="toggle-all" type="checkbox" v-model="all" @click="changAll">
+                <ul class="todo-list">
+                    <li :class="{completed:val.checked}" v-for="(val,key) in arr">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" v-model="val.checked" @click="check">
+                            <label>{{val.name}}</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <input class="edit" value="多多对对对">
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+	            <span class="todo-count">
+	            	<strong>0</strong>
+	            	<span>条未选中</span>
+	            </span>
+            </footer>
+        </div>
+    </section>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+  /*
+    v-bind:xxx
+      绑定数据，简写： :xxx
+    
+    v-on:click = "fn"
+      绑定事件，简写:  @click="fn"
+      
+    绑定事件可以加修饰符：
+        .13  -> keyCode == 13
+        .stop  阻止冒泡
+        .prevent  阻止默认行为
+        .once  只触发一次
+    
+    事件函数放在
+        methods中
+      在根组件的下：
+        methods:{
+          click(){
+            
+          },
+          mousemove(){
+          
+          }
+        }
+      
+  */
+  new Vue({
+    el:'#app',
+    data:{
+      arr:[
+        {name:"呵呵0",id:0,checked:true},
+        {name:"呵呵1",id:1,checked:false},
+        {name:"呵呵2",id:2,checked:false},
+        {name:"呵呵3",id:3,checked:false}
+      ],
+      val:'',
+      all:false
+    },
+    methods:{
+      keyup(){
+        this.arr.unshift({
+          name:this.val,
+          id:+new Date,
+          checked:false
+        });
+        this.check();
+        this.val = '';
+      },
+      changAll(){
+        
+        //alert(this.all)
+        this.arr.forEach(e=>e.checked = this.all);
+      },
+      check(){
+        this.all = this.arr.every(e=>e.checked);
+      }
+    }
+  })
+  
+</script>
+</body>
+</html>

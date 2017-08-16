@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div class="app">
+
+
+      <li v-if="key == 2" v-for="(val,key) in arr">
+        {{val.name}}
+      </li>
+      <li v-else-if="key == 3">
+           {{'hehe'}}
+      </li>
+      <li></li>
+      <li style="color:red" v-else>
+           {{key}}  ==  {{val.name}}
+      </li>
+    </ul>
+  </div>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+  /*
+    如果有频繁切换，强烈不建议使用v-if，因为v-if是操作DOM的
+    所以影响性能的
+    
+    建议用v-show
+    
+    注意：
+      v-else  必须紧跟着v-if或者v-else-if，不然会报错。
+  */
+  new Vue({
+    el:'.app',
+    data:{
+      arr:[
+        {name:"呵呵0",id:0,checked:false},
+        {name:"呵呵1",id:1,checked:false},
+        {name:"呵呵2",id:2,checked:false},
+        {name:"呵呵3",id:3,checked:false}
+      ]
+    }
+  });
+  
+</script>
+</body>
+</html>

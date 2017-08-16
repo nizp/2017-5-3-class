@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    svg中的常用标签：
+
+        <line></line>:直线
+                x1 :属性在 x 轴定义线条的开始
+                y1 :属性在 y 轴定义线条的开始
+                x2 :属性在 x 轴定义线条的结束
+                y2 :属性在 y 轴定义线条的结束
+
+        <polyline points=""></polyline>:折线
+                points 属性定义折线每个点的 x 和 y 坐标
+        <rect></rect>：矩形
+                rect 元素的 width 和 height 属性可定义矩形的高度和宽度
+                style 属性用来定义 CSS 属性
+                CSS 的 fill 属性定义矩形的填充颜色（rgb 值、颜色名或者十六进制值）
+                CSS 的 stroke-width 属性定义矩形边框的宽度
+                CSS 的 stroke 属性定义矩形边框的颜色
+
+                x 属性定义矩形的左侧位置（例如，x="0" 定义矩形到浏览器窗口左侧的距离是 0px）
+                y 属性定义矩形的顶端位置（例如，y="0" 定义矩形到浏览器窗口顶端的距离是 0px）
+                CSS 的 fill-opacity 属性定义填充颜色透明度（合法的范围是：0 - 1）
+                CSS 的 stroke-opacity 属性定义笔触颜色的透明度（合法的范围是：0 - 1）
+
+                CSS 的 opacity 属性定义整个元素的透明值（合法的范围是：0 - 1）
+
+                rx 和 ry 属性可使矩形产生圆角。
+          <circle></circle>：圆形
+                cx 和 cy 属性定义圆点的 x 和 y 坐标。如果省略 cx 和 cy，圆的中心会被设置为 (0, 0)
+                r 属性定义圆的半径。
+          <ellipse></ellipse>：椭圆形
+                cx 属性定义圆点的 x 坐标
+                cy 属性定义圆点的 y 坐标
+                rx 属性定义水平半径
+                ry 属性定义垂直半径
+          <polygon></polygon>：多边形
+                points 属性定义多边形每个角的 x 和 y 坐标
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    路径： path：类似JS中的钢笔功能
+    <path d=""></path>
+    d属性中的所有命令，大写指的是相对坐标，小写指的是绝对坐标
+    MLHVAZ A命令：绘制曲线弧形常用的：
+              X半径
+              Y半径
+              角度：正圆没有角度问题，椭圆
+              弧长
+                0小弧
+                1大弧
+              方向
+
+              终点X坐标
+              终点Y坐标
+    CSQT贝塞尔曲线，绘制曲线
+    JS动态创建svg标签：
+      封装创建svg标签的函数：
+        var svgNS='http://www.w3.org/2000/svg';
+        function createTag(tag,objAttr){
+          var oTag = document.createElementNS(svgNS,tag)
+          for(var attr in objAttr){
+            oTag.setAttribute(attr,objAttr][attr])
+          }
+          return oTag;
+        }
+
+      创建：
+        var oSvg = createTag('svg',{'xmlns':svgNS,'width':'100%','height':'100%'})
+        var oG = createTag('g',{'style':'cursor:pointer'})
+        var oLine1 = createTag('line',{'x1':'100','y1':'100','x2':'300','y2':'300'})
+        var oLine2 = createTag('line',{'x1':'200','y1':'200','x2':'300','y2':'300'})
+
+      添加:
+        oG.appendChild(oLine1);
+        oG.appendChild(oLine2);
+        oSVG.appendChild(oG);
+        document.body.appendChild(oSvg);
+
+      如何把创建标签时的这些数据提取出来，让数据与具体的操作进行分离，能够更加智能动态的添加我们想要的图形和结构
+        var centerX = op
+        时间不够，慢慢来凑
+      在兴趣图谱这个例子中，外圈圆封装函数复用
+
+
+
+      改变圆：
+      弹性运动：
+        function startMove(obj,r1,r2){
+          var nowR = r1;
+          var overR = r2;
+          obj.speed = 0;
+          clearInterval(obj,timer);
+          obj.timer = setInterval(function(){
+            obj.speed += (overR-nowR)/6;
+            obj.speed *=0.75;
+            if(Math.abs(overR-nowR) <= 1 && Math.abs(obj.speed)<=1){
+              clearInterval(obj.timer);
+              obj.setAttribute('r',overR);
+            }else{
+              nowR += obj.speed;
+              obj.setAttribute('r',nowR);
+            }
+          })
+        }
+        startMove(this.getElementgsByTagName('circle')[0],30,40)
+
+
+
+        百度地图工具测距功能：
+          直线，线段
+          能不能用多条直线绘制折线?
+          多条折线的效果
+          <polyline stroke="black" stroke-width="5" points="50 50 200 300 230 300" fill="none"></polyline>
+          points控制折线位置,除了用空格，还可以用逗号隔开
+          默认是有填充的 fill="none";
+          <polygon></polygon>:与折线类似的标签
+          多边形是完全闭合的，起点与终点通过程序自动闭合，折线是不闭合的
+
+
+
+          <svg id="">
+          </svg>
+          创建标签的函数封装
+
+
+          <script>
+            var svgNS='http://www.w3.org/2000/svg';
+            var oParent = document.getElementById('div1');
+            var oSvg = document.getElementById('svg1');
+            var oPolyLine = null;
+            var pointsNum = '';
+            function createTag(tag,objAttr){
+              var oTag = document.createElementNS(svgNS,tag);
+              for(var attr in objAttr){
+                oTag.setAttribute(attr,objAttr[attr]);
+
+              }
+              return oTag;
+            }
+
+            oSvg.onmousedown = function(ev){
+              if(!oPolyLine){
+                oPolyLine = createTag('polyline',{'fill':'none','stroke':'red','stroke-width':'2'})
+                oSvg.appendChild(oPolyLine);
+              }
+
+
+              var x = ev.clienX - oParent.offsetLeft;
+              var x = ev.clienY - oParent.offsetTop;
+              if(pointsNum == ''){
+                pointsNum = x+','+y;
+              }else{
+                pointsNum = ','+x+','+y;
+              }
+              oPolyLine.setAttribute('points',pointsNum);
+              var oCircle = createTag('circle',{'cx':x,'cy':y,'r':'5','fill':'white','stroke':'red','stroke-width':'3'})
+              oSvg.appendChild(oCircle);
+            }
+            oSvg.onmousemove = function(ev){
+              if(oPolyLine){
+                var x = ev.clienX - oParent.offsetLeft;
+                var x = ev.clienY - oParent.offsetTop;
+                oPolyLine.setAttribute('points',pointsNum+','+x+','+y);
+              }
+            }
+            oSvg.oncontextmenu = function(){
+              oSvg.onmousemove = null
+              return false
+            }
+          </script>
+
+  </body>
+</html>

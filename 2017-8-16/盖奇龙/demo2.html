@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body{
+        background:#000;
+        margin:0
+      }
+      svg{
+        background:#fff;
+        width:500px;
+        height:500px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.rog/2000/svg">
+      <!-- <polyline stroke="black" stroke-width="5" fill="none"></polyline> -->
+    </svg>
+    <script>
+      // var oSvg = document.getElementsByTagName('svg')[0];
+      // var oPolyLine = document.getElementsByTagName('polyline')[0];
+      // var str = '';
+      class move{
+        constructor(){
+          this.oSvg = document.getElementsByTagName('svg')[0];
+          this.oPolyLine = null;
+          this.x = 0;
+          this.y = 0;
+          this.str = '';
+          this.sq = null;
+          this.init();
+        }
+        cj(shape,data){
+          var sq = document.createElementNS('http://www.w3.org/2000/svg',shape)
+          for(var attr in data){
+            sq.setAttribute(attr,data[attr]);
+          }
+          return sq
+        }
+        init(){
+          this.oSvg.onmousedown = (ev) =>{
+            this.down(ev)
+            this.oSvg.onmousemove = (ev) =>{
+              this.move(ev)
+            }
+            this.oSvg.oncontextmenu = () =>{
+              this.menu()
+              return false
+            }
+          }
+        }
+        down(ev){
+          this.x = ev.clientX - this.oSvg.getBoundingClientRect().left;
+          this.y = ev.clientY - this.oSvg.getBoundingClientRect().top;
+          this.str==''?this.str=this.x+','+this.y:this.str+=','+this.x+','+this.y;
+          if(!this.oPolyLine){
+            this.oPolyLine = this.cj('polyline',{'stroke':'#000','stroke-width':5,'fill':'none','points':this.str})
+            this.oSvg.appendChild(this.oPolyLine)
+          }
+          this.sq = this.cj('circle',{'cx':this.x,'cy':this.y,'r':5,'fill':'white','stroke':'red','stroke-width':3})
+          this.oSvg.appendChild(this.sq)
+          // {'cx':this.x,'cy':this.y,'r':'5','stroke':'red','stroke-width':'3','fill':'white',}
+        }
+        move(ev){
+          this.x = ev.clientX - this.oSvg.getBoundingClientRect().left;
+          this.y = ev.clientY - this.oSvg.getBoundingClientRect().top;
+          this.oPolyLine.setAttribute('points',this.str+','+this.x+','+this.y);
+        }
+        menu(){
+          this.oSvg.onmousemove = null;
+          this.oPolyLine = null;
+          this.str = '';
+        }
+      }
+      var line = new move;
+
+
+
+      // oSvg.onmousedown = (ev) =>{
+      //   var x = ev.clientX - oSvg.getBoundingClientRect().left;
+      //   var y = ev.clientY - oSvg.getBoundingClientRect().top;
+      //   if(str==''){
+      //     str = x + ',' + y;
+      //   }else{
+      //     str +=',' + x + ',' + y;
+      //   }
+      //   console.log(oPolyLine,str)
+      //   oPolyLine.setAttribute('points',str)
+      //   var sq = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      //   sq.setAttribute('cx',x);
+      //   sq.setAttribute('cy',y);
+      //   sq.setAttribute('r',5);
+      //   sq.setAttribute('fill','#fff');
+      //   sq.setAttribute('stroke','red');
+      //   sq.setAttribute('strokeWidth',3);
+      //   oSvg.appendChild(sq);
+      // }
+      // oSvg.onmousemove = (ev) =>{
+      //   if(str){
+      //     var x = ev.clientX - oSvg.getBoundingClientRect().left;
+      //     var y = ev.clientY - oSvg.getBoundingClientRect().top;
+      //     oPolyLine.setAttribute('points',str+','+x+','+y)
+      //   }
+      // }
+      // oSvg.oncontextmenu = () =>{
+      //   oSvg.onmousemove=null;
+      //   return false;
+      // }
+    </script>
+  </body>
+</html>

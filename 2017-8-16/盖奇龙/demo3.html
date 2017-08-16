@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<style>
+		img{
+			position:absolute;
+			top:100px;
+			left:400px;
+			width:210px;
+			height:150px;
+
+		}
+		#l{
+			top:100px;
+			left:650px;
+			clip-path:url(#clipPath);
+		}
+	</style>
+	</head>
+	<body>
+		<svg>
+			  <clipPath id="clipPath">
+			  	<path d="M120 150 L 100 50 Q 150 0 200 50 L 180 150"/>
+			  </clipPath>
+
+		<img src="img/陈奕迅.png" />
+		<img src="img/陈奕迅.png" id="l" />
+
+		</svg>
+		<!--下面的命令可用于路径数据：
+			H 90 V 90 H 10 L 10 10
+
+
+							MLHVAZ:常用的命令
+					    CSQT贝塞尔曲线，绘制曲线，不常用的命令
+
+							M = moveto(M X,Y) ：将画笔移动到指定的坐标位置
+							L = lineto(L X,Y) ：画直线到指定的坐标位置
+							H = horizontal lineto(H X)：画水平线到指定的X坐标位置
+							V = vertical lineto(V Y)：画垂直线到指定的Y坐标位置
+							C = curveto(C X1,Y1,X2,Y2,ENDX,ENDY)：三次贝赛曲线
+							S = smooth curveto(S X2,Y2,ENDX,ENDY)
+							Q = quadratic Belzier curve(Q X,Y,ENDX,ENDY)：二次贝赛曲线
+							T = smooth quadratic Belzier curveto(T ENDX,ENDY)：映射
+							A = elliptical Arc(A RX,RY,XROTATION,FLAG1,FLAG2,X,Y)：弧线
+							Z = closepath()：关闭路径
+
+
+				M = moveto;
+			字母“M”表示的是“Move to”命令，当解析器读到这个命令时，它就知道你是打算移动到某个点。跟在命令字母后面的，是你需要移动到的那个点的x和y轴坐标。比如移动到(10,10)这个点的命令，应该写成“M 10 10”。这一段字符结束后，解析器就会去读下一段命令。每一个命令都有两种表示方式，一种是用大写字母，表示采用绝对定位。另一种是用小写字母，表示采用相对定位（例如：从上一个点开始，向上移动10px，向左移动7px）。
+				L = lineto;
+			最常用的是“Line to”命令，L，L需要两个参数，分别是一个点的x轴和y轴坐标，L命令将会在当前位置和新位置（L前面画笔所在的点）之间画一条线段。
+				H = horizontal lineto
+				V = vertical lineto
+		另外还有两个简写命令，用来绘制平行线和垂直线。H，绘制平行线。V，绘制垂直线。这两个命令都只带一个参数，标明在x轴或y轴移动到的位置，因为它们都只在坐标轴的一个方向上移动。
+				C = curveto
+		三次贝塞尔曲线C:
+		三次贝塞尔曲线需要定义一个点和两个控制点，所以用C命令创建三次贝塞尔曲线，需要设置三组坐标参数：
+			C x1 y1, x2 y2, x y (or c dx1 dy1, dx2 dy2, dx dy)
+		这里的最后一个坐标(x,y)表示的是曲线的终点，另外两个坐标是控制点，(x1,y1)是起点的控制点，(x2,y2)是终点的控制点。控制点描述的是曲线起始点的斜率，曲线上各个点的斜率，是从起点斜率到终点斜率的渐变过程.
+				S = smooth curveto
+		二次贝塞尔曲线Q
+				Q = quadratic Belzier curve
+				T = smooth quadratic Belzier curveto
+				A = elliptical Arc
+			A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+ 			a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
+ 			 A 45 45, 0, 0, 0, 125 125
+ 			弧形命令A的前两个参数分别是x轴半径和y轴半径弧形命令A的第三个参数表示弧形的旋转情况
+ 			large-arc-flag（角度大小） 和sweep-flag（弧线方向），large-arc-flag决定弧线是大于还是小于180度，0表示小角度弧，1表示大角度弧。sweep-flag表示弧线的方向，0表示从起点到终点沿逆时针画弧，1表示从起点到终点沿顺时针画弧。
+				Z = closepath
+			最后，我们可以通过一个“闭合路径命令”Z来简化上面的path，Z命令会从当前点画一条直线到路径的起点，尽管我们不总是需要闭合路径，但是它还是经常被放到路径的最后。另外，Z命令不用区分大小写。
+
+注释：以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。-->
+
+
+
+
+
+
+
+	</body>
+</html>
