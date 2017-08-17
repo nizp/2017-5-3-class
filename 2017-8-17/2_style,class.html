@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<style media="screen">
+#box{
+  width:100px;
+  height: 100px;
+  background-color: red;
+}
+#box.hide{
+  display: none;
+}
+#box.isHideT{
+  display: none
+}
+</style>
+</head>
+<body>
+  <div id="app">
+    <!-- <button @click="fn(num)">{{num}}</button> -->
+    <button @click="changeHide">点击</button>
+    <!-- <div id="box" :class="{hide:isHide}"></div> -->
+    <div id="box" :class="activeObj" :style="{background:color}"></div>
+  </div>
+  
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+  /*
+    只要属性需要发生变化那么就使用v-bind去监听，可以简写:
+    
+    class:"{className:boolean}"
+    
+    class:"activeObj"
+    
+    react中的class
+      let cName = 'xxxx'
+      className = {cName}
+    
+    
+  */
+  let v = new Vue({
+    el:'#app',
+    data:{
+      num:0,
+      isHide:true,
+      activeObj:{
+        isHideT:true
+      },
+      color:'skyblue'
+    },
+    methods:{
+      fn(num){
+        this.num = ++num;
+      },
+      // changeHide(){
+      //   this.isHide = !this.isHide;
+      // },
+      changeHide(){
+        this.activeObj.isHideT = !this.activeObj.isHideT;
+        
+        this.color = this.activeObj.isHideT?'pink':'skyblue';
+      }
+    }
+  });
+  
+</script>
+</body>
+</html>

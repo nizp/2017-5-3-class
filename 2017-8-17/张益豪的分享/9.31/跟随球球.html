@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      // Initial Setup
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+// Variables
+let mouse = {
+	x: innerWidth / 2,
+	y: innerHeight / 2
+};
+let ballCount = 750;
+//多少个球
+let balls = [];
+//球的属性
+let gravityPos = [];
+//重力方向
+let friction = .995;
+//摩擦力，张力
+let explosionDistance = 2;
+//爆炸距离
+let shouldExplode = false;
+//爆炸
+const colors = [
+  '#81C3D7',
+  '#D9DCD6',
+  '#3A7CA5',
+  '#2F6690'
+];
+const bgColor = '#16425B';
+
+// 事件
+addEventListener("mousemove", function(event) {
+	mouse.x = event.clientX;
+	mouse.y = event.clientY;
+  gravityPos = [mouse.x, mouse.y];
+  //重力方向
+});
+addEventListener("mouseout", function(event) {
+  gravityPos = [canvas.width / 2, canvas.height / 2];
+  //鼠标移出时去画布中心
+});
+addEventListener("resize", function() {
+    //onresize 事件会在窗口或框架被调整大小时发生
+	canvas.width = innerWidth;
+	canvas.height = innerHeight;
+	init();//init是事件函数
+});
+addEventListener("click", function() {
+	init();
+});
+
+
+//随机函数
+function randomIntFromRange(min,max) {
+    //随机整数范围，下面要用
+	return Math.floor(Math.random() * (max - min + 1) + min);
+}
+function randomeFloatFromRange(min, max){
+    //球球飘动的随机距离范围
+  return Math.random() * (max - min) + min;
+}
+function randomColor(colors) {
+	return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// 球
+function Ball(px, py, vx, vy, f, radius, color) {
+	this.p = [px, py];
+    this.v = [vx, vy];
+    this.gv = [0, 0];
+    this.gp = 0;
+	this.radius = radius;
+	this.color = color;
+    this.f = f;
+	this.update = function() {
+    //矫正
+
+    // 求重力公式
+    this.gv = [gravityPos[0] - this.p[0], gravityPos[1] - this.p[1]];
+
+
+    // 求张力
+    let a = gravityPos[0] - this.p[0];
+    let b = gravityPos[1] - this.p[1];
+    this.gp = 1 / (Math.sqrt( a*a + b*b ));
+
+    //如果爆炸（缩小到最小）
+    if (shouldExplode){
+      this.v[0] *= randomeFloatFromRange(-10, 10);
+      this.v[1] *= randomeFloatFromRange(-10, 10);
+    }
+
+    // 根据摩擦力减小球的移动距离
+    this.v[0] *= this.f;
+    this.v[1] *= this.f;
+
+    // 计算新的距离和张力
+    this.v[0] += this.gv[0] * this.gp * this.f;
+    this.v[1] += this.gv[1] * this.gp * this.f;
+
+    // 实际移动
+		this.p[0] += this.v[0];
+		this.p[1] += this.v[1];
+		this.draw();
+	};
+    //拖动时新的路线及其他属性
+	this.draw = function() {
+        c.save();
+		c.beginPath();
+		c.arc(this.p[0], this.p[1], this.radius, 0, Math.PI * 2, false);
+		c.fillStyle = this.color;
+		c.fill();
+		c.closePath();
+        c.restore();
+	};
+}
+
+
+// 实施
+function init() {
+  gravityPos = [canvas.width / 2, canvas.height / 2];
+  balls = [];
+  for(let i = 0 ; i < ballCount ; i++){
+    let rd = randomeFloatFromRange(1, 7);
+    let px = randomeFloatFromRange(0, canvas.width / 3) + (canvas.width / 3);
+    let py = randomeFloatFromRange(0, canvas.height / 3) + (canvas.height / 3);
+    let vx = randomeFloatFromRange(-10, 10);
+    let vy = randomeFloatFromRange(-10, 10);
+    let f = friction;
+    balls.push(new Ball(px, py, vx, vy, f, rd, randomColor(colors)));
+  }
+}
+
+// 循环的动画
+function animate() {
+	requestAnimationFrame(animate);
+  resetCanvas(bgColor);
+  updateShouldExplode();
+  for(let i = 0 ; i < balls.length ; i++){
+    balls[i].update();
+  }
+}
+init();
+animate();
+function resetCanvas(color){
+  if(color){
+    c.save();
+    c.fillStyle = color;
+    c.fillRect(0, 0, canvas.width, canvas.height);
+    c.restore();
+  }else{
+    c.clearRect(0, 0, canvas.width, canvas.height);
+  }
+}
+
+  function updateShouldExplode(){
+    let x = 0;
+    let y = 0;
+    for(let i = 0 ; i < balls.length ; i++){
+      x += balls[i].v[0] < 0 ? balls[i].v[0] * -1 : balls[i].v[0];
+      y += balls[i].v[1] < 0 ? balls[i].v[1] * -1 : balls[i].v[1];
+    }
+    shouldExplode = x / balls.length < explosionDistance && y / balls.length < explosionDistance;
+  }
+    </script>
+  </body>
+</html>

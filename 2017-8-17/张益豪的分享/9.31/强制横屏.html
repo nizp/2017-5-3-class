@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        #content{
+            position: absolute;;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        p{
+            margin: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <p>12222222222222222</p>
+
+    </div>
+    <script type="text/javascript">
+        var  width =document.documentElement.clientWidth;
+        var  height =document.documentElement.clientHeight;
+        //获取屏幕宽高；
+        const cont = document.getElementById('content');
+        if(width<height){
+            cont.style.width =height +'px';
+            cont.style.height = width+'px';
+            cont.style.top =(height-width)/2+'px';
+            cont.style.left = 0-(height-width)/2+'px';
+            cont.style.transform = 'rotate(90deg)';
+        }
+        //********手机打开了旋转开关，需要检测；
+        const evt = "onorientationchange" in window ? "orientationchange":'resize';
+        window .addEventListener(evt,function(){
+            var  width =document.documentElement.clientWidth;
+            var  height =document.documentElement.clientHeight;
+            const cont =document.getElementById('content');
+            if(width>height){
+                cont.style.width = width+'px';
+                cont.style.height = height+'px';
+                cont.style.left ='0px';
+                cont.style.top ='0px';
+                cont.style.transform = 'none';
+
+            }else{
+                cont.style.width =height +'px';
+                cont.style.height = width+'px';
+                cont.style.top =(height-width)/2+'px';
+                cont.style.left = 0-(height-width)/2+'px';
+                cont.style.transform = 'rotate(90deg)';
+            }
+        })
+    </script>
+</body>
+</html>

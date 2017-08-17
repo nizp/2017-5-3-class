@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <section class="todoapp" id="app">
+        <div>
+            <header class="header" >
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="请输入内容" @keyup.13="keyup" v-model="val">
+            </header>
+            <section class="main">
+                <input v-show="arr.length" class="toggle-all" type="checkbox" v-model="all" @click="changAll" :checked="computAll">
+                <ul class="todo-list">
+                    <li :class="{completed:val.checked,editing:val.editing}" v-for="(val,key) in changeView">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" v-model="val.checked">
+                            <label @dblclick="dbclick(val,$event)">{{val.name}}</label>
+                            <button class="destroy" @click="remove(val)"></button>
+                        </div>
+                        <input
+                          class="edit"
+                          @blur="blur(val,$event)"
+                          :value="val.name"
+                          @keyup.esc="esc($event,val)"
+                          @keyup.13 = "blur(val,$event)"
+                        >
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer" v-show="arr.length">
+	            <span class="todo-count">
+	            	<strong>{{Num}}</strong>
+	            	<span>条未选中</span>
+	            </span>
+              <ul class="filters">
+                <li v-for="(val,key) in list">
+                  <a
+                    :href="val.hash"
+                    :class="{selected:hash == val.hash}"
+                    @click="hash = val.hash"
+                  >{{val.name}}</a>
+                </li>
+              </ul>
+              <button
+                class="clear-completed"
+                @click = "clearCompleted"
+              >
+                  清除完成项
+              </button>
+            </footer>
+        </div>
+    </section>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var v = new Vue({
+    el:'#app',
+    data:{
+      arr:[
+        {name:"呵呵0",id:0,checked:true,editing:false},
+        {name:"呵呵1",id:1,checked:false,editing:false}
+      ],
+      val:'',
+      all:false,
+      list:[
+        {name:'全部',checked:true,hash:'#/all'},
+        {name:'未完成',checked:false,hash:'#/active'},
+        {name:'已完成',checked:false,hash:'#/completed'},
+      ],
+      hash:'#/all'
+    },
+    computed:{
+      computAll:function(){
+        if(this.arr.length){
+          this.all = this.arr.every(e=>e.checked);
+        }else{
+          this.all = false;
+        }
+      },
+      Num:function(){
+        let obj2 = Object.assign(this.arr);
+        return this.arr.filter(e=>{
+          return !e.checked;
+        }).length;
+      },
+      changeView(){
+        let data2 = Object.assign(this.arr);
+        return data2.filter(e=>{
+          switch (this.hash) {
+            case '#/all':
+              return Object.assign(this.arr)
+              break;
+            case '#/active':
+              return !e.checked;
+              break;
+            case '#/completed':
+              return e.checked;
+              break;
+          }
+        });
+      }
+    },
+    methods:{
+      keyup(){
+        this.arr.unshift({
+          name:this.val,
+          id:+new Date,
+          checked:false,
+          editing:false
+        });
+        this.val = '';
+      },
+      changAll(){
+        this.arr.forEach(e=>e.checked = this.all);
+      },
+      remove(val){
+        this.arr = this.arr.filter(e=>{
+          return e.id != val.id;
+        });
+      },
+      dbclick(val,ev){
+        this.arr.forEach(e=>{
+          if(e.id == val.id){
+            e.editing = true
+          }
+        });
+        
+        let inputs = ev.target.parentNode.nextElementSibling;
+        
+        //console.log(ev.target)
+        //当DOM加载结束就执行的回调。
+        Vue.nextTick(function(){
+          inputs.focus();
+        });
+        
+      },
+      blur(val,ev){
+        /*
+          第二个参数ev是在定义这个blur事件的时候，
+          传了一个$event,$event就是ev
+        */
+        this.arr.forEach(e=>{
+          if(e.id == val.id){
+            e.editing = false;
+            e.name = ev.target.value
+          }
+        });
+      },
+      esc(ev,val){
+        ev.target.value = val.name;
+        this.blur(val,ev);
+      },
+      clearCompleted(){
+        this.arr = this.arr.filter(e=>{
+          return !e.checked;
+        })
+      }
+    }
+  })
+  
+</script>
+</body>
+</html>

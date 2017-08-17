@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+        #content {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        #content p {
+          margin: auto;
+          margin-top: 20px;
+          text-align: center;
+        }
+        img {
+          width: 100px;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <p>谁说html5不能横屏的。。。</p>
+            <p>我就是要横屏。。。</p>
+            <p>要横屏。。。</p>
+            <p>横屏。。。</p>
+            <p>屏。。。</p>
+            <p>图片也是可以的。<img src="http://img001.photo.21cn.com/photos/album/20120904/o/6A7A403C29766CBCB38C616BDFD48486.jpg" /></p>
+          </div>
+          <script type="text/javascript">
+            const width = document.documentElement.clientWidth;
+            const height = document.documentElement.clientHeight;
+            if (width < height) {
+              console.log(width + " " + height);
+              const contentDOM = document.getElementById('content');
+              contentDOM.style.width = height + 'px';
+              contentDOM.style.height = width + 'px';
+              contentDOM.style.top = (height - width) / 2 + 'px';
+              contentDOM.style.left = 0 - (height - width) / 2 + 'px';
+              contentDOM.style.transform = 'rotate(90deg)';
+            }
+
+            const evt = "onorientationchange" in window ? "orientationchange" : "resize";
+            window.addEventListener(evt, function () {
+                const width = document.documentElement.clientWidth;
+                const height = document.documentElement.clientHeight;
+                const contentDOM = document.getElementById('content');
+                alert('width: ' + width + ' height: ' + height)
+                if (width > height) { // 横屏
+                    contentDOM.style.width = width + 'px';
+                    contentDOM.style.height = height + 'px';
+                    contentDOM.style.top = '0px';
+                    contentDOM.style.left = '0px';
+                    contentDOM.style.transform = 'none';
+                }
+                else { // 竖屏，这里微信应该由bug，我切换为竖屏的时候，width:375, height: 323, 导致不能旋转角度。 在safari、chrome上是正确的。
+                  alert('change to portrait')
+                    contentDOM.style.width = height + 'px';
+                    contentDOM.style.height = width + 'px';
+                    contentDOM.style.top = (height - width) / 2 + 'px';
+                    contentDOM.style.left = 0 - (height - width) / 2 + 'px';
+                    contentDOM.style.transform = 'rotate(90deg)';
+                }
+              }, false);
+
+              /*
+              处理Touch事件能让你跟踪用户的每一根手指的位置。你可以绑定以下四种Touch事件：
+                  1.touchstart:  // 手指放到屏幕上的时候触发
+                  2.touchmove:  // 手指在屏幕上移动的时候触发
+                  3.touchend:  // 手指从屏幕上拿起的时候触发
+                  4touchcancel:  // 系统取消touch事件的时候触发。至于系统什么时候会取消，不详
+              属性
+                  1.client / clientY：// 触摸点相对于浏览器窗口viewport的位置
+                  2.pageX / pageY：// 触摸点相对于页面的位置
+                  3.screenX /screenY：// 触摸点相对于屏幕的位置
+                  4.identifier： // touch对象的unique ID
+              //touchstart事件
+              function touchSatrtFunc(e) {
+                  //evt.preventDefault(); //阻止触摸时浏览器的缩放、滚动条滚动等
+                  var touch = e.touches[0]; //获取第一个触点
+                  var x = Number(touch.pageX); //页面触点X坐标
+                  var y = Number(touch.pageY); //页面触点Y坐标
+                  //记录触点初始位置
+                  startX = x;
+                  startY = y;
+              }
+              //touchmove事件
+              function touchMoveFunc(e) {
+                  //evt.preventDefault(); //阻止触摸时浏览器的缩放、滚动条滚动等
+                  var touch = evt.touches[0]; //获取第一个触点
+                  var x = Number(touch.pageX); //页面触点X坐标
+                  var y = Number(touch.pageY); //页面触点Y坐标
+                  var text = 'TouchMove事件触发：（' + x + ', ' + y + '）';
+                  //判断滑动方向
+                  if (x - startX != 0) {
+                      //左右滑动
+                  }
+                  if (y - startY != 0) {
+                      //上下滑动
+                  }
+              }
+               
+               */
+          </script>
+    </body>
+</html>

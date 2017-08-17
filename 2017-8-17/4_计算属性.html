@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<style media="screen">
+#box{
+  width:100px;
+  height: 100px;
+  background-color: red;
+}
+#box.hide{
+  display: none;
+}
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <button @click="fn">点击{{toDou}}</button>
+    <!-- <button @click="++num">点击{{num < 10?'0'+num:''+num}}</button> -->
+    <!-- <div id="box" v-show="isHide"></div> -->
+  </div>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+  /*
+    computed：
+      当某个数据方法变化的时候会进computed
+    
+    一开始挂载的时候会先进去一次，然后每次某个数据发生变化的时候都会进computed中
+    
+    computed与methods的区别：
+      computed：数据发生变化才会执行
+      
+      methods：不管数据发不发生变化，只要调用就会执行
+      
+    
+      
+  */
+  let v = new Vue({
+    el:'#app',
+    data:{
+      num:0
+    },
+    methods:{
+      fn(){
+        this.num ++;
+      //  this.num = this.num < 10?'0'+this.num:''+this.num;
+      }
+    },
+    computed:{
+      toDou:function(){
+        console.log(1);
+        return this.num < 10?'0'+this.num:''+this.num;
+      }
+    }
+  });
+  
+  // setTimeout(()=>{
+  //   v.$data.num = 2;
+  // },2000)
+  
+  
+</script>
+</body>
+</html>

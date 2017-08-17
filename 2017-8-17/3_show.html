@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<style media="screen">
+#box{
+  width:100px;
+  height: 100px;
+  background-color: red;
+}
+#box.hide{
+  display: none;
+}
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <button @click="fn">点击</button>
+    <div id="box" v-show="isHide"></div>
+    <!-- <div id="box" v-if="isHide"></div> -->
+  </div>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+  /*
+    v-show:
+      显示隐藏。
+  */
+  let v = new Vue({
+    el:'#app',
+    data:{
+      isHide:false
+    },
+    methods:{
+      fn(){
+        this.isHide = !this.isHide;
+      }
+    }
+  });
+  
+</script>
+</body>
+</html>

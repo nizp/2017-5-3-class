@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<style media="screen">
+#box{
+  width:100px;
+  height: 100px;
+  background-color: red;
+}
+#box.hide{
+  display: none;
+}
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <!-- <input v-model="val"/> -->
+    <!-- {{Arr}} -->
+    <input type="checkbox" v-for="(val,key) in arr" v-model="val.checked"/>
+  </div>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+  /*
+    状态
+    传递
+    语法
+    
+    watch:
+      当某个指定数据发生变化的时候，那么会进watch，如果要深度监听
+      
+    被监听的数据:{
+        handler:function(val,oldVal){
+        
+        },
+        deep:true
+    }
+      
+  */
+  let v = new Vue({
+    el:'#app',
+    data:{
+      arr:[{checked:false,id:0},{checked:false,id:1},{checked:false,id:2}]
+    },
+    // computed:{
+    //   Arr:function(){
+    //     localStorage.setItem('arr1',JSON.stringify(this.arr));
+    //     //return JSON.stringify(this.arr);
+    //   }
+    // }
+    
+    watch:{
+      arr:{
+        handler:function(val,oldVal){
+          localStorage.setItem('arr1',JSON.stringify(this.arr));
+        },
+        deep: true
+      }
+    }
+  });
+
+  
+</script>
+</body>
+</html>
