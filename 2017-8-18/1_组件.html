@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <my-class></my-class>
+    <mybucuo></mybucuo>
+  </div>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    
+    /*
+      创建一个子组件使用Vue.component(name,{})
+      
+      注意name的格式：
+        要么使用全小写
+        要么使用烤串命名  my-class
+        如果说你使用了myClass（有大写），那么在调用组件的时候大写变成
+        小写并且大写前加-   my-class
+      
+      组件调用就在html结构中使用双标签即可。
+      
+      template中只能有一个顶层标签
+      
+      
+      
+    */
+    
+    // Vue.component('my-class',{
+    //   template:'<div><h1>你好</h1><h2>世界</h2></div>'
+    // });
+    
+    let child = {
+      template:`<div><h1>你好</h1><h2>世界</h2></div>`
+    }
+    
+    let children = {
+      template:`<div @click="fn">我是children一号 {{num}}</div>`,
+      methods:{
+        fn(){
+          alert(1);
+        }
+      },
+      data(){
+        return {
+          num:10
+        }
+      }
+    }
+    
+    let child2 = {
+      template:`
+        <div>
+          <span>我是不错的。</span>
+          {{str}}
+          <children></children>
+        </div>`,
+      components:{
+        'children':children
+      },
+      data(){
+        return {
+          str:'呵呵呵呵'
+        }
+      }
+    }
+  
+    
+    
+    /*
+      还可以在父组件上使用
+      components:{key(子组件的名字):val(要使用哪个组件)}
+    */
+    new Vue({
+      el:'#app',
+      components:{
+        'my-class':child,
+        'mybucuo':child2
+      }
+    });
+    
+    // new Vue({
+    //   el:'#app'
+    // });
+    
+</script>
+</body>
+</html>
