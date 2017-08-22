@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<button id="btn1">qian</button>
+	<button id="btn2">hou</button>
+<script type="text/javascript">
+	var num = 0;
+	btn1.onclick = function(){
+		
+		clearInterval(btn2.timer);
+//		clearInterval(btn1.timer);
+		btn1.timer=setInterval(function(){
+            
+            num++;
+            if(num>=3)
+            {
+                num=0;
+            }
+            console.log(num)
+    	},500)
+		
+	}
+	btn2.onclick = function(){
+		
+		clearInterval(btn1.timer);
+//		clearInterval(btn2.timer);
+		btn2.timer=setInterval(function(){
+            
+            num--;
+            if(num<0)
+            {
+                num=3;
+            }
+            console.log(num)
+    	},500)
+		
+	}
+</script>
+</body>
+</html>

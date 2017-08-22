@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<style media="screen">
+#div{
+  width: 100px;
+  height: 100px;
+  background: skyblue;
+}
+</style>
+</head>
+<body>
+  <div id="div">
+  </div>
+  <input id="user" type="text" />
+  <input id="pass" type="password" />
+  <button type="button" name="button" id="btn">点击</button>
+<script type="text/javascript">
+  
+  /*
+      Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
+      
+      nodejs的特征：
+        1.单线程，
+        2.使用了一个事件驱动
+        3.非阻塞式 I/O 的模型，使其轻量又高效。
+        
+      非阻塞I/O说白了就是异步
+          不用等待前一个走完，下一个就能执行。
+          
+      nodeJS也是JS，所有操作数组、字符串的Node都支持
+      最新版的Node也支持ES6
+      
+      
+      const http = require('http');
+      const server = http.createServer(function(req,res){
+        req.url  ：  可以拿到前端的信息
+        res.write('hehe')  给前端发送信息
+        res.end();
+      })
+   */
+  
+  btn.onclick = function(){
+    const ajax = new XMLHttpRequest;
+    ajax.open('get','/user?act=add&username='+user.value+'&password='+pass.value);
+    ajax.send();
+    
+    ajax.onload = function(){
+      let data = JSON.parse(ajax.responseText);
+      if(data.code){
+        //失败
+        //alert('失败');
+        div.style.background = 'red';
+      }else{
+        //alert('成功');
+        div.style.background = 'green';
+      }
+      div.innerHTML = data.msg
+    }
+    
+    
+  }
+  
+</script>
+</body>
+</html>

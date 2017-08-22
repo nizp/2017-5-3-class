@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		栅格系统：
+				最多一行12格，最少一格；
+				
+				1)  container-fluid(流体，整个页面)
+		
+				2)  container(固定布局，有固定宽)：1170/970/750/auto
+		
+				ps:可以写成兄弟关系，最好不要出现嵌套.
+				
+				yu
+				阈值：
+					1) 1200>=				(lg)
+					
+					2) 992>=  <1200			(md)
+		
+					3) 768>= <992			(sm)
+		
+					4) 768<					(xs)
+		
+				语法:
+					row(行)
+					
+					1) col-lg-				(大屏幕范围)
+											
+					2) col-md-				(中等屏幕)
+											
+					3) col-sm-				(ipad)
+						
+					4) col-xs-				(移动端)
+					
+				其他:
+					列偏移 	col-[范围]-offset-偏移值
+					
+					列排序	col-[*]-push-  (往右/后排) pull-right
+											
+							col-[*]-pull-  (往左/前排) pull-left
+							
+					嵌套(按父级)	清浮动 clearfix  加盒子清	;
+					
+					ps:偏移与排序的区别: 
+										1) 前者只能往右,后者可以左右;
+					
+										2) 前者加多了格子会出现问题(类似于掉下去),后者往左/右继续加会出现横向滚动条.
+					
+	</body>
+</html>
