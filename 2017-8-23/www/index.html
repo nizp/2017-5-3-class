@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<style media="screen">
+#box{
+  width:100px;
+  height: 100px;
+  background: skyblue;
+}
+</style>
+</head>
+<body>
+  <div id="box"></div>
+  <div>
+    <h1>登录</h1>
+    <div id="show">
+      用户名：<input type="text" id="user"><br /><br />
+      密&nbsp;&nbsp;&nbsp;码：<input type="password" id="pass"><br /><br />
+      <button id="btn">提交</button>
+    </div><br />
+    <button id="btn2">现在就注册</button>
+  </div>
+<script src="jquery-3.2.1.js" charset="utf-8"></script>
+<script type="text/javascript">
+  
+  if(!localStorage.getItem('user')){
+    //未登录状态
+    $('h1').html('请登录');
+  }else{
+    let users = localStorage.getItem('user');
+    $('#show').hide();
+    $('h1').html(`<span style="color:red">${users}<span>欢迎你!~`);
+    $('#btn2').html('退出登录');
+  }
+  
+  $('#btn').click(function(){
+    
+    if($('#user').val() == '' || $('#pass').val() == ''){
+      alert('请输入正确输入内容');
+      return;
+    }
+    
+    //登录
+    $.ajax({
+      url:'/user',
+      data:{
+        act:'login',
+        username:$('#user').val(),
+        password:$('#pass').val()
+      },
+      success:function(data){
+        data = JSON.parse(data); //data.users 会把用户名传出来
+        if(data.code == 0){
+          localStorage.setItem('user',data.users);
+          window.location.reload();
+        }else if(data.code == 1){ //没有这个用户
+          alert(data.msg);
+        }else if(data.code == 2){
+          alert(data.msg); //用户名或者密码错误
+        }
+      }
+    })
+  });
+  
+  //注册
+  $('#btn2').click(function(){
+    if($('#btn2').html() === '退出登录'){
+      localStorage.clear();
+      window.location.reload();
+    }else{
+      if($('#user').val() == '' || $('#pass').val() == ''){
+        alert('请输入正确输入内容');
+        return;
+      }
+      $.ajax({
+      url:'/user',
+      data:{
+        act:'add',
+        username:$('#user').val(),
+        password:$('#pass').val()
+      },
+      success:function(data){
+          //console.log(data)
+          data = JSON.parse(data);
+          if(data.code == 0){
+            localStorage.setItem('user',data.users);
+            window.location.reload();
+          }else if(data.code == 3){ //参数错误
+            alert(data.msg);
+          }else if(data.code == 2){ //用户名已经被注册
+            alert(data.msg);
+          }
+      }
+    });
+    }
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</script>
+</body>
+</html>
