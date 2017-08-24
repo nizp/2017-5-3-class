@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+}
+</style>
+</head>
+<body>	
+<img src="2.jpg" id="img" />
+<script type="text/javascript">
+	
+//	img.addEventListener('mousedown',function(ev){
+//		ev.preventDefault();
+//	});
+	
+	
+	img.attachEvent('onmousedown',function(ev){
+		//就能阻止低版本IE下的默认行为
+		return false;
+//		ev.preventDefault();
+	});
+	
+	
+</script>
+	
+</body>
+</html>

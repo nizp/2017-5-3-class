@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	_background: red;
+	border: 10px solid #000;
+}
+.active{
+	background: red;
+}
+</style>
+</head>
+<body>
+	<div id="div"></div>
+	<img src="2.jpg" id="img" alt="" />
+<script type="text/javascript">
+	
+	var div = document.getElementById('div');
+	
+//	div.style.width = '150px';
+//	div.style.height = '200px';
+	
+	//div.style.cssText = 'width:150px;height:200px';
+	
+	/*
+		在IE7以下浏览器，认为style为保留字，所以通过添加style属性，是设置不了样式的
+	*/
+//	div.setAttribute('style','width:150px;height:500px');
+	
+//	div.setAttribute('className','active');
+
+	
+//	console.log(img.src);
+
+	console.log(img.getAttribute('src',2));
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	transform:translateX(50px) scale(1.5);
+}
+</style>
+</head>
+<body>
+	<div id="div" style="width:300px"></div>
+<script type="text/javascript">
+	
+	var div = document.getElementById('div');
+	
+//	console.log(div.style.width);
+
+	//console.log(getComputedStyle(div).width);
+	
+	//console.log(div.currentStyle.width);
+	
+	console.log(getStyle(div,'width'))
+	
+	function getStyle(obj,attr){
+		return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+	}
+	
+	
+	console.log(getStyle(div,'transform'));
+	
+	
+</script>
+</body>
+</html>

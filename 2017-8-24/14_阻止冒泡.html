@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+}
+</style>
+</head>
+<body>	
+<img src="2.jpg" id="img" />
+<script type="text/javascript">
+	
+	/*
+		event.cancelBubble=true ，不过cancelBubble不是标准，但是所有浏览器都兼容。
+		
+		ev.stopPropagation() 是标准，但是，不兼容低版本。
+	*/
+	
+	img.addEventListener('mousedown',function(ev){
+		ev.preventDefault();
+	});
+	
+
+	
+	
+</script>
+	
+</body>
+</html>

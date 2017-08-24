@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		forEach是HTML5的方法，所以IE9以下浏览器不兼容 
+	*/
+	
+	
+	Array.prototype.forEach = function(fn,that){
+		for(var i=0;i<this.length;i++){
+			fn.call(that,this[i],i,this);
+		}
+	}
+	
+//	function forEach(arr,fn,that){
+//		for(var i=0;i<arr.length;i++){
+//			fn.call(that,arr[i],i,arr);
+//		}
+//	}
+	
+	var arr = [1,2,3,4,5];
+	
+	
+//	forEach(arr,function(e,i,all){
+//		console.log(this)
+//	},document);
+	
+	
+	
+	arr.forEach(function(e,i,all){
+		console.log(this);
+	},document)
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

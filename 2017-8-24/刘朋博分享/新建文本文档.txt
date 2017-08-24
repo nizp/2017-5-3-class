@@ -1,0 +1,4 @@
+http://fian.my.id/Waves/#examples      图片点击波浪效果
+http://bouncejs.com/              CSS3动画
+http://www.javascripting.com/      JavaScript库、框架、插件
+https://cnodejs.org/topic/56ef3edd532839c33a99d00e   大全

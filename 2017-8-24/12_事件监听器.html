@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+}
+</style>
+</head>
+<body>
+	
+	<div id="div"></div>
+
+<script type="text/javascript">
+	
+	/*
+		在IE9以下浏览器事件绑定使用
+		attachEvent(带on的事件名,事件函数)
+	*/
+	
+	
+//	div.addEventListener('click',function(){
+//		console.log(this);
+//	});
+	
+	window.a = 10;
+	
+	window['fn1'] = function(){
+		fn.call(div);
+	}
+	
+	div.attachEvent('onclick',window['fn1']);
+	
+	function fn(){
+		console.log(this.tagName);
+		div.detachEvent('onclick',window['fn1']);
+	}
+	
+	
+</script>
+	
+</body>
+</html>

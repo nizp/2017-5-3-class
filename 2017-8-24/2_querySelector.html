@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">点击就加</button>
+	<button id="btn2">点击显示有几个</button>
+	<ul id="ul">
+		<li class="li li1">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li class="li2 li">4</li>
+	</ul>
+<script type="text/javascript">
+	
+	//querySelector
+//	var lis = document.querySelectorAll('li');
+
+//	var lis = document.getElementsByTagName('li');
+	
+	var lis = ul.children;
+
+	btn.onclick = function(){
+		var li = document.createElement('li');
+		ul.appendChild(li);
+	};
+	
+	btn2.onclick = function(){
+		alert(lis.length);
+	};
+	
+	
+	/*
+		
+		
+		getElements （className,tagName）
+		children
+			获取都是动态的
+		
+		当获取的DOM发生变化的时候，他们也会跟着变化
+		
+		querySelectorAll为静态的。当DOM发生变化的时候，获取出来的值是不会变的
+		
+		
+		
+		a:1234
+		b:4321
+		c:2314
+		d:2431  √
+		e:3214
+		
+		
+		[1,2,3,4]
+		
+		[2,4,3,1]
+	*/
+	
+	
+	
+//	for(var i=0;i<lis.length;i++){
+//		ul.appendChild(lis[i]);
+//	}
+	
+	
+//	for(var i=0;i<lis.length;i++){
+//		lis[i].style.background = 'red';
+//	}
+	
+//	console.log(lis);
+	
+	
+</script>
+</body>
+</html>

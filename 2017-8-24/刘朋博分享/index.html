@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>网页软键盘</title>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 2px 0;
+            text-align: center;
+        }
+
+        td {
+            cursor: pointer
+        }
+
+        div {
+            border: 1px solid #999;
+            float: left;
+            padding: 1px;
+            display: none;
+        }
+
+        .num {
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="text" id="input"/>
+    <input type="button" value="打开/关闭 键盘" id="btn" />
+    <br/>
+    <br/>
+    <div id="keyboard">
+        <table cellspacing="1" width="480" id="tab">
+            <tr>
+                <th colspan="16">键盘模拟输入密码器</th>
+            </tr>
+            <tr>
+                <td>~</td>
+                <td>!</td>
+                <td>@</td>
+                <td>#</td>
+                <td>$</td>
+                <td>%</td>
+                <td>^</td>
+                <td>&</td>
+                <td>*</td>
+                <td>(</td>
+                <td>)</td>
+                <td>_</td>
+                <td>+</td>
+                <td>|</td>
+                <td rowspan="2" width="120">退格</td>
+            </tr>
+            <tr>
+                <td>`</td>
+                <td class="num">1</td>
+                <td class="num">2</td>
+                <td class="num">3</td>
+                <td class="num">4</td>
+                <td class="num">5</td>
+                <td class="num">6</td>
+                <td class="num">7</td>
+                <td class="num">8</td>
+                <td class="num">9</td>
+                <td class="num">0</td>
+                <td>-</td>
+                <td>=</td>
+                <td>\</td>
+            </tr>
+            <tr>
+                <td>q</td>
+                <td>w</td>
+                <td>e</td>
+                <td>r</td>
+                <td>t</td>
+                <td>y</td>
+                <td>u</td>
+                <td>i</td>
+                <td>o</td>
+                <td>p</td>
+                <td>{</td>
+                <td>}</td>
+                <td>[</td>
+                <td>]</td>
+                <td colspan="2">切换大/小写</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>S</td>
+                <td>d</td>
+                <td>f</td>
+                <td>g</td>
+                <td>h</td>
+                <td>j</td>
+                <td>k</td>
+                <td>l</td>
+                <td>:</td>
+                <td>"</td>
+                <td>;</td>
+                <td>'</td>
+                <td colspan="3" rowspan="3">ENTER</td>
+            </tr>
+            <tr>
+                <td>z</td>
+                <td>x</td>
+                <td>c</td>
+                <td>v</td>
+                <td>b</td>
+                <td>n</td>
+                <td>m</td>
+                <td><</td>
+                <td>></td>
+                <td>?</td>
+                <td>,</td>
+                <td>.</td>
+                <td>/</td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+    	//打开键盘
+    	var btn = document.getElementById('btn');
+    	var keyboard = document.getElementById('keyboard');
+    	btn.onclick = fn;
+    	function fn(){
+    		if(keyboard.offsetWidth>0){
+    			keyboard.style.display = 'none';
+    			
+    		}else{
+    			keyboard.style.display = 'block';
+    			numSet();
+    			word()
+    		}
+    	}
+    	
+    	
+    	function numSet(){
+    		var arr = [0,1,2,3,4,5,6,7,8,9]
+    		arr.sort(function(){
+    			return Math.random()-0.5;
+    		})
+    		var nums = document.getElementsByClassName('num');
+    		for(var i=0;i<nums.length;i++){
+    			nums[i].innerHTML = arr[i];
+    		}
+    	}
+    	
+    	var tds = document.getElementsByTagName('td');
+    	function word(){
+    		
+    		for(var i=0;i<tds.length;i++){
+    			if(/^[A-Z]$/.test(tds[i].innerHTML)){
+    				tds[i].innerHTML= tds[i].innerHTML.toLowerCase();
+    			}
+    		}
+    	}
+    	var input = document.getElementById('input');
+    	keyboard.onclick = function(ev){
+    		var inner = ev.target.innerHTML;
+    		var tag = ev.target.tagName;
+    		
+    			if(tag =='TD'){
+    				switch (inner){
+    					case '退格':
+    						input.value = input.value.slice(0,-1);
+    						break;
+						case '切换大/小写':
+							var tds = document.getElementsByTagName('td');
+                        for(var i=0;i<tds.length;i++){
+                            var str = tds[i].innerHTML;
+                            if(/^[A-Z]$/.test(str)){
+                                tds[i].innerHTML = str.toLowerCase();
+                            }else if(/^[a-z]$/.test(str)){
+                                tds[i].innerHTML = str.toUpperCase();
+                            }
+                        }
+							break;
+						case 'ENTER':
+						fn();
+							break;
+    					default:
+    					input.value+=inner;
+    						break;
+    				}
+    			}
+    		}
+    	
+    	
+    </script>
+</body>
+
+</html>

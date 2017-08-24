@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+div{
+	padding: 100px;
+}	
+#div1{
+	background: red;
+}
+#div2{
+	background: yellow;
+	
+}
+#div3{
+	background: green;
+	position: relative;
+	/*zoom:1;*/
+}
+body{
+	border: 10px solid #000;
+	margin-left: 100px;
+}
+html{
+	border: 10px solid #000;
+	margin-left: 50px;
+}
+</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+	</div>
+	<input id="text1" type="text"/>
+	<input id="text2" type="text"/>
+	<input id="text3" type="text"/>
+<script type="text/javascript">
+	
+	
+	/*
+		
+		
+		如果没有定位父级{
+			ie7走body,
+			高版本走html
+		}
+		
+		
+		
+	*/
+	
+	console.log(div3.offsetLeft);
+	
+	console.log(div3.offsetParent.tagName);
+	
+	
+	text1.value = div1.currentStyle.hasLayout;
+	text2.value = div2.currentStyle.hasLayout;
+	text3.value = div3.currentStyle.hasLayout;
+	
+//	console.log(div3.currentStyle.hasLayout)
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		IE/chrome  是穿一条裤子的   全局的event对象
+		
+		ff   用事件函数的第一个参数。
+	*/
+	
+	console.log(window.event)
+	document.documentElement.onclick = function(ev){
+		var e = window.event || ev;
+		
+		console.log(e.clientX);
+		
+	}
+	
+</script>
+</body>
+</html>

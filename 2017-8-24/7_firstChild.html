@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+<script type="text/javascript">
+	
+//	ul.firstElementChild.style.background = 'red';
+	
+//	console.log(ul.firstElementChild)
+
+//	ul.firstChild.style.background = 'red';
+	
+	
+	/*
+		高版本浏览器
+			firstChild 找到某个节点下的第一个子节点。（包含文本节点，注释节点...）
+			
+		低版本浏览器
+			firstChild找到某个节点下的第一个元素子节点。
+			
+			
+		
+		lastChild
+		lastElementChild
+		
+		nextSibling、nextElementSibling
+		
+		previousSibling、previousElementSibling
+		
+	*/
+	
+	
+	var first = ul.firstElementChild || ul.firstChild;
+	var last = ul.lastElementChild || ul.lastChild;
+//	var next = first.nextElementSibling || first.nextSibling;
+	var prev = last.previousElementSibling || last.previousSibling;
+	
+	//var next = last.nextElementSibling || last.nextSibling;
+	
+	
+	first.style.background = 'red';
+	last.style.background = 'green';
+//	next.style.background = 'skyblue';
+	prev.style.background = 'yellow';
+	
+	
+	function next (obj){
+		if(obj.nextElementSibling){
+			return obj.nextElementSibling;
+		}
+		if(obj.nextSibling && obj.nextSibling.nodeType == 1){
+			return obj.nextSibling;
+		}
+		return null;
+	}
+	
+	
+	
+	
+	if(next(first)){
+		alert('真');
+	}else{
+		alert('假');
+	}
+	
+	
+//	console.log();
+	
+</script>
+</body>
+</html>

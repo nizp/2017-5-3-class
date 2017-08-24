@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<li class="lili li1"></li>
+	<li></li>
+	<li></li>
+	<li class="li2 li"></li>
+<script type="text/javascript">
+	
+	/*
+		"li3 li li1"  -> ^|\s + li + $|\s
+		
+		"li2      li"
+	*/
+	
+	var lis = getByClass('li');//document.getElementsByClassName('li');
+	
+	function getByClass(sClass){
+		var tag = document.getElementsByTagName('*');
+//		var re = new RegExp('\\b'+sClass+'\\b');
+
+		var re = new RegExp('(^|\\s)'+sClass+'($|\\s)');
+		var arr = [];
+		for(var i=0;i<tag.length;i++){
+			if(re.test(tag[i].className)){
+				arr.push(tag[i])
+			}
+		}
+		//console.log(arr.length);
+		return arr;
+	}
+	
+	
+	
+	for(var i=0;i<lis.length;i++){
+		lis[i].style.background = 'red';
+	}
+	
+	console.log(lis);
+	
+	
+</script>
+</body>
+</html>
