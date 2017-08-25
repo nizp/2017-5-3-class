@@ -1,0 +1,9 @@
+<script type=textjavascript src=js/jquery-1.4.2.js><script>
+<script type=textjavascript src=js/jquery.resizable.js><script>
+<div class=chart> 
+   <div id=myChart style=height300px><div>
+<div>
+var myChart = Echarts.init(document.getElementById(myChart));
+$('.chart').resize(function () {
+   myChart.resize();
+});

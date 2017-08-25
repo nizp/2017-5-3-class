@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script src="js/mock.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//'name|min-max': string
+			var str = Mock.mock({
+			  "string|1-10": "★"
+			})
+			//'name|min-max': number
+			var data = Mock.mock({
+			  "number|1-100": 100
+			})
+			
+			var obj = Mock.mock({
+			  "object|2-4": {
+			    "310000": "上海市",
+			    "320000": "江苏省",
+			    "330000": "浙江省",
+			    "340000": "安徽省"
+			  }
+			})
+			//数据占位符定义
+			var name = Mock.mock('@cname')
+//			console.log(name)
+			var url = Mock.mock('@url');
+			var city = Mock.mock('@county()');
+			var city2 = Mock.mock('@county(true)')
+			console.log(city)
+			console.log(city2)
+			
+			var arr = Mock.mock({
+				"array|1-10":[
+					{
+				        "userName": '@name', //模拟名称
+				        "age|1-100": 100, //模拟年龄(1-100)
+				        "color": "@color", //模拟色值
+				        "date": "@date('yyyy-MM-dd')", //模拟时间
+				        "url": "@url()", //模拟url
+				        "content": "@cparagraph()" //模拟文本
+			   		}
+				]
+			});
+			
+			Mock.mock('http://yusihong.com.cn', arr);
+			
+			$.ajax({
+	            url: "http://yusihong.com.cn",
+	            dataType: "json",
+	            async: true, 
+	            data: {}, 
+	            type: "GET", 
+	            success: function(data) {
+	                console.log(data);
+	            },
+	            error: function(err) {
+	                console.log(err);
+	            }
+	        });
+		</script>
+	</body>
+</html>

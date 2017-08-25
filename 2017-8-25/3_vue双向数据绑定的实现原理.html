@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt"/>
+	<span id="span"></span>
+<script type="text/javascript">
+//	var a = {
+//		_b:0,
+//		//如果只是读取，不设置，走get
+//		get b(){
+//			return this._b;
+//		},
+//		//如果设置了走set，再走get
+//		set b(val){
+//			
+//			this._b = 10;
+//			
+//		}
+//	}
+	
+	//a.b = 2;
+	
+	
+//	let c = 12;
+//	let a = {
+//		get b(){
+//			c = c/2;
+//			return c;
+//		}
+//	}
+	
+	//console.log(a.b>5&&a.b<5);
+
+	
+	var val = '';
+	
+	var a = {
+		get val(){
+			return val;
+		},
+		
+		set val(newVal){
+			val = newVal;
+		}
+	}
+
+	txt.onkeyup = function(){
+		
+		a.val = this.value;
+		
+		
+		span.innerHTML = a.val;
+	}
+	
+</script>
+</body>
+</html>

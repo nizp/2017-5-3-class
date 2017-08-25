@@ -1,0 +1,108 @@
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+section{
+	width:600px;
+	border: 3px solid #ccc;
+	margin: 50px auto 0;
+	position: relative;
+}
+header{
+	height: 30px;
+	line-height: 30px;
+}
+header input{
+	width:100%;
+	height: 30px;
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	cursor: pointer;
+}
+header a{
+	width: 100%;
+	height: 100%;
+	display: block;
+	text-align: center;
+	background-color: #ccc;
+	text-decoration: none;
+	color:white;
+}
+.drag,.preview{
+	margin: 20px auto 0;
+	width:500px;
+	height: 200px;
+	border: 1px dotted #303; 
+	background-color: #ccc;
+	line-height: 200px;
+	text-align: center;
+}
+section div.active{
+	border-color: blue;
+	box-shadow: inset 5px 5px  #000;
+}
+.preview{
+	height: auto;
+	padding-left: 5px;
+	width: 497px;
+}
+.preview ul:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.preview li{
+	float: left;
+	margin: 6px;
+	border: 1px dotted yellow;
+	width: 30%;
+	line-height: 0;
+	position: relative;
+	padding-bottom: 5px; 
+}
+.preview img{
+	width: 100%;
+	float: left; 
+}
+.preview span{
+	width:100%;
+	line-height: 30px;
+	text-align: center;
+}
+.preview li a{
+	position: absolute;
+	right: 2px;
+	top: 6px;
+}
+.preview li a:hover{
+	text-decoration: underline;
+}
+#upload{
+	width: 80px;
+	line-height: 30px;
+	display: block;
+	margin: 20px auto;
+	color:black;
+	background-color: yellow;
+	text-align: center;
+	border-radius: 50%;
+}
+#upload:active{
+	color:red;
+}
+#loading{
+	height: 4px;
+}
+#loading div {
+    height: 4px;
+    background-color: #77B6FF;
+    width:0;
+}
