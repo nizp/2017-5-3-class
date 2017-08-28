@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+#div1{ width:100%; position:absolute; bottom:0; text-align:center;}
+img{ width:64px;}
+</style>
+<script>
+//window.onload = function(){
+////	var aInput = document.getElementsByTagName('input');
+//	var oDiv = document.getElementById('div1');
+//	var aImg = oDiv.getElementsByTagName('img');
+//	
+//	
+//	document.onmousemove = function(ev){
+//		var ev = ev || window.event;
+//		
+//		for(var i=0;i<aImg.length;i++){
+//		
+//			var x = aImg[i].offsetLeft + aImg[i].offsetWidth/2;
+//			var y = aImg[i].offsetTop + aImg[i].offsetHeight/2 + oDiv.offsetTop;
+//			
+//			var b = ev.clientX - x;
+//			var a = ev.clientY - y;
+//			
+//			var c = Math.sqrt(Math.pow(b,2) + Math.pow(a,2));
+//			
+//			var scale = 1 - c/300;
+//			
+//			if(scale<0.5){
+//				scale = 0.5;
+//			}
+////			
+////			aInput[i].value = scale;
+////			
+//			aImg[i].style.width = scale * 128 + 'px';
+//			aImg[i].style.height = scale * 128 + 'px';
+//			
+//			
+//		}
+//		
+//	};
+//	
+	
+	
+//};
+//Math.pow(2,3)2^3
+//Math.sqrt(9)
+window.onload=function(){
+	var div=document.getElementById('div1');
+	var img = div.getElementsByTagName('img');
+	document.onmouseover=function(ev){
+		for(var i=0;i<img.length;i++){
+			var x=img[i].offsetLeft+img[i].offsetWidth/2;
+			var y=img[i].offsetTop+img[i].offsetHeight/2+div.offsetTop;
+			var b=ev.clientX-x;
+			var a=ev.clientY-y;
+			var c=Math.sqrt(Math.pow(b,2)+Math.pow(a,2));
+			var scale=1-c/300;
+			if(scale<=0.5){
+				scale=0.5;
+			}
+			img[i].style.width=scale*128+'px';
+			img[i].style.height=scale*128+'px';
+			
+		}
+	}
+}
+	
+
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<img src="img/1.png">
+    <img src="img/2.png">
+    <img src="img/3.png">
+    <img src="img/4.png">
+    <img src="img/5.png">
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="css/demo.css">
+<style type="text/css">
+#bar{
+	height:4px;
+}
+#bar div{
+	height:4px;
+	background-color:#77B6FF;
+	width:0;
+	transition: .5s;
+}
+#msk{
+	width:200px;
+	height:20px;
+	position:absolute;
+	background:skyblue;
+	top:-20px;
+	left:50%;
+	margin-left:-100px;
+	text-align: center;
+	line-height: 20px;
+	font-size:16px;
+	color: #fff;
+}
+</style>
+</head>
+<body>
+	<section id="box">
+		<div id="bar">
+			<div></div>
+		</div>
+		<header>
+			<input type="file" name="" id="file">
+			<a href="javascript:;">上传</a>
+		</header>
+		<div class="drag" id="drag">
+			<span>请将图片拖拽至此处</span>
+		</div>
+		<div class="preview">
+			<ul id="ul">
+				
+			</ul>
+		</div>
+		<a href="javascript:;" id="upload">确认上传</a>
+	</section>
+	
+	<div id="msk">3232</div>
+	
+<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="uploads3.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="uploads.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript">
+	/*
+		1.上传
+		2.显示上传的图片
+		3.删除功能
+		4.拖拽
+		5.上传的进度
+	*/
+	
+	
+	
+	var upload = $('#box').uploads({
+		readFile:$('#file'),
+		btn:$('#upload'),
+		drag:$('#drag'),
+		//每次选中的时候都会调用view,把选中的二进制数据传到参数中
+		view:function(data){
+			/*
+				渲染页面,
+				data为当前选中的二进制数据，需要把这个数据转成图片的源码
+				才能显示在页面。
+			*/
+			
+			//console.log(upload.up)
+			
+			upload.up.changeData(data,function(newData){
+				/*
+					newData 转成功的东西。图片源码。
+				*/
+				
+				let li = $('<li></li>');
+				let img = $('<img />');
+				
+				
+				img[0].src = newData;
+				
+				li.append(img);
+				
+				$(`<button name="${data.name}">删除</button>`).appendTo(li).click(function(){
+					
+					upload.up.removeData(this.name);
+					
+					$(this).parent().remove();
+					
+					$('#msk').msk('删除成功');
+					
+					//console.log(this.name);
+					
+				});
+				
+				$('#ul').append(li);
+				
+			});
+//			console.log(data);
+		},
+		uploadEndMount(){
+			
+			$('#ul').html('');
+			$('#msk').msk('上传成功');
+			
+			$('#bar').find('div')[0].style.transition = '0s';
+			
+			
+			
+			setTimeout(function(){
+				$('#bar').find('div').css({
+					width:0,
+					opacity:1
+				});
+			},1000);
+			
+			
+			
+		},
+		actionMount(arr){
+			if(!arr.length){
+				$('#msk').msk('请上传内容');
+			}
+		},
+		progressMount(loaded,total){
+			
+			var scale = (loaded/total) * 600;
+			
+			$('#bar').find('div').css('transition','.5s');
+			
+			$('#bar').find('div').css({
+					width:scale,
+					opacity:0
+			});
+		},
+		
+		dragleave(){
+			$('#drag').css({borderWidth:1});	
+		},
+		
+		ondrog:function(){
+			$('#drag').css({borderWidth:1});
+		},
+		
+		bong(){
+			$('#msk').msk('爆炸');
+			$('#drag').css({borderWidth:4});
+		}
+		
+	});
+	
+	upload.that.css('borderColor','#000');
+	
+	
+	
+	
+</script>
+</body>
+</html>

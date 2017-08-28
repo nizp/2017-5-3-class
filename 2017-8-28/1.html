@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<title>Document</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
+<script type="text/javascript">
+	
+	fn({
+		view:function(data){
+			//alert(data);
+		}
+	});
+	
+	
+	function fn(opt){
+		var settings = {
+			view:function(){}
+		}
+		
+		for(var attr in opt){
+			settings[attr] = opt[attr]
+		}
+		
+		settings.view(10);
+		
+//		console.log();
+	}
+	
+	
+	
+	function fn2(){
+		var a,_this,b;
+		return a = (
+			_this = 2,b=3
+		),
+		_this + b
+	}
+	
+	console.log(fn2())
+	
+</script>
+</body>
+</html>

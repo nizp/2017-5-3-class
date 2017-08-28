@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div1,#div2{
+	width:200px;
+	height: 100px;
+	border: 1px solid #000;
+}
+
+</style>
+</head>
+<body>
+	<div id="div1">3dsan321321</div>
+	
+	<hr />
+	
+	<div id="div2"></div>
+	
+<script type="text/javascript">
+	var div1 = document.getElementById('div1');
+	var div2 = document.getElementById('div2');
+	
+	document.ondragover = function(){
+		return false;
+	}
+	
+	div1.ondragstart = function(){
+		console.log('2345678');
+	}
+	
+	div2.ondragenter = function(){
+//		console.log('移入')
+	}
+	
+	div2.ondragleave = function(){
+//		console.log('移出')
+	}
+	
+	div2.ondragover = function(){
+//		console.log('移动');
+	}
+	
+	div1.ondragend = function(){
+//		console.log('被选中的元素结束')
+	}
+	
+	/*
+		注意：
+			如果要使用放开的事件，那么前提是在document上把ondragover的
+			默认行为阻止掉。
+	*/
+	div2.ondrop = function(ev){
+		console.log(ev);
+		console.log('放开');
+	}
+	
+	
+	
+	
+
+	
+//	ondragstart 事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上
+//ondragenter 事件：当拖拽元素进入目标元素的时候触发的事件，此事件作用在目标元素上
+
+//ondragleave 事件：当拖拽元素移出目标元素的时候触发的事件，此事件作用在目标元素上
+//ondragover 事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上
+//ondrop 事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上
+//ondragend 事件：当拖拽完成后触发的事件，此事件作用在被拖拽元素上
+</script>
+</body>
+</html>
