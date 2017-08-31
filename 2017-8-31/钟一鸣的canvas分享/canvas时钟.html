@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;border: 1px solid #aaa;"></canvas>
+	</body>
+	<script src="js/digit.js"></script>
+	<script>
+		
+	/*常量的定义
+	 * 1. H画布高度 500 
+	 * 2. W画布宽度  1024	
+	 * 3. R小球的半径
+	 * 4. MT = 60 
+	 * 5. ML = 30
+	 * */
+	const H= 500 ;
+	const W = 1024;
+	const R = 7;
+	const MT = 60;
+	const ML = 30;
+	/*获取canvas，获取context方法，设置画布的宽高*/
+	var canvas =document.getElementById('canvas');
+	var context = canvas.getContext('2d');
+	canvas.width = W;
+	canvas.height = H; 
+	var colors=["#33B5E5","#0099CC","#AA66CC","#669900","#FFBB33","#FF8800","#FF4444","CC0000"];
+	/*重复定时器每一秒搞一个渲染*/
+		setInterval(function(){
+			render(context)
+		},1000)
+	/*渲染函数的封装cxt.clearRect()	*/
+	function render(cxt){
+		cxt.clearRect(0,0,W,H);
+		var curtime = new Date();
+		var hours = curtime.getHours();
+		var minutes = curtime.getMinutes();
+		var seconds = curtime.getSeconds();
+		renderDigit(ML,MT,parseInt(hours/10),cxt);
+		renderDigit(ML+15*(R+1),MT,parseInt(hours%10),cxt);
+		renderDigit(ML+30*(R+1),MT,10,cxt)
+		renderDigit(ML+45*(R+1),MT,parseInt(minutes/10),cxt)
+		renderDigit(ML+60*(R+1),MT,parseInt(minutes%10),cxt)
+		renderDigit(ML+75*(R+1),MT,10,cxt)
+		renderDigit(ML+90*(R+1),MT,parseInt(seconds/10),cxt)
+		renderDigit(ML+105*(R+1),MT,parseInt(seconds%10),cxt)
+	}
+	/*绘制小球双重 循环*/
+	function renderDigit(x,y,num,cxt){
+		cxt.fillStyle = colors[Math.round(Math.random()*colors.length)];
+		for(var i=0;i<digit[num].length;i++){
+			for(var j=0; j<digit[num][i].length;j++){
+				if(digit[num][i][j]==1){
+					cxt.beginPath();
+					cxt.arc(x+2*j*(R+1)+(R+1),y+2*i*(R+1)+(R+1),R,0,2*Math.PI)
+					cxt.closePath();
+					cxt.fill()
+				}				
+			}
+		}
+	}
+	</script>
+	
+</html>

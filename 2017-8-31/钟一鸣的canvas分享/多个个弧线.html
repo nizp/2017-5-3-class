@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!--其实就是一个标签一般插入标签的时候都会插入一个id，方便js操作-->
+		<!--宽度和长度尽量写在行内。包含了内部的精度-->
+		<canvas id="canvas"  style="border:1px solid #aaa;display: block;margin: 20px auto;">
+			
+		</canvas>
+	</body>
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+			if(canvas.getContext('2d')){
+				var context = canvas.getContext('2d')
+				canvas.width = 1024
+				canvas.height = 768
+				context.lineWidth = 5;
+				context.strokeStyle = '#005588'
+				/*300,300为圆心200为半径绘制0-1.5PI*/
+				/*context.arc(300,300,200,0,1.5*Math.PI,true)*/
+				context.arc(300,300,200,0,0.5*Math.PI,true)
+				context.stroke()
+			}
+			else{
+				alert('当前的浏览器不支持canvas，请更换浏览器后再试')
+			}		
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!--其实就是一个标签一般插入标签的时候都会插入一个id，方便js操作-->
+		<!--宽度和长度尽量写在行内。包含了内部的精度-->
+		<canvas id="canvas" width="1024" height="768" style="border: 1px solid #aaa;display: block;margin: 20px auto;">
+			
+		</canvas>
+	</body>
+	<script>
+		window.onload = function(){
+			var canvas =document.getElementById('canvas');
+			canvas.width = 1024
+			canvas.height = 768 			
+			if(canvas.getContext('2d')){
+				var context = canvas.getContext('2d')//使用context 进行的具体的绘制
+				/*先写一个绘制的状态，然后再生成*/
+				context.beginPath()
+				context.moveTo(100,100)
+				context.lineTo(700,700)
+				context.lineTo(100,700)
+				context.lineTo(100,100)				
+/*				context.fillStyle = 'rgb(2,100,30)'
+				context.fill()*/
+				context.lineWidth = 5
+				context.strokeStyle = 'skyblue'
+				context.closePath()
+				context.stroke()
+				/*加了的状态进行绘制的，重新绘制了一下*/
+				context.beginPath()
+				context.moveTo(200,100)
+				context.lineTo(700,600)
+				context.strokeStyle = 'black'
+				context.closePath()
+				context.stroke()
+			}else{
+				alert('当前的浏览器不支持canvas，请更换浏览器后再试')
+			}	
+		
+		}
+		
+	</script>
+</html>
