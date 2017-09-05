@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    body {
+        font-family: monospace;
+        font-size: 18px;
+        background: #111;
+        color: #666;
+        margin: 0;
+    }
+    img {
+        display: block;
+        width: 100%;
+    }
+    ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none
+    }
+    #content {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 5%;
+    }
+    .layer{
+        position: absolute;
+    }
+    .layer:nth-child(1) {
+        opacity: 0.15;
+    }
+    .layer:nth-child(2) {
+        opacity: 0.30;
+    }
+    .layer:nth-child(3) {
+        opacity: 0.45;
+    }
+    .layer:nth-child(4) {
+        opacity: 0.60;
+    }
+    .layer:nth-child(5) {
+        opacity: 0.75;
+    }
+    .layer:nth-child(6) {
+        opacity: 0.90;
+    }
+</style>
+</head>
+<body>
+    <div id="content">
+        <ul id="scene">
+            <li class="layer" data-depth="1.00">
+                <img src="images/layer1.png" alt="">
+            </li>
+            <li class="layer" data-depth="0.80">
+                    <img src="images/layer2.png" alt="">
+            </li>
+            <li class="layer" data-depth="0.60">
+                    <img src="images/layer3.png" alt="">
+            </li>
+            <li class="layer" data-depth="0.40">
+                    <img src="images/layer4.png" alt="">
+            </li>
+            <li class="layer" data-depth="0.20">
+                    <img src="images/layer5.png" alt="">
+            </li>
+            <li class="layer" data-depth="0.10">
+                    <img src="images/layer6.png" alt="">
+            </li>
+        </ul>
+    </div>
+<script src="./scripts/jquery.js"></script>
+<script src="../deploy/jquery.parallax.js"></script>
+<script>
+    $('#scene').parallax({
+        invertX:true,
+        invertY:true,
+        limitX:false,
+        limitY:false,
+        calibrateX:false,
+        calibrateY:false,
+        originX:0.5,
+        originY:0.5,
+        scalarX:40,
+        scalarY:40,
+        frictionX:0.1,
+        frictionY:0.1
+    })
+    // calibrateX	true 或false	指定是否根据初始时x轴的值来计算运动量
+    // calibrateY	true 或false	指定是否根据初始时y轴的值来计算运动量
+    // invertX	true 或false	设置为true则按反方向运动层
+    // invertY	true 或false	设置为true则按反方向运动层
+    // limitX	number 或false	x方向上总的运动量数值范围，设置为false则允许层自由运动
+    // limitY	number 或false	y方向上总的运动量数值范围，设置为false则允许层自由运动
+    // scalarX	number	输入的运动量和这个值相乘，增加或减少层运动的灵敏度
+    // scalarY	number	输入的运动量和这个值相乘，增加或减少层运动的灵敏度
+    // frictionX	number 0-1	层运动的摩擦量，实际上是在层上添加一些easing效果
+    // frictionY	number 0-1	层运动的摩擦量，实际上是在层上添加一些easing效果
+    // originX	number	鼠标输入的x原点，默认值是0.5。0会移动原点到页面的左边，1会移动原点到页面的右边。Mouse input only
+    // originY	number	鼠标输入的x原点，默认值是0.5。0会移动原点到页面的上边，1会移动原点到页面的下边。Mouse input only
+</script>
+</body>
+</html>

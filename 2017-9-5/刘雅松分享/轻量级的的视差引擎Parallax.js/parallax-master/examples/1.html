@@ -1,0 +1,107 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Document</title>  
+    <style type="text/css">  
+        body {  
+    margin: 0;  
+}  
+.promo {  
+    width: 100%;  
+    height: 630px;  
+    border-top: 1px solid #c4c7cb;  
+    background: url(http://www.digitalhands.net/images/header_bg_back.jpg) no-repeat top center;  
+}  
+#parallax {  
+    position: relative;  
+    margin: 0 auto;  
+    overflow: hidden;  
+    height: 630px;  
+    width: 100%;  
+    background: url(http://www.digitalhands.net/images/header_bg.jpg) no-repeat center top !important;  
+}  
+#parallax .bg1 {  
+    width: 1602px;  
+    height: 603px;  
+    background: url(http://www.digitalhands.net/images/drops_bg_up.png) no-repeat 0 0;  
+}  
+#parallax .bg2 {  
+    width: 1602px;  
+    height: 603px;  
+    background: url(http://www.digitalhands.net/images/drops_bg_back.png) no-repeat 0 0;  
+}  
+#parallax .sloganBox {  
+    width: 1200px;  
+    position: absolute;  
+    left: 50%;  
+    height: 630px;  
+    margin-left: -600px;  
+}  
+#parallax .slogan1 {  
+    width: 1002px;  
+    height: 410px;  
+    background: url(http://www.digitalhands.net/images/text_yonlendiriyoruz_bg.png) no-repeat left 50px;  
+}  
+#parallax .slogan2 {  
+    width: 1120px;  
+    height: 450px;  
+    background: url(http://www.digitalhands.net/images/text_uretiyoruz_bg.png) no-repeat right top;  
+}  
+#parallax .slogan3 {  
+    width: 1102px;  
+    height: 500px;  
+    background: url(http://www.digitalhands.net/images/text_vesonra_bg.png) no-repeat right bottom;  
+}  
+.parallax-viewport {  
+    position: relative;  
+    overflow: hidden;  
+}  
+.parallax-layer {  
+    position: absolute;  
+}  
+
+    </style>  
+</head>  
+<body>  
+<script type="text/javascript" src="http://wow.techbrood.com/libs/jquery/jquery1.8.1.js"></script>  
+<script type="text/javascript" src="http://wow.techbrood.com/libs/jquery/jquery.jparallax.min.js"></script>  
+<script type="text/javascript">  
+    $(document).ready(function() {  
+        $(".parallax-layer").parallax({  
+            // xparallax: "60%",   //这里是插件的所有参数，大家可以一个个试试了解他们每一个的作用  
+            //yparallax: false,  
+            // height: 630,  
+            calibrateX: false,  
+          calibrateY: true,  
+           invertX: true,  
+           invertY: true,  
+         //  limitX: false,  
+         //  limitY: 10,  
+         //  scalarX: 2,  
+         //  scalarY: 8,  
+         //  frictionX: 0.2,  
+         //  frictionY: 0.8,  
+         //  originX: 0.0,  
+         //  originY: 1.0  
+        });  
+    });  
+</script>  
+  
+<!-- Top Promo -->  
+<div class="promo">  
+  
+    <div id="parallax" class="port parallax-viewport">  
+        <div class="bg1 parallax-layer"></div>  
+        <div class="bg2 parallax-layer"></div>  
+        <div class="sloganBox">  
+            <div class="slogan1 parallax-layer"></div>  
+            <div class="slogan2 parallax-layer"></div>  
+            <div class="slogan3 parallax-layer"></div>  
+        </div>  
+    </div>  
+  
+</div>  
+<!-- //Top Promo -->    
+</body>  
+</html> 

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        overflow: hidden
+    }
+    img{
+        display: block;
+        border: none;
+    }
+    #box{
+        width: 100%;
+        height: 672px;
+        background:url("bg.jpg") no-repeat;
+        background-size: 100% 100%;  
+    }
+    #box_1,#box_2,#box_3,#box_4{
+        position: absolute;
+    }
+    #box_1{
+        width: 19%;
+        height: 15%;
+        left: 494px;
+        top: 18px;
+    }
+    #box_2{
+        width: 15%;
+        height:12%;
+        left: 634px;
+        top: 473px;
+    }
+    #box_3{
+        width: 37%;
+        height: 70%;
+        left: -40px;
+        top: -190px;
+    }
+    #box_4{
+        width: 29%;
+        height: 43%;
+        right: 30px;
+        top: -46px;
+    }
+    #box_1 .content{
+        width: 100%;
+        height: 100%;
+        background: url("7.png") no-repeat;
+        background-size:100% 100%; 
+    }
+    #box_2 .content{
+        width: 100%;
+        height: 100%;
+        background: url("2.png") no-repeat;
+        background-size:100% 100%; 
+    }
+    #box_3 .content{
+        width: 100%;
+        height: 100%;
+        background: url("3.png") no-repeat;
+        background-size:100% 100%; 
+    }
+    #box_4 .content{
+        width: 100%;
+        height: 100%;
+        background: url("5.png") no-repeat;
+        background-size:100% 100%; 
+    }
+</style>
+</head>
+<body>
+    <div id="bBox">
+        <div id="box"  data-depth="0.01" class="layer">
+            <!-- <div id="box_1" >
+                <div class="content layer" data-depth="0.40"></div>
+            </div> -->
+            <div id="box_2">
+                <div class="content layer" data-depth="0.40"></div>
+            </div>
+            <div id="box_3">
+                <div class="content layer" data-depth="0.20"></div>
+            </div>
+            <div id="box_4">
+                <div class="content layer" data-depth="0.80"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./jquery.js"></script>
+    <script src="./jquery.parallax.js"></script>
+    <script>
+        $('#bBox').parallax({
+            invertX:true,
+            invertY:true,
+            originX:0.5,
+            originY:0.5,
+            calibrateX:true,
+            calibrateY:true,
+            limitX:false,
+            limitY:false,
+            scalarX:10.0,
+            scalarY:10.0,
+        });
+        $('#box_2').parallax({
+            invertX:false,
+            invertY:false,
+            originX:0.5,
+            originY:0.5,
+            calibrateX:true,
+            calibrateY:true,
+            limitX:false,
+            limitY:false,
+            scalarX:20.0,
+            scalarY:20.0,
+        });
+        $('#box_3').parallax({
+            invertX:false,
+            invertY:false,
+            originX:0.5,
+            originY:0.5,
+            calibrateX:true,
+            calibrateY:true,
+            limitX:false,
+            limitY:false,
+            scalarX:30.0,
+            scalarY:40.0,
+        });
+        $('#box_4').parallax({
+            invertX:false,
+            invertY:false,
+            originX:0.5,
+            originY:0.5,
+            calibrateX:true,
+            calibrateY:true,
+            limitX:false,
+            limitY:false,
+            scalarX:40.0,
+            scalarY:40.0,
+        })
+    // calibrateX	true 或false	指定是否根据初始时x轴的值来计算运动量
+    // calibrateY	true 或false	指定是否根据初始时y轴的值来计算运动量
+    // invertX	true 或false	设置为true则按反方向运动层
+    // invertY	true 或false	设置为true则按反方向运动层
+    // limitX	number 或false	x方向上总的运动量数值范围，设置为false则允许层自由运动
+    // limitY	number 或false	y方向上总的运动量数值范围，设置为false则允许层自由运动
+    // scalarX	number	输入的运动量和这个值相乘，增加或减少层运动的灵敏度
+    // scalarY	number	输入的运动量和这个值相乘，增加或减少层运动的灵敏度
+    // frictionX	number 0-1	层运动的摩擦量，实际上是在层上添加一些easing效果
+    // frictionY	number 0-1	层运动的摩擦量，实际上是在层上添加一些easing效果
+    // originX	number	鼠标输入的x原点，默认值是0.5。0会移动原点到页面的左边，1会移动原点到页面的右边。Mouse input only
+    // originY	number	鼠标输入的x原点，默认值是0.5。0会移动原点到页面的上边，1会移动原点到页面的下边。Mouse input only
+    </script>
+</body>
+</html>
