@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	// var a = '<div onclick="alert(2)">11111</div>';
+	// document.write(a);
+
+	$.ajax({
+		url:`http://3g.163.com/touch/reconstruct/article/list/BBM54PGAwangning/0-10.html?callbcak=?`,
+		dataType:'jsonp',
+		success:function(data){
+			console.log(data)
+		},
+		error:function(data){
+			console.log(data)
+		}
+	})
+</script>
+</body>
+</html>
