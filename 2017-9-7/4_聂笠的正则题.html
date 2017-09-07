@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	var str = 'aaa[bbb[ccc,ddd[eee,fff]],ggg[hhh,iii]]';
+	//'aaa[bbb[ccc,ddd[eee,fff]],ggg[hhh,iii]]';
+	
+	/*
+		要求取出所有类似xxx[xxx,xxx]结构的字符串
+		
+		
+		ddd[eee,fff]
+		
+		当然,这个最后的结果应该是
+		aaa[bbb[ccc,ddd[eee,fff]],ggg[hhh,iii]]
+	*/
+	
+//console.log(str.match(/[a-z]{3}\[[a-z]{3}\[[a-z]{3},[a-z]{3}\[[a-z]{3}]\]\]/))
+	
+	
+//	console.log(str.match(/[a-z]{3}\[[a-z]{3},([a-z]{3}|[a-z]{3}\[[a-z]{3},[a-z]{3}\])\]/g))
+//	console.log(str.match(/.+/g))
+	
+</script>
+</body>
+</html>

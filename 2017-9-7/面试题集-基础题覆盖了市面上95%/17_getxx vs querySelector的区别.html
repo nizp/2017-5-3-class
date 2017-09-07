@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+<script type="text/javascript">
+	/*
+		getxx vs querySelector的区别 
+		
+		getxx:动态
+		
+		querySelector:静态
+	*/
+	
+	
+	var ul = document.getElementById('ul');
+	var list = ul.querySelectorAll('li')//getElementsByTagName('li');
+	
+	//12345   24153
+	//DOM操作都是剪切。
+	for(var i=0;i<list.length;i++){
+		
+		ul.appendChild(list[i]);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

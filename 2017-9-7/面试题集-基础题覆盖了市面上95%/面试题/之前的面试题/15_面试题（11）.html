@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	11，请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象，
+	如：
+	var url = "http://witmax.cn/index.php?key0=0&key1=1&key2=2"; 
+	key0=0&key1=1&key2=2 - > {key0:0,key1:1,key2:2} 
+	*/
+	var url = "http://witmax.cn/index.php?key0=0&key1=1&key2=2"; 
+	function parseQueryString(url){
+		var json = {};
+		if(url.indexOf('?')!=-1){
+			var str = url.split('?')[1];
+			var arr = str.split('&')
+			for(var i=0;i<arr.length;i++){
+				json[arr[i].split('=')[0]] = arr[i].split('=')[1];
+			}
+		}
+		return json;
+	}
+	
+	console.log(parseQueryString(url))
+	
+</script>
+</body>
+</html>

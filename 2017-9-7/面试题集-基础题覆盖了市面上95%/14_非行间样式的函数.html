@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+}	
+</style>
+</head>
+<body>
+	<div id="div"></div>
+<script type="text/javascript">
+	
+	/*
+		写一个获取非行间样式的函数
+	*/
+	
+	function getStyle(obj,attr){
+		return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+	}
+	
+	
+</script>
+</body>
+</html>

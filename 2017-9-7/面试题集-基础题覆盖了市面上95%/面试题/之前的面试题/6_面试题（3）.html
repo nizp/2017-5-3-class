@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		3，规避javascript多人开发函数重名问题; 
+		
+			封闭空间：闭包
+			
+			命名空间:将方法挂在某个对象身上
+	*/
+//	(function(){
+//		function fn1(){
+//			alert(1);
+//		}
+//		fn1();
+//	})();
+
+	var obj = {
+		fn1:function(){
+			alert(2);
+		}
+	};
+	obj.fn1();
+	
+	
+	//var obj = {};
+//	obj.fn1 = function(){
+//		alert(1);
+//	}
+	
+	
+	
+	
+	function fn1(){
+		alert(3);
+	}
+	
+	fn1();
+	
+</script>
+</body>
+</html>

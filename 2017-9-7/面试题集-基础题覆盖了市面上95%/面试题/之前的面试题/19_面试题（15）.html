@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+	/*
+		window下有name属性，值为空
+	*/
+
+	var fn = function() {
+	    this.name = 'nizp';
+	};
+	fn.prototype.sayname = function(){
+	   alert(this.name);  //空
+	  // console.log(this);
+	}
+	fn.prototype.waitsay = function(){
+	    setTimeout(this.sayname,500);
+	}
+	var a = new fn();
+	a.waitsay();
+</script>
+</body>
+</html>

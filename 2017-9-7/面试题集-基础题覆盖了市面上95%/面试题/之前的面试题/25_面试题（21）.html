@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+//	21，var str = 'hello my name is {name}，my age is {age}';
+//var obj = {name:'john',age:28}
+// 把str里面的｛name｝和｛age｝替换为obj里面的属性
+
+	var str = 'hello my name is {name}，my age is {age}';
+	var obj = {name:'john',age:28};
+	
+	
+	var a = str.replace(/{(\w+)}/g,function($0,$1){
+		return obj[$1]
+		//console.log(obj[$1])
+	})
+	
+	console.log(a);
+
+	
+	/*
+		先找带花括号的字符，然后去括号，最后返回替换的值。 
+	*/
+	var a = str.replace(/{\w+}/g,function($0){
+
+		return obj[$0.replace(/^{|}$/g,'')];
+	});
+	
+	console.log(a)
+	
+	
+</script>
+</body>
+</html>

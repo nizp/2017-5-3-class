@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		函数节流
+			解决函数非主动触发频率过高的问题
+			
+		
+		开个定时器，让某个函数只能在一段时间后触发。
+		
+		
+		缺点：
+			它可能会丢失对某些数据的处理
+			
+		
+		
+		
+		
+	*/
+	function throttle (fn,time){
+		var timer = null;
+		return function(){
+			clearTimeout(timer);
+			var _this = this;
+			timer = setTimeout(function(){
+				fn.call(_this);
+			},time)
+		}
+	}
+	
+	
+	
+	window.onresize = throttle(fn1, 500)
+	
+	function fn1(){
+		console.log(1)
+	}
+	
+		
+</script>
+</body>
+</html>

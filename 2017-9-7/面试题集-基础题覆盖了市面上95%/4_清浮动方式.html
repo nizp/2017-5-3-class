@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+#div{
+	border: 2px solid #000;
+	/*overflow:hidden;*/
+	
+}
+p{
+	width:200px;
+	height: 200px;
+	background:green;
+	float: left;
+	margin:5px;
+}
+/*#ph{
+	clear: both;
+}*/
+.div1{
+	width: 100vw;
+	height: 200px;
+	background: red;
+}
+.clearFix:after{
+	clear: both;
+	content: '';
+	height: 0;
+	overflow: hidden;
+	display: block;
+	zoom:1;
+}
+/*#div{
+	height: 210px;
+}*/
+</style>
+</head>
+<body>
+	<div id="div" class="clearFix">
+		<p></p>
+		<p></p>
+		<!--<div id="ph"></div>-->
+	</div>
+	<div class="div1"></div>
+	
+	
+<script type="text/javascript">
+	/*
+		清除浮动的方式:
+			
+			给父元素加高度(解决塌陷)
+			
+			overflow:hidden(p的父级)，
+			
+			BFC:
+				
+				overflow的值不为默认
+				
+				position:static/relative  float值不为none 脱离文档流
+				
+				.....
+			
+			创建空标签 + clear:both
+			
+			
+			
+		
+		
+	*/
+	
+	
+	
+	
+</script>
+</body>
+</html>

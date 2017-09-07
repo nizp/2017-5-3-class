@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		http://blog.sina.com.cn/s/blog_53786db50102e9m9.html
+	*/
+	var num = 2;
+	var obj = {num:3};
+	obj.fn = (function(num){
+		
+		this.num++;//3
+		num += 2;//5
+		var num = 5; //5
+		return function(){
+			this.num += 1;//4
+			num += 1;
+			console.log(num);//6
+		}
+	})(obj.num);
+	var f = obj.fn;
+	f(); //6
+	obj.fn();//7
+	console.log(window.num,obj.num);//4,4
+</script>
+</body>
+</html>

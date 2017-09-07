@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	
+	document.onmousemove = fn2(fn1,500)
+	
+	function fn1(){
+		console.log('1111');
+	}
+	
+	function fn2(fn,time){
+		var timer = null;
+		return function(){
+			clearInterval(timer);
+			var _this = this;
+			timer = setTimeout(function(){
+				fn.call(_this);
+			},time)
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body style="height: 3000px;">
+<script type="text/javascript">
+	/*
+		FF: DOMMouseScroll 并且必须要用addEventListener来绑定。
+			如果要监听用户是向上还是向下滚动，那么通过ev.detail可以获取到
+			
+			正3 -> 向下
+			负3 -> 向上
+			
+		非FF：onmousewheel
+			如果要监听用户是向上还是向下滚动，那么通过ev.wheelDelta可以获取到
+			
+			正120 - >  向上
+			负120 - >  向下
+			
+		
+	*/
+//	document.onmousewheel = function(ev){
+//		console.log(ev.wheelDelta)
+//	}
+//	document.addEventListener('DOMMouseScroll',function(ev){
+//		alert(ev.detail);
+//	});
+	
+	function addEvent(obj,evName,evFn){
+		window.fn1 = function(){
+			evFn.call(obj);
+		}
+		if(obj.addEventListener){
+			obj.addEventListener(evName,evFn,false);
+		}else{
+			obj.attachEvent('on'+evName,window.fn1);
+		}
+	}
+	
+	function addWhell(obj,fn){
+		//判断是否为ff浏览器
+		if(window.navigator.userAgent.toLowerCase().indexOf('firefox')!=-1){
+			addEvent(obj,'DOMMouseScroll',evFn);
+		}else{
+			addEvent(obj,'mousewheel',evFn);
+		}
+		function evFn(ev){
+			var down = 0;
+			//查看是向上滚动还是向下滚动
+			if(ev.wheelDelta){
+				//在非FF下大于0就是向上小于0就是向下
+				down = ev.wheelDelta > 0 ? true : false;
+			}else{
+				//在FF下大于0就是向下小于0就是向上
+				down = ev.detail < 0 ? true : false;
+			}
+			//判断是否有fn并且fn必须是个函数
+			if(fn && typeof fn === 'function'){
+				//调用fn将查看出来方向值传给fn的第一个参数。
+				fn(down);
+			}
+			//阻止浏览器默认行为。
+			if(ev.preventDefault){
+				ev.preventDefault();
+			}
+			return false;
+		}
+	}
+	
+	addWhell(document,function(down){
+		if(down){
+			alert('向上')
+		}else{
+			alert('下')
+		}
+	});
+	
+	
+</script>
+</body>
+</html>

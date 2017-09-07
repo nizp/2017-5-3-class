@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	for(var i=0;i<10;i++){
+		setTimeout(function(){
+			console.log(i);
+		},0);
+	}
+	
+	
+	/*
+		
+		for(let i=0;i<10;i++){
+			setTimeout(function(){
+				console.log(0);
+			},0);
+		}
+		
+		for(let i=1;i<10;i++){
+			setTimeout(function(){
+				console.log(1);
+			},0);
+		}
+		
+		
+	*/
+	
+	
+	//以上表达式会输出什么结果？为什么？
+	
+	/*
+		
+		会输出10个10
+		
+		因为每循环一次就开了一个定时器，所以
+		第一：会输出10次；
+		第二：因为定时器是异步的，而for比setTimeout的速度快，
+		setTimeout中的没有i这个变量，那么会往父级找，而这个时候
+		就找到循环完的结果10。
+		
+		
+	*/
+	
+	
+</script>
+</body>
+</html>

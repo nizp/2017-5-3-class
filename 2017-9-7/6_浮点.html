@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		如何将浮点数点左边的数每三位添加一个逗号,如
+		12000000.11转化为 12,000,000.11
+	*/
+	
+	var str = '12000000.11';
+	
+	var str2 = str.split('.')[0];
+	var s = '';
+	
+	for(var i=str2.length-1;i >= 0;i--){
+		if((i+1) % 3 == 0 && i!=0){
+			s += str2[i]+','; 
+		}else{
+			s += str2[i]; 
+		}
+	}
+	
+	console.log(s.split('').reverse().join(''));
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

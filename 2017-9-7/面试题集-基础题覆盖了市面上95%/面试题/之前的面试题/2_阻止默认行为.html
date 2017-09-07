@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body style="height:3000px">
+<script type="text/javascript">
+
+	/*
+		传统的事件绑定用return false就能阻止浏览器默认行为。
+		
+		如果事件绑定，那么用ev.preventDefault()就能阻止浏览器默认行为。
+		
+		在低版本IE下使用事件绑定，用return false就能阻止浏览器默认行为。
+	*/
+//	document.onkeydown = function(ev){
+//		var e = ev || event;
+//		if(e.keyCode == 32){
+//			return false;
+//		}
+//	}
+	
+	
+	addEvent(document,'keydown',function(ev){
+		var e = ev || event;
+		if(e.keyCode == 32){
+			if(e.preventDefault){
+				e.preventDefault();
+			}
+		}
+	});
+	
+	function addEvent(obj,evName,evFn){
+		window.fn1 = function(){
+			evFn.call(obj);
+			//IE低版本下阻止浏览器默认行为。
+			return false;
+		}
+		if(obj.addEventListener){
+			obj.addEventListener(evName,evFn,false);
+		}else{
+			obj.attachEvent('on'+evName,window.fn1);
+		}
+	}
+	
+</script>
+</body>
+</html>

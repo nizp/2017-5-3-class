@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		有些浏览器直接用Object写方法，
+		比如Object.getName=function，
+		有些浏览器用Object.prototype，为什么?
+		
+		如果一个人想怎么写就怎么写
+		
+		但是，如果在多人开发中，不能无脑直接把方法挂在Object.prototype上
+		不然会覆盖之前方法。
+	*/
+	
+	Object.prototype.fn = function(){
+		console.log(1);
+	}
+	
+	
+	Object.fn = function(){
+		alert(1);
+	}
+	//prototype.fn = function(){
+//		alert(1);
+//	}
+	
+	var arr = [1,2,3];
+	
+	
+	function fn1(){
+		
+	}
+	fn1.prototype = {
+		constructor : fn1,
+		fn2 : function(){},
+		age:32
+	}
+	
+	var p1 = new fn1();
+	
+	alert(p1.age);
+	
+//	arr.fn();
+//	Object.fn();
+	
+	
+</script>
+</body>
+</html>

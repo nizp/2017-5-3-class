@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		
+		JavaScript本地对象 内置对象 宿主对象
+      在ECMAScript中，所有对象并非同等创建的。
+      一般来说，可以创建并使用的对象有3种：本地对象、内置对象和宿主对象。
+
+1. 本地对象
+
+      ECMA-262把本地对象（native object）定义为“独立于宿主环境的ECMAScript实现提供的对象”。
+
+      何谓宿主环境？ “宿主”，生物学上，一般是指寄生的生物体选择的寄生体，如：火影里的“白”（哈哈哈）。此处的宿主环境，简单来说就是用户的机器环境，包括操作系统和浏览器。
+
+      本地对象包括如下内容：Object、Function、String、Array、Boolean、Number、Date、 RegExp、Error、EvalError、RangeError、ReferenceError、SyntaxError、TypeError、URIError。由此可知，本地对象是ECMA-2定义的类（引用类型）。
+
+ 
+
+2. 内置对象
+
+      ECMA-262把内置对象（built-in object）定义为“ 由ECMAScript实现提供的，独立与宿主环境的所有对象，在ECMAScript程序开始执行时出现”。这意味着开发者不必明确实例化内置对象，它已经被实例化了。ECMA只定义了两个内置对象，即Global和Math（它们也是本地对象，根据定义，所有内置对象都是本地对象）。
+
+1）Math对象的常见属性：E（算术常量e，即自然对数的底数，约为2.718）、PI（圆周率，约为3.14159）。
+
+     Math对象的常见方法：
+
+           max(x,y): 返回x和y中较大的值；     min(x,y): 返回x和y中较小的值；         random(): 返回0~1之间的随机数；
+
+           round(x): 对数四舍五入；              floor(x): 对数向下取整；                    ceil(x): 对数向上取整； 
+
+2）Global对象是ECMAScript中最特别的对象，因为实际上它根本不存在，不信，在浏览器console中输入Global，报错。
+
+     全局对象是预定义的对象，作为JavaScript全局函数和全局属性的占位符。全局对象不是任何对象的属性，所以它没有名称？。
+
+     在顶层JavaScript代码中，可以用关键字this来引用全局对象。但通常不必用这种方式引用全局对象，因为全局对象是作用域链的头，这意味着所有非限定性的变量和函数名都会作为该对象的属性来查询。例如，当JavaScript代码引用parseInt函数时，它引用的是全局对象的parseInt属性。
+
+     全局对象是作用域链的头，这意味着在顶层JavaScript中申明的变量都将成为全局对象的属性。
+
+     全局对象只是一个对象，而不是类。即没有构造函数，也无法实例化一个新的全局对象。
+
+     顶层属性（全局属性）：
+
+           NaN: 指示某个值是不是数字值； undefined: 未定义的值； Infinity: 正的无穷大的数值。 
+
+     顶层函数（全局方法）：
+
+           isNaN(): 检测某个值是否为数值；                               isFinite(): 检测某个值是否为无穷大的值；
+
+           Number(): 把对象的值转换为数值；                           String(): 把对象的值转换为字符串；                            Boolean(): 把对象的值转换为布尔值；
+
+           parseInt(): 解析一个字符串并返回整数；                     parseFloat(): 解析一个字符串并返回浮点值；
+
+           encodeURI(): 将字符创编码为URI；                           decodeURI(): 解码某个编码的URI；
+
+           encodeURIComponent(): 将字符串编码为URI组件；     decodeURIComponent(): 解码某个编码的URI组件； 
+
+           escape(): 对字符进行编码；                                      unescape(): 对由escape编码的字符串进行解码；
+
+           eval(): 计算JavaScript字符串，并把它作为脚本代码来执行；
+
+ 
+
+3. 宿主对象
+
+      所有非本地对象都是宿主对象（host Object），即由ECMAScript实现的宿主环境提供的对象。
+
+      所有的BOM和DOM对象都是宿主对象。
+
+      那如下代码中的oPerson对象呢，既不是ECMA官方定义的本地对象，也不是宿主对象，它是用户自定义的对象（user defined object）。
+
+var oPerson = new Object();
+oPerson.name = "ting";
+oPerson.age = 23;
+      
+
+4. 总结 
+
+      本地对象是ECMA官方定义好的对象；内置对象也是本地对象，只包括Global对象和Math对象；宿主对象包括BOM和DOM对象。
+			
+	
+	* */
+	
+</script>
+</body>
+</html>

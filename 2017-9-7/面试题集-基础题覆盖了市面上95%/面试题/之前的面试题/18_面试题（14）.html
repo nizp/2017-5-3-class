@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	一个东西
+	<div id="div1">321</div>
+	<script type="text/javascript">
+		/*
+			14，documen.write和 innerHTML的区别 
+			
+			document.write是重写整个document, 写入内容是字符串的html
+
+			innerHTML是HTMLElement的属性，是一个元素的内部html内容
+			
+			http://jingyan.baidu.com/article/4dc408489642aac8d846f153.html
+		*/
+		
+		var div1 = document.getElementById('div1');
+//		document.onclick = function() {
+//			div1.innerHTML = '<p>222</p>'
+//		}
+		//document.write('<div id="div1">4444</div>');
+		document.onclick = function() {
+		    document.write("<span>Javascript</span>");
+		};
+	</script>
+</body>
+</html>

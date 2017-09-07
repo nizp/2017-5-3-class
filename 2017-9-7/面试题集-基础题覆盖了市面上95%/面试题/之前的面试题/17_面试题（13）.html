@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		13，什么是闭包？
+		下面这个ul，如何点击每一列的时候alert其index? 
+		
+		闭包:
+			js的特性；
+			函数套函数，子函数能使用父函数的变量或者参数，而父函数不能使用子函数的变量或者参数。
+			
+			
+			1.形成私有域，避免命名冲突
+			
+			2.当子函数使用父函数的变量或者参数的时候，变量或者参数不会被垃圾回收机制给回收，一直存在父函数中。
+			
+		var a = 10;
+		window.onload = function(){
+			
+			div.onclick = function(){
+				var b = 20;
+				alert(a)
+			}
+			
+		}
+		alert(b);
+		
+		
+		(function(index){
+			btn[index].onclick = function(){
+				alert(index);
+			}
+		})(i);
+		
+		(function(){
+			var fn1 = 1;
+			
+		})()
+		
+		var fn1 = 2;
+			
+	*/
+	
+	function fn(){
+		var a = 0;
+		return function(){
+			a++;
+			alert(a);
+		}
+	}
+	var a = fn();
+	a();
+	a();
+	
+	
+</script>
+</body>
+</html>

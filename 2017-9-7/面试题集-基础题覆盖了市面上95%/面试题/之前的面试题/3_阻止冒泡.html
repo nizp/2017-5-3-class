@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="button" name="btn" id="btn" value="按钮" />
+<script type="text/javascript">
+	
+	/*
+		阻止冒泡：在传统的事件绑定中，直接ev.cancelBubble = true就可以阻止。
+		
+		ev.cancelBubble并不是标准，但是所有浏览器都兼容类似children
+		
+		标准的是ev.stopPropagation()，但是低版本IE不兼容。
+		
+		事件绑定：
+			标准下用ev.stopPropagation()  也可以用 ev.cancelBubble = true
+			
+			低版本IE用ev.cancelBubble = true
+	*/
+	var btn = document.getElementById('btn');
+	
+	
+	document.onclick = function(){
+		alert(1);
+	}
+	
+//	btn.onclick = function(ev){
+//		var e = ev || event;
+//		alert(2);
+//		e.cancelBubble = true;
+//	}
+
+	addEvent(btn,'click',function(ev){
+		var e = ev || event;
+		alert(2);
+		if(e.stopPropagation){
+			e.stopPropagation();
+		}
+		e.cancelBubble = true;
+	})
+	
+	
+	
+	function addEvent(obj,evName,evFn){
+		window.fn1 = function(){
+			evFn.call(obj);
+			return false;
+		}
+		if(obj.addEventListener){
+			obj.addEventListener(evName,evFn);
+		}else{
+			obj.attachEvent('on'+evName,window.fn1);
+		}
+	}
+	
+	
+	
+</script>
+</body>
+</html>

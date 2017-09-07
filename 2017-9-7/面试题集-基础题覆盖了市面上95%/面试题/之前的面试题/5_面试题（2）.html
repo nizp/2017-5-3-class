@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		2，判断一个字符串中出现次数最多的字符，统计这个次数
+		key是字符，value是这个字符出现的次数 
+		
+		思路：
+			如果json中没有这个值，那么就加一次，否则在原基础上自增一次
+		
+		{
+			s:4,
+			d:3,
+			a:2,
+			j:1
+		}
+	*/
+	var str = 'dadadssjss';//s:4 d:3 a:2 j:1
+	var json = {};
+	var key = '';
+	var value = -Infinity;
+	
+	for(var i=0;i<str.length;i++){
+		var v = str.charAt(i);
+		if(!json[v]){
+			json[v] = 1;
+		}else{
+			json[v]++;
+		}
+	}
+	
+	console.log(json);//现在这个对象中反应的是每个数据出现的次数
+	
+	
+	for(var attr in json){
+		if(value < json[attr]){
+			value = json[attr];
+			key = attr;
+		}
+	}
+	console.log('出现最多的是'+key+'出现了'+value+'次');
+	
+	
+</script>
+</body>
+</html>

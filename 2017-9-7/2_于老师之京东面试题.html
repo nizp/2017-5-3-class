@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style type="text/css">
+/*p{
+	height:200px;background: red;
+}*/
+#div1 .span1.span2 i{
+	color: red;
+}
+/*#div1.test1 .span1{color:yellow}*/
+
+</style>
+</head>
+<body id="body">
+	<!--<p id="p"><div>这是div</div></p>-->
+	<div id="div1" class="test1">
+		<span class="span1 span2">
+			span1
+			<i>test</i>
+		</span>
+	</div>
+<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		dom树的根节点为HTML 
+		
+		1.abd
+		
+		
+		2.a
+		
+		3.a.d
+		
+		4.c
+		
+		5.c.d
+		
+		6.true 暂时认为是调用了toString
+		
+		
+			
+	*/
+	//console.log($('#div1').prop('class'))
+	
+//	var html = document.documentElement;
+//	alert(html.parentNode);
+	
+//	var p = document.getElementById('p');
+//	alert(p.offsetParent)
+	
+//	
+//	var arr = [1,2,4,3,5,12];
+//	
+//	arr.sort();
+//	
+//	console.log(arr);
+
+	var arr = [];
+	var num = 0;
+	
+	
+	function fn(n){
+		if(n == 100)return;
+		arr.push(n);
+		n++;
+		fn(n);
+	}
+	 fn(num);
+	 console.log(arr)
+	
+//	setInterval(function(){
+//		arr.push(num);
+//		console.log(arr);
+//		num++;
+//	},500)
+	
+</script>
+</body>
+</html>

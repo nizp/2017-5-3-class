@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style >
+      #tab{
+        height: 100px;
+        width: 80%;
+        text-align: center;
+        margin:20px 0  0 20px;
+      }
+      .tabs{
+        height: 40px;
+        width: 100px;
+        border: 2px solid skyblue;
+        border-radius: 5px;
+        float: left;
+        margin-left: 5px;
+        line-height: 40px;
+        cursor: pointer;
+      }
+      #content{
+        width:75%;
+        border:3px dashed #8B2323	;
+        min-height: 10px;
+        border-radius: 20px;
+        margin-left: 15px;
+        padding: 20px 0 30px 40px;
+        text-align: left;
+      }
+      #content table{
+        width: 100%
+      }
+      .active{
+        background-color: #C6E2FF;
+      }
+      ul{
+        list-style: none;
+        float:left;
+        margin-right: 30px;
+        margin-top: 50px;
+      }
+      li{
+        min-height: 40px;
+        min-width: 200px;
+        margin-top: 10px;
+      }
+      label{
+        text-align: right;
+      }
+      input{
+        margin-left: 20px
+      }
+      .header  :nth-child(1){
+        width: 10%;
+
+      }
+      .header  :nth-child(2){
+        width: 10%
+      }
+      .header  :nth-child(3){
+        width: 25%
+      }
+      .header  :nth-child(4){
+        width: 10%
+      }
+      .header  :nth-child(5){
+        width: 45%
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="tab">
+      <div class="tabs active">效果类</div>
+      <div class="tabs">网站类</div>
+      <div class="tabs">知识类</div>
+      <div class="tabs">软件类</div>
+    </div>
+    <div id="content">
+        <table>
+          <thead class="header">
+
+              <td>时间</td>
+              <td>版权拥有人</td>
+              <td>名称</td>
+              <td>类型</td>
+              <td>描述</td>
+            </thead>
+          <tbody id="list">
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+      <ul id="create">
+        <li><label>时间：</label><input type="text" /></li>
+        <li><label>作者：</label> <input type="text" /></li>
+        <li><label>名称：</label><input type="text" /></li>
+        <li><label>类型：</label><input type="text" /></li>
+        <li><label style="float:left">描述：</label><textarea rows="10" cols="30"></textarea></li>
+        <li><input type="button" id="createbutton" value="新增"><input type="button" id="cancelbutton" value="清空"></li>
+      </ul>
+      <span style="margin:50px 0 0 100px;float:left;">现在的data数据:</span>
+      <textarea id="nowdata" style="margin:50px 0 0 20px;float:left;" rows="50" cols="60"></textarea>
+    <script type="text/javascript">
+      let data=[
+        {
+          date:'9-4',
+          owner:'聂笠',
+          share:'归类的小例子',
+          describe:'小工具',
+          type:'效果类'
+        }
+
+      ];
+      let render=(nowtype)=>{
+          let list=document.getElementById('list');
+          let str='';
+          data.forEach((e,i)=>{
+            if(e.type==nowtype){
+            str+=
+            `<tr>
+              <td>${e.date}</td>
+              <td>${e.owner}</td>
+              <td>${e.share}</td>
+              <td>${e.type}</td>
+              <td>${e.describe}</td>
+            </tr>`
+            }
+          })
+          list.innerHTML=str;
+
+      }
+      let nowtype='效果类';
+      let nowdata=document.getElementById('nowdata');
+      nowdata.innerText=JSON.stringify(data);
+      render(nowtype);
+      let  tabs=document.getElementsByClassName('tabs');
+      for(var i=0;i<tabs.length;i++){
+        tabs[i].index=i;
+        tabs[i].onclick=function () {
+            Array.from(tabs).forEach((v)=>{v.className="tabs"})
+            this.className="tabs active";
+            nowtype=this.innerText;
+            render(nowtype)
+        }
+      }
+      let createbutton=document.getElementById('createbutton');
+      let cancelbutton=document.getElementById('cancelbutton');
+      createbutton.onclick=()=>{
+        let inputs=document.getElementById('create').getElementsByTagName('input');
+        let describe=document.getElementById('create').getElementsByTagName('textarea')[0];
+        data.push({
+          date:inputs[0].value,
+          owner:inputs[1].value,
+          share:inputs[2].value,
+          describe:describe.value,
+          type:inputs[3].value
+        });
+          nowdata.innerText=JSON.stringify(data);
+      };
+      cancelbutton.onclick=()=>{
+        let inputs=document.getElementById('create').getElementsByTagName('input');
+        let describe=document.getElementById('create').getElementsByTagName('textarea')[0];
+        inputs[0].value='';
+        inputs[1].value='';
+        inputs[2].value='';
+        inputs[3].value='';
+        describe.value='';
+      };
+
+    </script>
+  </body>
+</html>

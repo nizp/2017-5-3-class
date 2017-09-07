@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+//	function fn(){
+//		console.log(1);
+//		setTimeout(function(){
+//			console.log(2)
+//		},1000)
+//		setTimeout(function(){
+//			console.log(3)
+//		},0)
+//		console.log(4);
+//	}
+//	fn();
+
+//	var a = 1;
+//	var b = 1;
+//	function m(){
+//		alert(a);//undefined
+//		alert(b);//1
+//		function n(){
+//			a = 5
+//		}
+//		var a = 2;
+//		n();
+//		alert(a);//5
+//		alert(b);//1
+//	}
+//	m();
+
+//	var arr = 'ARR';
+//	if(true){
+//		arr = 'BRR';
+//		let arr;
+//		console.log(arr)
+//	}
+	
+//	var a = '123';
+
+//	console.dir(window);
+//	if(!("a" in window)){
+//		var a = 1;
+//	}
+//	//console.log(window.a);
+
+	function A(){}
+	function B(a){
+		this.a = a;
+	}
+	function C(a){
+		if(a){
+			this.a = a;
+		}
+	}
+	
+	A.prototype.a = 1;
+	B.prototype.a = 1;
+	C.prototype.a = 1;
+	
+	console.log(new A().a); //1
+	console.log(new B().a); //un
+	console.log(new C(2).a);//2
+	
+</script>
+</body>
+</html>

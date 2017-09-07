@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		下面输出结果是什么？
+		
+	*/
+	
+	function outer(){
+		var i = 0;
+		return function(){
+			return ++i;
+		}
+	}
+	
+	var getNum = outer();
+	
+	console.log(getNum());
+	console.log(getNum());
+	i=1;
+	console.log(getNum());
+	console.log(getNum());
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+//	var obj={
+//		name:"as",
+//		get:function(){
+//			console.log(this);
+//			return this.name
+//		}
+//	};
+//	var newObj = obj.get();  //as
+
+	//var newObj = new obj.get();  //就是构造函数本身(对象)
+	
+//	function fn1(){}
+//	
+//	var p = new fn1;
+//	
+//	console.log(p)
+	
+	
+	//console.log(newObj);
+	
+	var name = 'leo';
+	var obj={
+		name:"as",
+		get:function(){
+			return function(){
+				alert(this)
+				return this.name;
+			}
+		}
+	};
+	
+	var p = new obj.get;
+	p();
+	console.log(p);//leo
+	
+	
+</script>
+</body>
+</html>

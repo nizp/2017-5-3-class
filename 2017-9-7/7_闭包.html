@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	function fn(){
+//		
+//	}
+
+	/*
+		function fn(){
+			var a = 10;
+		}
+		function fn2(){
+			var a = 12;
+		}
+		
+		obj = {}
+		obj2 = {}
+		
+		obj.a = 10;
+		obj2.a = 12;
+		
+		()()
+		
+		
+		函数套函数，子函数使用了父函数的参数或者变量，这个时候父函数的数据
+		不会被垃圾回收机制给立马回收（因为在用着），等到下次调用的时候依然会获取到计算之后的值。
+		
+	*/
+
+	function fn(){
+		var a = 10;
+		return function(){
+//			a++;
+			//console.log(a);
+		}
+	}
+	
+	var c = fn();
+	c();
+	
+	console.dir(c); //Closure就是闭包
+	
+	
+	
+	
+	
+	//var a = 12;
+	
+//	var b = fn();
+//	var c = fn();
+	
+//	console.log(fn()() == fn()());
+
+	//console.log(b == c);
+	
+//	b();
+//	c();
+//	c();
+	
+	
+	
+	
+	
+	
+	
+	//console.log(b)
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

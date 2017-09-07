@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		4，javascript面向对象中继承实现
+		
+		继承：
+			拷贝、类式、对象
+	*/
+	
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.say = function(){
+		alert('我叫'+this.name);
+	}
+	
+	function Coder(name,age,job){
+//		this.name = name;
+//		this.age = age;
+		Person.call(this,name,age);
+		this.job = job;
+	}
+//	Coder.prototype.say = function(){
+//		alert('我叫'+this.name);
+//	}
+
+	for(var attr in Person.prototype){
+		if(Person.prototype.hasOwnProperty(attr)){
+			Coder.prototype[attr] = Person.prototype[attr];
+		}
+	}
+	
+	Coder.prototype.coding = function(){
+		alert('我的工作'+this.job+'我在敲代码');
+	}
+	
+	var p1 = new Person('leo',32);
+	//p1.say();
+	
+	
+	var p2 = new Coder('momo',23,'前端');
+	
+	p2.say();
+	//p2.coding();
+	
+	
+</script>
+</body>
+</html>

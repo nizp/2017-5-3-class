@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		4、实现一个函数clone，
+		可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
+	*/
+	
+	var num = {
+		'name':'小花儿',
+		arr:[1,2,3,4]
+	};
+	function clone(type){
+		if(typeof type == 'object'){
+			var toStr = Object.prototype.toString;
+			var o = toStr.call(type)=='[object Object]'?{}:[];
+			//for in
+			for(var attr in type){
+				if(typeof type[attr] == 'object'){
+					o[attr] = clone(type[attr]);
+				}else{
+					o[attr] = type[attr]
+				}
+			}
+			return o;
+			
+		}else{
+			return type;
+		}
+	}
+	
+	var num2 = clone(num);
+	num2.arr.push(5);
+	//console.log(num.arr)
+	
+</script>
+</body>
+</html>

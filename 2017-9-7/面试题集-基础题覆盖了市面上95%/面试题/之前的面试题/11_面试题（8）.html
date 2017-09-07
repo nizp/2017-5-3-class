@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		8，JavaScript中如何检测一个变量是一个String类型？ 
+		
+		把Object的toString借给字符串用
+	*/
+	var str = '321';
+	var str2 = new String('a');
+	var arr = [1,2];
+	var obj = {};
+	
+//	console.log(typeof str)
+	
+	//console.log(str2.constructor == String || typeof str);
+	
+	//console.log(Object.prototype.toString.call(str2) == '[object String]')
+	console.log(Object.prototype.toString.call(obj));
+</script>
+</body>
+</html>

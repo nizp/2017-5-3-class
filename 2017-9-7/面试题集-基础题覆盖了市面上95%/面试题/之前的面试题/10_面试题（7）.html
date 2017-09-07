@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		7，写出3个使用this的典型应用； 
+		
+		事件this：
+		obj.onclick = function(){
+			alert(this)
+		}
+		
+		定点清除：
+			var btn = aBtn[0];
+			btn.className = '';
+			aBtn[this.index].className = 'active';
+			btn = this;
+			
+		构造函数的this
+		
+			function Fn(name){
+				this.name = name;
+			}
+			var f = new Fn('leo');
+		
+		定时器的this
+			var _this = this;
+			setTimeout(function(){
+				alert(_this.innerHTML);
+			},1000)
+			
+		Fn.call(this,name,age);
+		
+		
+		
+		
+	*/
+
+	
+</script>
+</body>
+</html>

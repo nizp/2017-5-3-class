@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function fun(n,o) {
+	  alert(o);
+	  return {
+	    fun:function(m){
+	      return fun(m,n);
+	    }
+	  };
+	}
+	//var a = fun(0);
+	/*
+		var a = {
+		    fun:function(m){
+		      return fun(2,0);
+		    }
+		}
+		
+	*/
+//	a.fun(1);  //undefind 0
+//
+//	a.fun(2); //0
+//	
+//	a.fun(3);//0
+	
+	
+	//1:undefined  2:0  3:1  4:2 	5:3 
+	//var b = fun(0).fun(1).fun(2).fun(3).fun(4);
+	var c = fun(0).fun(1); //undefined  0
+	c.fun(2); // 1
+	c.fun(3);// 1
+	//问:三行a,b,c的输出分别是什么
+	
+	
+	
+</script>
+</body>
+</html>

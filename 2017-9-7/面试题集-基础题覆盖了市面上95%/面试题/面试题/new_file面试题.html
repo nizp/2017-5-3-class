@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+		var arr='wei-ke-tang-ddd'; 
+			
+
+//　var name = "The Window";
+//　　var object = {
+//　　　　name : "My Object",
+//　　　　getNameFunc : function(){
+//　　　　　　return function(){
+//　　　　　　　　return this.name;
+//　　　　　　};
+//　　　　}
+//　　};
+//　　console.log(object.getNameFunc()());//The Window
+//
+//	var name = "The Window";
+//　　var object = {
+//　　　　name : "My Object",
+//　　　　getNameFunc : function(){
+//　　　　　　var that = this;
+//　　　　　　return function(){
+//　　　　　　　　return that.name;
+//　　　　　　};
+//　　　　}
+//　　};
+//　　console.log(object.getNameFunc()());//
+//	
+////作用域///////////////////////////////////
+		var a=1;
+		function test(){
+			alert(a); //undefined
+			a=2;
+			alert(this.a); //1
+			this.a = 4;
+			var a=3;
+			alert(a); //3
+		}
+		test();
+		alert(a); //4
+		</script>
+	</body>
+</html>

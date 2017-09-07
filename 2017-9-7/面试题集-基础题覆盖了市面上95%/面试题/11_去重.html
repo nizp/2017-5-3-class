@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		数组去重 
+	*/
+	
+	var arr = [1,2,3,43,5,5,2,3,4,6];
+	
+	var json = {};
+	var arr2 = []
+	for(var i=0;i<arr.length;i++){
+		if(!json[arr[i]]){
+			arr2.push(arr[i]);
+			json[arr[i]] = 1
+		}
+	}
+	
+	console.log(arr2)
+	
+</script>
+</body>
+</html>

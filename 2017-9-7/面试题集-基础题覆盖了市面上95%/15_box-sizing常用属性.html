@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	box-sizing: border-box;
+	/*box-sizing:content-box;*/
+	/*box-sizing: initial;*/
+	padding: 10px;
+	border: 5px solid #000;
+}	
+#div2{
+	width:50px;
+	height: 50px;
+	padding: 5px;
+	box-sizing: inherit;
+	background: gold;
+}
+</style>
+</head>
+<body>
+	<div id="div">
+		<div id="div2"></div>
+	</div>
+<script type="text/javascript">
+	
+//	box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。
+//
+//content-box，border和padding不计算入width之内
+
+//border-box，border和padding计算入width之内，
+
+  inherit:继承父级的怪异模式.
+
+其实就是怪异模式了~
+	
+</script>
+</body>
+</html>

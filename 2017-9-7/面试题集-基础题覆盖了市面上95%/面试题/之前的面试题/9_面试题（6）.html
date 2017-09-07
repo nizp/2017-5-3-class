@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		6.编写一个方法 去掉一个数组的重复元素 
+	*/
+	
+	Array.prototype.qc = function(){
+		var json = {};
+		var arr = [];
+		for(var i=0;i<this.length;i++){
+			var v = this[i];
+			if(!json[typeof v + v]){
+				arr.push(v);
+				json[typeof v + v] = 1;
+			}
+		}
+		return arr;
+	}
+	
+	var arr = [1,2,3,4,'1','2',3];
+	
+	console.log(arr.qc());
+	
+	
+	
+	
+</script>
+</body>
+</html>

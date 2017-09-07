@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		4，javascript面向对象中继承实现
+		
+		继承：
+			拷贝、类式、对象
+	*/
+	
+	var obj = {
+		name:'leo',
+		age:32,
+		fn1:function(){
+			alert(2);
+		}
+	}
+	
+	var obj2 = {};
+	
+	function ph(){}
+	ph.prototype = obj;
+	var phh = new ph;
+	
+	obj2 = phh;
+	
+	obj2.name = 'momo';
+	alert(obj.name);
+	alert(obj2.name);
+	
+	
+	
+	
+</script>
+</body>
+</html>

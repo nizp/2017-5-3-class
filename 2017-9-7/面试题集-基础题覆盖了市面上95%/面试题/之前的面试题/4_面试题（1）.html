@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		1、判断字符串是否是这样组成的，
+			第一个必须是字母，后面可以是字母、数字、下划线，总长度为5-20
+		
+	*/
+	var str = 'a1a__a1a__a1a__a1a__';
+	var re = /[a-zA-Z]\w{4,19}/;
+	
+	if(re.test(str)){
+		alert('是');
+	}else{
+		alert('否');
+	}
+	
+	
+</script>
+</body>
+</html>

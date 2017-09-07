@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+	function People(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	People.prototype.sayhello = function(){
+		alert(this.name+'说:今年'+this.age+'岁');	
+	}
+	var xm = new People('小明',18);
+	
+	xm.sayhello();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+	 
+	*/
+	
+	var a = [21,45,2,6,78,33,33,1,9];
+	
+//	function sort(arr){
+//		
+//		for(var i=0;i<arr.length;i++){
+//			
+//			for(var j=i+1;j<arr.length;j++){
+//				
+//				if(arr[i] > arr[j]){
+//					
+//					[arr[i],arr[j]] = [arr[j],arr[i]];
+//					//console.log(arr[i])
+//					
+//				}
+//			}
+//			
+//		}
+//		
+//		return arr;
+//		
+//	}
+
+
+	function sort(arr){
+		
+		if(arr.length <= 1)return arr;
+		
+		var arrLeft = [];
+		var arrRight = [];
+		var arrone = arr.shift();
+		
+		while(arr.length){
+			
+			if(arrone > arr[0]){
+				arrLeft.push(arr.shift())
+			}else{
+				arrRight.push(arr.shift())
+			}
+		}
+		
+		return sort(arrLeft).concat(arrone,sort(arrRight));	
+		
+	}
+	
+	
+	console.log(sort(a));//[1,2,6,9,21,33,33,45,78];
+	
+</script>
+</body>
+</html>

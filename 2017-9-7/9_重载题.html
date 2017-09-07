@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		重构if else 
+	*/
+	
+	
+//
+	
+	function fn(){
+		if(window.addEventListener){
+			console.log(1);
+			fn = function(){
+				console.log('已经替换了的fn')
+			}
+		}else{
+			console.log(2);
+			fn = function(){
+				console.log('已经替换了的fn2')
+			}
+		}
+	}
+	
+	setInterval(function(){
+		fn();
+	},1000)
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	function fun(n,o) {
+	  console.log(o); //n=0 o=un
+	  return {
+	    fun:function(m){
+	      return fun(m,n);
+	    }
+	  };
+	}
+//	var a = fun(0);  //undefind
+//	a.fun(1); 
+//	a.fun(2); 
+//	a.fun(3);
+	
+	
+//	var b = fun(0).fun(1).fun(2).fun(3);//un,0,1,2
+	
+	var c = fun(0).fun(1);  //un , 0
+	c.fun(2);  //1
+	c.fun(3); //1
+	
+	
+</script>
+</body>
+</html>
